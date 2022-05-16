@@ -32,7 +32,7 @@ select {
 button:hover{
   cursor: pointer;
 }
-
+ 
 
 input[type=submit]:hover,
 input[type=button]:hover,
@@ -45,12 +45,17 @@ button:hover {
   color: #75c3c5;
   text-decoration: underline;
 }
+.day-logger{
+  margin-left: 5px;
+}
 .pageHeader{
   display: flex;
   align-items: center;
   justify-content: space-between; 
   background-color: white; 
-  margin: 8px;
+  /* margin: 2px; */
+  padding: 8px;
+  padding-left: 15px;
   height: 70px;
 }
 .pageHeader .profileImage{
@@ -59,9 +64,17 @@ button:hover {
   margin-left: 10px;
   border-radius: 70px;
 }
+.profileImage{
+  margin:0px !important;
+  padding: 15px;
+}
+.header-profileImage{
+  cursor: pointer;
+}
 .pageMenu{
   display: flex;
   gap: 20px;
+  font-weight: 500;
 }
 .pageMenu:hover{
   cursor: pointer;
@@ -69,24 +82,33 @@ button:hover {
 
 /* NOTE LogDay */
 .logDayContainer{
-  display: flex;
+  /* display: flex; */
   flex-wrap: nowrap;
   justify-content: center;
+  margin-left:100px;
+  margin-right: 100px;
+
 }
 .logDayDate{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 400px;
 }
-.logDayDiv1, .logDayDiv2, .logDayDiv3, .logDayDiv4{
+.logDayDiv1, .logDayDiv2, .logDayDiv3{
   background-color: white;
-  border-radius: 8px;;
-  width: 400px;
+  border-radius: 5px;;
+  /* width: 400px; */
   margin:10px;
+  padding: 10px;
+  padding-top:15px
 }
 .logDayDiv4{
   display: none;
+  background-color: white;
+  border-radius: 5px;;
+  margin:10px;
+  padding: 10px;
+  padding-top:15px
 }
 .submitBtn{
   margin:10px;
@@ -109,13 +131,13 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   margin:10px;
-  width: 400px;
 }
 .qDiv{
   background-color: white;
   border-radius: 8px;
   margin: 10px;
   width: 400px;
+  padding: 10px;
 }
 
 .qContainer{
@@ -129,6 +151,10 @@ button:hover {
   background-color: #ed6687;
   color:white;
   border: none;
+}
+.saveBtnforProfile{
+  padding: 10px 35px 10px 35px;
+  font-size: large;
 }
 
 /* NOTE Profile */
@@ -163,11 +189,21 @@ input#file-input{
   cursor: pointer;
   color: gray ;
 }
+.put-img-box{
+  border-radius: 8px;
+  background-color: var(--activeColor);
+  padding:8px;
+}
+.removeImage{
+  text-decoration: underline;
+
+}
 .profileDiv1,.profileDiv2, .profileDiv3, .profileDiv4{
   background-color: white;
-  border-radius: 8px;;
+  border-radius: 8px;
   width: 400px;
-  margin:10px;
+  margin:5px;
+  padding: 15px;
 }
 
 .profileDiv5{
@@ -297,6 +333,14 @@ input#file-input{
   }
   .logDayDiv4{
     display: block;
+  }
+  .logDayContainer{
+    margin-left:0px;
+  margin-right: 0px;
+  }
+  .logDayDate{
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .loginModal {
     display: none;

@@ -1,23 +1,48 @@
-import React  from 'react';
+import React from "react";
 
-
-function Question({id,  text, handleDeleteQuestion}){
-  
-    return(
-      <div className='qDiv'>
-        <input type="text" name='qText' defaultValue={text} style={{marginBottom:"5px", width:"-webkit-fill-available"}}/>
-        <br/>
-        <div className='qContainer'>
-          <select name="qType" id="qType">
-            <option value="number">number</option>
-            <option value="text">text</option>
-            <option value="boolean">boolean</option>
-            <option value="multipleChoice">multiple choice</option>
-          </select>
-          <span className="material-symbols-outlined" id = {id} onClick={handleDeleteQuestion}>delete</span>
-        </div>
+function Question({ id, text, handleDeleteQuestion }) {
+  return (
+    <div className="qDiv">
+      <input
+        type="text"
+        name="qText"
+        defaultValue={text}
+        style={{
+          marginBottom: "5px",
+          width: "-webkit-fill-available",
+          padding: "4px",
+          borderRadius: "5px",
+        }}
+      />
+      <br />
+      <div className="qContainer">
+        <select
+          name="qType"
+          id="qType"
+          style={{
+            marginTop: "5px",
+            padding: "5px",
+            borderRadius: "5px",
+          }}
+        >
+          <option value="number">number</option>
+          <option value="text">text</option>
+          <option value="boolean">boolean</option>
+          <option value="multipleChoice">multiple choice</option>
+        </select>
+        <span
+          className="material-symbols-outlined"
+          id={id}
+          onClick={handleDeleteQuestion}
+          style={{
+            marginTop: "7px",
+          }}
+        >
+          delete
+        </span>
       </div>
-    );
-};
- 
+    </div>
+  );
+}
+
 export default Question;
