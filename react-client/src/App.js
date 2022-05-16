@@ -14,6 +14,7 @@ function App() {
   //이거 너무 지저분해서 신경쓰임 ㅜㅜ 혹시라도 이거보다 ㄱㅊ은거 있으면 바꿔도돼ㅇㅇㅇ!!
   //아직 로그인은 기능안했으니까 그냥 일단 isLoggedIn은 true로 하고 
   // isLogDay도 잠깐 true 로 설정해두꼐! (원래는 둘다 false)
+  //random 
 
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   // const [isLogDay, setIsLogDay] = useState(false);
