@@ -1,10 +1,10 @@
 import "./App.css";
 import React, { useState } from "react";
-import LogDay from "./components/logDay";
-import EditQuestions from "./components/editQuestions";
-import ViewData from "./components/viewData";
-import Login from "./components/login";
-import ProfilePage from "./components/profilePage";
+import LogDay from "./components/LogDay";
+import EditQuestions from "./components/EditQuestions";
+import ViewData from "./components/ViewData";
+import Login from "./components/Login";
+import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 
 //NOTE:너무 처음부터 내스타일 대로 해서 커멘트 남기는거니까 일단 함 보고 지워바바바바바밥!!!!!!!!

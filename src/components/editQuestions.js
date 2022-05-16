@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Question from "./question";
+import Question from "./Question";
 
 function EditQuestions() {
   let initQ = [
