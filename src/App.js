@@ -55,6 +55,10 @@ function App() {
     setIsProfilePage(true);
   };
 
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+  };
+
   return (
     <React.Fragment>
       <div className="head">
@@ -107,8 +111,10 @@ function App() {
       div className 은 그냥 이름 복잡하게 주는거보다 그냥 div1,div2..약간 이런식으로 했고
       힝구힝구 일단 한번봐봐!!!!!!!!!!!!!!!!!
        */}
-      {isLogDay && <LogDay />}
-      {isEditQuestions && <EditQuestions />}
+      {isLogDay && <LogDay 
+                    handleSubmit={handleSubmit} />}
+      {isEditQuestions && <EditQuestions 
+                    handleSubmit={handleSubmit}/>}
       {isViewData && <ViewData />}
       {isProfilePage && <ProfilePage />}
     </React.Fragment>

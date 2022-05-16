@@ -1,13 +1,21 @@
 import React from "react";
 
-function LogDay() {
+function LogDay({handleSubmit}) {
+
+  const handleDateBack = () =>{
+    console.log("Date Back");
+  }
+  const handleDateForward = () =>{
+    console.log("Date Forward");
+  }
+
   return (
     <div className="logDayContainer">
-      <form className="logDayContent">
+      <form onSubmit={handleSubmit} className="logDayContent">
         <div className="logDayDate">
-          <span className="material-symbols-outlined">arrow_back_ios</span>
+          <button className="material-symbols-outlined dateBtn" onClick={handleDateBack}>arrow_back_ios</button>
           <h2> 2/21/2021 </h2>
-          <span className="material-symbols-outlined">arrow_forward_ios</span>
+          <button className="material-symbols-outlined dateBtn" onClick={handleDateForward}>arrow_forward_ios</button>
         </div>
 
         <div className="logDayDiv1">

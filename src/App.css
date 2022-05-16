@@ -118,6 +118,14 @@ button:hover {
   color:white;
   border: none;
 }
+.dateBtn {
+  background: none;
+  border: none;
+}
+.dateBtn :hover{
+  cursor: pointer;
+  color: gray ;
+}
 
 /*NOTE Edit questions */
 .editQContainer{

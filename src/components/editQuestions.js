@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
 
-function EditQuestions() {
+function EditQuestions({handleSubmit}) {
   let initQ = [
     { text: "Random Question 1", type: "Number", id: 0 },
     { text: "Random Question 2", type: "Number", id: 1 },
@@ -26,13 +26,12 @@ function EditQuestions() {
     console.log("Target delete icon", e.target);
     console.log("Id of delete icon", e.target.id);
     console.log("Question to delete", questions[e.target.id]);
-
-    const newQuestions = questions.splice(e.target.id, 1);
-    setQuestions(newQuestions);
-
+    // const newQuestions = questions.splice(e.target.id, 1); 
+    // console.log(newQuestions)
+    // setQuestions(newQuestions);
   };
   return (
-    <div className="editQContainer">
+    <div onSubmit={handleSubmit} className="editQContainer">
       <form className="editQContent">
         <div className="editQHeader">
           <h2
