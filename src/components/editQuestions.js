@@ -22,13 +22,14 @@ function EditQuestions() {
     setQuestions([...questions, newQuestion]);
     console.log(questions);
   };
-  const handleDeleteQuestion = (e) => {
+  const handleDeleteQuestion = (e) => { 
     console.log("Target delete icon", e.target);
     console.log("Id of delete icon", e.target.id);
     console.log("Question to delete", questions[e.target.id]);
+
     const newQuestions = questions.splice(e.target.id, 1);
-    console.log(newQuestions);
-    // setQuestions(newQuestions);
+    setQuestions(newQuestions);
+
   };
   return (
     <div className="editQContainer">

@@ -126,6 +126,9 @@ button:hover {
   flex-wrap: nowrap;
   justify-content: center;
 }
+.editQContent{
+  width:400px;
+}
 .editQHeader{
   display: flex;
   align-items: center;
@@ -136,7 +139,7 @@ button:hover {
   background-color: white;
   border-radius: 8px;
   margin: 10px;
-  width: 400px;
+  /* width: 400px; */
   padding: 10px;
 }
 

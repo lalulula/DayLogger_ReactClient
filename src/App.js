@@ -7,8 +7,6 @@ import Login from "./components/Login";
 import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 
-//NOTE:너무 처음부터 내스타일 대로 해서 커멘트 남기는거니까 일단 함 보고 지워바바바바바밥!!!!!!!!
-
 function App() {
   //NOTE:얘네는 그 위에 헤더 눌리면 보이게 하려고 state하나씩 만들어 준거긴한데
   //이거 너무 지저분해서 신경쓰임 ㅜㅜ 혹시라도 이거보다 ㄱㅊ은거 있으면 바꿔도돼ㅇㅇㅇ!!
