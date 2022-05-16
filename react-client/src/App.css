@@ -1,0 +1,328 @@
+/* Global CSS Variables: https://www.w3schools.com/css/css3_variables.asp */
+/* Reference these in your CSS to get the same color as the mockups */
+:root {
+  --actionBackgroundColor: #f76b8a;
+  --actionTextColor: white;
+  --activeColor: #66bfbf;
+  --standardBackgroundColor: #fcfefe;
+  --alternativeBackgroundColor: #eaf6f6;
+  --standardTextColor: black;
+  --lightColor: lightgray;
+  --moderateColor: darkgray;
+}
+
+body {
+  background-color: var(--alternativeBackgroundColor);
+  height: 100%;
+}
+body input{
+  border: solid 1px black;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus  {
+  outline-color: var(--activeColor);
+}
+
+select {
+  border-color: var(--moderateColor);
+}
+button:hover{
+  cursor: pointer;
+}
+
+
+input[type=submit]:hover,
+input[type=button]:hover,
+button:hover {
+  transform: scale(1.1);
+}
+
+/* NOTE MainPage Header */
+.currentLink{
+  color: #75c3c5;
+  text-decoration: underline;
+}
+.pageHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  background-color: white; 
+  margin: 8px;
+  height: 70px;
+}
+.pageHeader .profileImage{
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 70px;
+}
+.pageMenu{
+  display: flex;
+  gap: 20px;
+}
+.pageMenu:hover{
+  cursor: pointer;
+}
+
+/* NOTE LogDay */
+.logDayContainer{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.logDayDate{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
+}
+.logDayDiv1, .logDayDiv2, .logDayDiv3, .logDayDiv4{
+  background-color: white;
+  border-radius: 8px;;
+  width: 400px;
+  margin:10px;
+}
+.logDayDiv4{
+  display: none;
+}
+.submitBtn{
+  margin:10px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  background-color: #ed6687;
+  color:white;
+  border: none;
+}
+
+/*NOTE Edit questions */
+.editQContainer{
+  /* margin: 20px 200px 0px 200px; */
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.editQHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin:10px;
+  width: 400px;
+}
+.qDiv{
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  width: 400px;
+}
+
+.qContainer{
+  display: flex;
+  justify-content: space-between;
+}
+.saveBtn{
+  margin:10px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  background-color: #ed6687;
+  color:white;
+  border: none;
+}
+
+/* NOTE Profile */
+.profileContainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  
+}
+.profileContainer h3{
+  margin:10px;
+}
+.profileHeader{
+  font-weight: bolder;
+}
+.changePIMG{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profileDiv1 img{
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 70px;
+}
+input#file-input{
+  display: none;
+}
+.handleImageBtn:hover{
+  cursor: pointer;
+  color: gray ;
+}
+.profileDiv1,.profileDiv2, .profileDiv3, .profileDiv4{
+  background-color: white;
+  border-radius: 8px;;
+  width: 400px;
+  margin:10px;
+}
+
+.profileDiv5{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 400px;
+  margin:10px;
+}
+/********
+/* NOTE Login Page */
+.loginBody{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.loginContainer{
+  margin:120px 0px 200px 0px ;
+  width: auto;
+}
+.loginHeader{
+  text-align: center;
+}
+.loginTitle{
+  margin-bottom: 50px;
+  font-weight: bold;
+
+}
+.loginForm{
+  background-color: white;
+  width: 400px;
+  border-radius: 5%;
+  padding:20px 20px 20px 15px ;
+}
+.loginButtons{
+  text-align: center;
+}
+.login{
+  background-color: #3B63C5;
+  color: white;
+  margin:15px 0px 15px 0px;
+  padding:10px 0px 10px 0px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+.loginInput{
+  height: 20px;
+}
+.email{
+  margin-bottom: 5px;
+}
+.createAccount{
+  background-color: #326F36;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 13px 15px 13px 15px;
+}
+
+.editRegisterContainer {
+  padding: 5px 10px 5px 10px;
+  align-items: center;
+}
+/* The Modal (background) */
+.registerModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-top: 140px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  width: 400px;
+  background-color: white;
+  padding: 10px 10px 10px 10px;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  border-radius: 5%;
+  align-items: center;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.signUp1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.signUp2{
+  text-align: center;
+}
+.signUpBtn{
+  background-color: #4AA12E;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: small;
+  margin:20px 0px 10px 0px;
+  padding: 10px 15px 10px 15px;
+}
+
+
+/* These rules only apply if the window's max-width is 500px or less */
+@media all and (max-width: 600px) {
+  .pageHeader h2{
+    display: none;
+
+  }
+  .logDayDiv4{
+    display: block;
+  }
+  .loginModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 0px;
+    background-color: rgba(256, 256, 256, 1);
+  }
+  .modal-content {
+      background-color: white;
+      display: contents;
+  }
+  .registerModal{
+    height: 100vh;
+    background-color: white;
+    padding: 0;
+  }
+  .editRegisterContainer {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 300px;
+      overflow: hidden;
+  }
+}
