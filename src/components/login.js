@@ -1,68 +1,92 @@
-import React  from 'react';
+import { useRef, useState, useEffect } from "react";
+import { getUserAPI, loginAPI } from "../api/userAPI";
 
+const Login = ({ user, setUser, pwd, setPwd, setUserdata }) => {
+  const userRef = useRef();
+  const errRef = useRef();
 
-function Login({setIsLoggedIn}){
-    const handleFormSubmit = (e) =>{
-        e.preventDefault();
-    }
-    const handleCreateNewAccount = () =>{
-        document.getElementById('myModal').style.display='block'
-    }
-    const closeModal = () =>{
-        document.getElementById('myModal').style.display= "none";
-    }
-    return(
-        <div className='loginBody'>
+  const [errMsg, setErrMsg] = useState("");
 
-            <div className="bodyContainer" style={{height: "100vh"}}>
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
 
-                <div className="loginContainer">
-                    <div className="loginHeader">
-                        <h1 className="loginTitle">Day Logger</h1>
-                    </div>
-                    <form onClick={handleFormSubmit}>
-                        <div className="loginForm">
+  useEffect(() => {
+    setErrMsg("");
+  }, [user, pwd]);
 
-                            <label htmlFor="email">Email</label>
-                            <input className="loginInput email" type="email" name="Email" style={{width: '98%'}}/><br/>
-    
-                            <label htmlFor="password">Password</label>
-                            <input className="loginInput" type="password" name="password" autoComplete="off" style={{width: '98%'}} /><br/>
-                            <div id="errorMessage" ></div>
-    
-                            <div className="loginButtons">
-                                <button className="login" >Log in</button>
-                                <hr style={{marginBottom: '20px'}}/>
-                                <button className="createAccount" onClick={handleCreateNewAccount} >Create New Account</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-    
-                <div id="myModal" className="registerModal">
-                    <div className="modal-content">
-                        <div className="editRegisterContainer">
-                            <div className="signUp1">
-                                <h3>Sign Up</h3>
-                                <span className="close" onClick={closeModal}>&times;</span>
-                            </div>
-                            <form onClick={handleFormSubmit}>
+  const openSignup = () => {
+    document.getElementById("signup-background").style.display = "block";
+  };
 
-                                Name<br/> <input type="text" name="Name"  autoComplete="off"  style={{width: "98%", height:"20px"}}/>
-                                Email<br/> <input type="email" size="30" name="Email" autoComplete="off"  style={{width: "98%", height:"20px"}}/>
-                                Password<br/> <input type="password" size="30" name="password" autoComplete="off" style={{width: "98%", height:"20px"}}/>
-                                <div className="signUp2">
-                                    <button className="signUpBtn" > Sign Up </button>
-                                </div>
-                            </form>                       
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            
+  const login = () => {
+    loginAPI(user, pwd).then((result) => {
+      if (result == true) {
+        window.location.reload();
+        getUserAPI().then((user) => {
+          if (user) {
+            console.log(user);
+            setUserdata(user);
+          }
+        });
+        console.log("login successful");
+      } else {
+        setErrMsg("Error: Invalid email and/or password");
+      }
+    });
+  };
+  return (
+    <div className="login" id="login">
+      <div className="login-wrap">
+        <div className="title">
+          <div className="title-notes">Notes</div>
+          <div className="title-descrition">
+            Organize all your thoughts in one place.
+          </div>
         </div>
-        );
+        <div className="white-box">
+          <div className="inputs">
+            <div className="login-email-wrap">
+              <div className="login-email">Email</div>
+              <input
+                type="email"
+                ref={userRef}
+                autoComplete="off"
+                onChange={(e) => setUser(e.target.value)}
+                value={user}
+                required
+              />
+            </div>
+            <div>
+              <div className="login-password">Password</div>
+              <input
+                type="password"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+              />
+            </div>
+          </div>
+          <div
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </div>
+          <button className="login-button" onClick={login}>
+            Log in
+          </button>
+          <hr />
+          <div className="login-signup-button-wrap">
+            <button className="login-signup-button" onClick={openSignup}>
+              Create New Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
- 
+
 export default Login;

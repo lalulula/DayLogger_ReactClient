@@ -4,6 +4,7 @@ import LogDay from "./components/LogDay";
 import EditQuestions from "./components/EditQuestions";
 import ViewData from "./components/ViewData";
 import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 
@@ -23,6 +24,12 @@ function App() {
   const [isViewData, setViewData] = useState(false);
   const [isProfilePage, setIsProfilePage] = useState(false);
 
+  const [userdata, setUserdata] = useState();
+  const [user, setUser] = useState("");
+  const [pwd, setPwd] = useState("");
+
+  const [profile, setProfile] = useState();
+
   //NOTE: 얘는 link 타고 들어갈떄 current link css있길래 그거 해주려고 만든거!
   const [active, setActiveLink] = useState([true, false, false, false]);
 
@@ -35,28 +42,28 @@ function App() {
     setIsProfilePage(false);
   };
   const handleEditQuestionsClick = () => {
-    setActiveLink([false, true, false , false]);
+    setActiveLink([false, true, false, false]);
     setIsLogDay(false);
     setEditQuestions(true);
     setViewData(false);
     setIsProfilePage(false);
   };
   const handleViewDataClick = () => {
-    setActiveLink([false, false, true , false]);
+    setActiveLink([false, false, true, false]);
     setIsLogDay(false);
     setEditQuestions(false);
     setViewData(true);
     setIsProfilePage(false);
   };
   const handleProfilePageClick = () => {
-    setActiveLink([false, false, false,true]);
+    setActiveLink([false, false, false, true]);
     setIsLogDay(false);
     setEditQuestions(false);
     setViewData(false);
     setIsProfilePage(true);
   };
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
   };
 
@@ -73,36 +80,56 @@ function App() {
       {/* NOTE: 여기가 모든페이지 위에 뜨는 헤더부분 
                 아 그리고 내 로그인 페이지 너무 복잡하긴해서 
                 너가 하던걸로 바꾸고 싶으면 바꿔도댐 ㅜ,ㅜ */}
-      {!isLoggedIn && <Login setIsLoggedIn={setIsLoggedIn} />}
-      {isLoggedIn && (
-        <div className="pageHeader">
-          <h2 className="day-logger"> Day Logger </h2>
-          <div className="pageMenu">
-            <span
-              className={active[0] ? "currentLink" : ""}
-              onClick={handleLogDayClick}
-            >
-              Log Day
-            </span>
-            <span
-              className={active[1] ? "currentLink" : ""}
-              onClick={handleEditQuestionsClick}
-            >
-              Edit Questions
-            </span>
-            <span
-              className={active[2] ? "currentLink" : ""}
-              onClick={handleViewDataClick}
-            >
-              View Data{" "}
-            </span>
-          </div>
-          <img
-            className={`profileImage header-profileImage ${active[3] ? "currentLink" : ""}`}
-            src={defaultpImg}
-            onClick={handleProfilePageClick}
+      {/* {!isLoggedIn && <Login setIsLoggedIn={setIsLoggedIn} />}
+      {isLoggedIn && ( */}
+      {!profile ? (
+        <>
+          <Login
+            user={user}
+            setUser={setUser}
+            pwd={pwd}
+            setPwd={setPwd}
+            setUserdata={setUserdata}
           />
-        </div>
+          <SignUp />
+        </>
+      ) : (
+        <>
+          <div className="pageHeader">
+            <h2 className="day-logger"> Day Logger </h2>
+            <div className="pageMenu">
+              <span
+                className={active[0] ? "currentLink" : ""}
+                onClick={handleLogDayClick}
+              >
+                Log Day
+              </span>
+              <span
+                className={active[1] ? "currentLink" : ""}
+                onClick={handleEditQuestionsClick}
+              >
+                Edit Questions
+              </span>
+              <span
+                className={active[2] ? "currentLink" : ""}
+                onClick={handleViewDataClick}
+              >
+                View Data{" "}
+              </span>
+            </div>
+            <img
+              className={`profileImage header-profileImage ${
+                active[3] ? "currentLink" : ""
+              }`}
+              src={defaultpImg}
+              onClick={handleProfilePageClick}
+            />
+          </div>
+          {isLogDay && <LogDay handleSubmit={handleSubmit} />}
+          {isEditQuestions && <EditQuestions handleSubmit={handleSubmit} />}
+          {isViewData && <ViewData />}
+          {isProfilePage && <ProfilePage />}
+        </>
       )}
 
       {/*NOTE: conditional rendering 부분!온클릭하면 state바꿔주고 그 컴포넌트로 이동하게 만들어놓은교!  */}
@@ -112,12 +139,6 @@ function App() {
       div className 은 그냥 이름 복잡하게 주는거보다 그냥 div1,div2..약간 이런식으로 했고
       힝구힝구 일단 한번봐봐!!!!!!!!!!!!!!!!!
        */}
-      {isLogDay && <LogDay 
-                    handleSubmit={handleSubmit} />}
-      {isEditQuestions && <EditQuestions 
-                    handleSubmit={handleSubmit}/>}
-      {isViewData && <ViewData />}
-      {isProfilePage && <ProfilePage />}
     </React.Fragment>
   );
 }
