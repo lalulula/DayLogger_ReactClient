@@ -24,31 +24,32 @@ function App() {
   const [isProfilePage, setIsProfilePage] = useState(false);
 
   //NOTE: 얘는 link 타고 들어갈떄 current link css있길래 그거 해주려고 만든거!
-  const [active, setActiveLink] = useState([true, false, false]);
+  const [active, setActiveLink] = useState([true, false, false, false]);
 
   //NOTE: conditional rendering 해주려고 만들어둔고!
   const handleLogDayClick = () => {
-    setActiveLink([true, false, false]);
+    setActiveLink([true, false, false, false]);
     setIsLogDay(true);
     setEditQuestions(false);
     setViewData(false);
     setIsProfilePage(false);
   };
   const handleEditQuestionsClick = () => {
-    setActiveLink([false, true, false]);
+    setActiveLink([false, true, false , false]);
     setIsLogDay(false);
     setEditQuestions(true);
     setViewData(false);
     setIsProfilePage(false);
   };
   const handleViewDataClick = () => {
-    setActiveLink([false, false, true]);
+    setActiveLink([false, false, true , false]);
     setIsLogDay(false);
     setEditQuestions(false);
     setViewData(true);
     setIsProfilePage(false);
   };
   const handleProfilePageClick = () => {
+    setActiveLink([false, false, false,true]);
     setIsLogDay(false);
     setEditQuestions(false);
     setViewData(false);
@@ -97,7 +98,7 @@ function App() {
             </span>
           </div>
           <img
-            className="profileImage header-profileImage"
+            className={`profileImage header-profileImage ${active[3] ? "currentLink" : ""}`}
             src={defaultpImg}
             onClick={handleProfilePageClick}
           />

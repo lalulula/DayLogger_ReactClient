@@ -94,7 +94,7 @@ button:hover {
   align-items: center;
   justify-content: space-between;
 }
-.logDayDiv1, .logDayDiv2, .logDayDiv3{
+.logDayDiv1, .logDayDiv2, .logDayDiv3, .logDayDiv4{
   background-color: white;
   border-radius: 5px;;
   /* width: 400px; */
@@ -102,14 +102,7 @@ button:hover {
   padding: 10px;
   padding-top:15px
 }
-.logDayDiv4{
-  display: none;
-  background-color: white;
-  border-radius: 5px;;
-  margin:10px;
-  padding: 10px;
-  padding-top:15px
-}
+
 .submitBtn{
   margin:10px;
   padding: 10px 20px 10px 20px;
@@ -129,26 +122,23 @@ button:hover {
 
 /*NOTE Edit questions */
 .editQContainer{
-  /* margin: 20px 200px 0px 200px; */
-  display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  margin-left:100px;
+  margin-right: 100px;
 }
-.editQContent{
-  width:400px;
-}
+
 .editQHeader{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin:10px;
 }
 .qDiv{
   background-color: white;
-  border-radius: 8px;
-  margin: 10px;
-  /* width: 400px; */
+  border-radius: 5px;;
+  margin:10px;
   padding: 10px;
+  padding-top:15px
 }
 
 .qContainer{
@@ -340,11 +330,10 @@ input#file-input{
 @media all and (max-width: 600px) {
   .pageHeader h2{
     display: none;
-
   }
-  .logDayDiv4{
+  /* .logDayDiv4{
     display: block;
-  }
+  } */
   .logDayContainer{
     margin-left:0px;
   margin-right: 0px;
