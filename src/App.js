@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LogDay from "./components/LogDay";
 import EditQuestions from "./components/EditQuestions";
 import ViewData from "./components/ViewData";
@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
+import { getUserAPI } from "./api/userAPI";
 
 function App() {
   //NOTE:얘네는 그 위에 헤더 눌리면 보이게 하려고 state하나씩 만들어 준거긴한데
@@ -29,6 +30,11 @@ function App() {
   const [pwd, setPwd] = useState("");
 
   const [profile, setProfile] = useState();
+
+  useEffect(() => {
+    const fetchedUserData = getUserAPI();
+    console.log(fetchedUserData);
+  }, []);
 
   //NOTE: 얘는 link 타고 들어갈떄 current link css있길래 그거 해주려고 만든거!
   const [active, setActiveLink] = useState([true, false, false, false]);

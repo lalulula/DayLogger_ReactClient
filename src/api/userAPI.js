@@ -3,8 +3,8 @@ const defaultHeaders = {
     "Content-Type": "application/json; charset=UTF-8",
   },
 };
-// const backendURL = "http://localhost:5005";
-const backendURL = "";
+const backendURL = "http://localhost:5005";
+// const backendURL = "";
 // POST: /register
 export const registerAPI = (name, email, password) => {
   return fetch(`${backendURL}/api/register`, {
