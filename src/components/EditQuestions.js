@@ -4,18 +4,18 @@ import Question from "./Question";
 function EditQuestions({handleSubmit, questions, setQuestions}) {
 
   useEffect(() => {
-    // console.log("RELOADING QUESTIONS");
-    // console.log("QUESTIONS:", questions);
+    console.log("RELOADING QUESTIONS");
+    console.log("QUESTIONS:", questions);
   }, [questions]);
-
   const handleAddQuestion = () => {
     const newQuestion = {
       text: "Enter text",
       type: "Number",
       id: questions.length,
     };
-    setQuestions([newQuestion, ...questions]);
-    console.log(questions);
+    console.log("New Q",newQuestion);
+    setQuestions([...questions, newQuestion]);
+
   };
   const handleDeleteQuestion = (e) => { 
     console.log("Target delete icon", e.target);
@@ -48,7 +48,7 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
             <Question
               key={question.id}
               id={question.id}
-              text={question.text}
+              // text={question.text}
               type={question.type}
               questions={questions}
               setQuestions={setQuestions}
@@ -56,61 +56,6 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
             />
           ))}
         </div>
-
-        {/*  NOTE 얘넨 그냥 hardcode한 프론트 부분임
-
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='Number of pushups' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'>
-                        <select name="qType" id="qType">
-                            <option value="number" selected>number</option>
-                            <option value="text">text</option>
-                            <option value="boolean">boolean</option>
-                            <option value="multipleChoice">multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>
-
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='Had a long walk today' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'>
-                        <select name="qType" id="qType">
-                            <option value="number">number</option>
-                            <option value="text">text</option>
-                            <option value="boolean" selected>boolean</option>
-                            <option value="multipleChoice">multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>
-
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='One great thing that happened today' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'>
-                        <select name="qType" id="qType">
-                            <option value="number">number</option>
-                            <option value="text" selected>text</option>
-                            <option value="boolean">boolean</option>
-                            <option value="multipleChoice">multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>
-
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='Today was a:' style={{marginBottom:"5px" , width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'> 
-                        <select name="qType" id="qType">
-                            <option value="number" >number</option>
-                            <option value="text">text</option>
-                            <option value="boolean">boolean</option>
-                            <option value="multipleChoice" selected>multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>    */}
-
         <button className="saveBtn">Save</button>
       </form>
     </div>

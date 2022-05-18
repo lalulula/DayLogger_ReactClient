@@ -1,33 +1,24 @@
 import React,{useEffect, useState} from "react";
 
-function Question({ id, text,questions,setQuestions, handleDeleteQuestion }) {
+function Question({ id, text, questions, setQuestions, handleDeleteQuestion}) {
   const [questionType, setquestionType] = useState('');
 
   useEffect(()=>{
     const newQuestion = {
-      text: "Enter text",
+      text: text,
       type: questionType,
       id : id,
     };
     console.log("New Question", newQuestion);
-    console.log(id);
+    console.log("ID(index to change)",id);
+    console.log("Questions before:", questions);
     const updatedQuestions = questions.splice(id,1,newQuestion);
     console.log("UpdatedQuestions",updatedQuestions);
-    setQuestions(updatedQuestions);
+    setQuestions([...updatedQuestions]);
   }, [questionType]);
 
   const handleTypeChange = (e)=>{
     setquestionType(e.target.value);
-    console.log("ID",id);
-    console.log("question type",questionType);
-    // const newQuestion = {
-    //   text: "Enter text",
-    //   type: questionType,
-    //   id : id,
-    // };
-    // console.log("New Question", newQuestion);
-    // const updatedQuestions = questions.splice(id,1,newQuestion);
-    // setQuestions(updatedQuestions);
   }
   
   if(questionType=="multipleChoice"){
