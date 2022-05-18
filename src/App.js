@@ -87,7 +87,7 @@ function App() {
       </div>
 
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
-      {profile ? (
+      {!profile ? (
         <>
           <Login
             user={user}
