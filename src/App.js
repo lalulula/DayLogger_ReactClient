@@ -85,11 +85,7 @@ function App() {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
       </div>
-      {/* NOTE: 여기가 모든페이지 위에 뜨는 헤더부분 
-                아 그리고 내 로그인 페이지 너무 복잡하긴해서 
-                너가 하던걸로 바꾸고 싶으면 바꿔도댐 ㅜ,ㅜ */}
-      {/* {!isLoggedIn && <Login setIsLoggedIn={setIsLoggedIn} />}
-      {isLoggedIn && ( */}
+
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
       {profile ? (
         <>
@@ -145,13 +141,6 @@ function App() {
         </>
       )}
 
-      {/*NOTE: conditional rendering 부분!온클릭하면 state바꿔주고 그 컴포넌트로 이동하게 만들어놓은교!  */}
-      {/* NOTE: 이제 밑에 있는 컴포넌트들 안에 form형식인 애들은 
-      크게 container로 한번 감싸주고 그안에 form content로 감싸주는 식으로 디자인했댱!
-      그리고 div를 좀 많이 쓰긴했는데 내가 생각했을땐 그게 최선이라 일단 그런식으로 해두긴 했우 ㅜ,ㅜ
-      div className 은 그냥 이름 복잡하게 주는거보다 그냥 div1,div2..약간 이런식으로 했고
-      힝구힝구 일단 한번봐봐!!!!!!!!!!!!!!!!!
-       */}
     </React.Fragment>
   );
 }
