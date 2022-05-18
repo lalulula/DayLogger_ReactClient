@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
 
-function EditQuestions({handleSubmit}) {
-  let initQ = [
-    { text: "Random Question 1", type: "Number", id: 0 },
-    { text: "Random Question 2", type: "Number", id: 1 },
-  ];
-  const [questions, setQuestions] = useState(initQ);
+function EditQuestions({handleSubmit, questions, setQuestions}) {
+  // const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     console.log("RELOADING QUESTIONS");

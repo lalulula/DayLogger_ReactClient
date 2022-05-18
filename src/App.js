@@ -25,6 +25,8 @@ function App() {
   const [isViewData, setViewData] = useState(false);
   const [isProfilePage, setIsProfilePage] = useState(false);
 
+  const [questions, setQuestions] = useState([]);
+
   const [userdata, setUserdata] = useState();
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
@@ -88,7 +90,8 @@ function App() {
                 너가 하던걸로 바꾸고 싶으면 바꿔도댐 ㅜ,ㅜ */}
       {/* {!isLoggedIn && <Login setIsLoggedIn={setIsLoggedIn} />}
       {isLoggedIn && ( */}
-      {!profile ? (
+      {/* NOTE push하기전에 !profile로 바꿔주셈! */}
+      {profile ? (
         <>
           <Login
             user={user}
@@ -132,7 +135,11 @@ function App() {
             />
           </div>
           {isLogDay && <LogDay handleSubmit={handleSubmit} />}
-          {isEditQuestions && <EditQuestions handleSubmit={handleSubmit} />}
+          {isEditQuestions && 
+              <EditQuestions 
+              handleSubmit={handleSubmit} 
+              questions={questions}
+              setQuestions={setQuestions}/>}
           {isViewData && <ViewData />}
           {isProfilePage && <ProfilePage />}
         </>

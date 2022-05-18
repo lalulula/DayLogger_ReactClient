@@ -103,6 +103,10 @@ button:hover {
   padding-top:15px
 }
 
+.multipleChoice{
+
+}
+
 .submitBtn{
   margin:10px;
   padding: 10px 20px 10px 20px;
@@ -158,6 +162,17 @@ button:hover {
   font-size: large;
 }
 
+/* NOTE Question */
+.qDiv .multipleChoice{
+  margin: 10px;
+  
+}
+.qDiv .multipleChoice input{
+  margin: 10px;
+}
+.qDiv .multipleChoice label{
+  border-bottom: 2px solid black;
+}
 /* NOTE Profile */
 .profileContainer{
   display: flex;
