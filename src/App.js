@@ -26,6 +26,7 @@ function App() {
   const [isProfilePage, setIsProfilePage] = useState(false);
 
   const [questions, setQuestions] = useState([]);
+  
 
   const [userdata, setUserdata] = useState();
   const [user, setUser] = useState("");

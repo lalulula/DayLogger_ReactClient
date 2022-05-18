@@ -1,24 +1,26 @@
 import React,{useEffect, useState} from "react";
 
-function Question({ id, text, questions, setQuestions, handleDeleteQuestion}) {
+function Question({ id, text,questions,setQuestions, handleDeleteQuestion }) {
   const [questionType, setquestionType] = useState('');
+
 
   useEffect(()=>{
     const newQuestion = {
-      text: text,
+      text: "Enter text",
       type: questionType,
       id : id,
     };
     console.log("New Question", newQuestion);
-    console.log("ID(index to change)",id);
-    console.log("Questions before:", questions);
-    const updatedQuestions = questions.splice(id,1,newQuestion);
-    console.log("UpdatedQuestions",updatedQuestions);
-    setQuestions([...updatedQuestions]);
+    console.log(id);
+    // const updatedQuestions = questions.splice(id,1,newQuestion);
+    // console.log("UpdatedQuestions",updatedQuestions);
+    // setQuestions(updatedQuestions);
   }, [questionType]);
 
   const handleTypeChange = (e)=>{
     setquestionType(e.target.value);
+    console.log("ID",id);
+    console.log("question type",questionType);
   }
   
   if(questionType=="multipleChoice"){
@@ -45,7 +47,6 @@ function Question({ id, text, questions, setQuestions, handleDeleteQuestion}) {
               padding: "5px",
               borderRadius: "5px",
             }}
-            // onChange ={(e)=>setquestionType(e.target.value)}
             onChange ={handleTypeChange}
           >
             <option value="number">number</option>
@@ -98,7 +99,6 @@ function Question({ id, text, questions, setQuestions, handleDeleteQuestion}) {
             padding: "5px",
             borderRadius: "5px",
           }}
-          // onChange ={(e)=>setquestionType(e.target.value)}
           onChange ={handleTypeChange}
         >
           <option value="number">number</option>
