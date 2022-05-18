@@ -131,16 +131,17 @@ function App() {
             />
           </div>
           {isLogDay && <LogDay handleSubmit={handleSubmit} />}
-          {isEditQuestions && 
-              <EditQuestions 
-              handleSubmit={handleSubmit} 
+          {isEditQuestions && (
+            <EditQuestions
+              handleSubmit={handleSubmit}
               questions={questions}
-              setQuestions={setQuestions}/>}
+              setQuestions={setQuestions}
+            />
+          )}
           {isViewData && <ViewData />}
           {isProfilePage && <ProfilePage />}
         </>
       )}
-
     </React.Fragment>
   );
 }
