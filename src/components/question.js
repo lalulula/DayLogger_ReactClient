@@ -1,8 +1,34 @@
-import React,{useReducer, useState} from "react";
+import React,{useEffect, useState} from "react";
 
-function Question({ id, text, handleDeleteQuestion }) {
+function Question({ id, text,questions,setQuestions, handleDeleteQuestion }) {
   const [questionType, setquestionType] = useState('');
 
+  useEffect(()=>{
+    const newQuestion = {
+      text: "Enter text",
+      type: questionType,
+      id : id,
+    };
+    console.log("New Question", newQuestion);
+    console.log(id);
+    const updatedQuestions = questions.splice(id,1,newQuestion);
+    console.log("UpdatedQuestions",updatedQuestions);
+    setQuestions(updatedQuestions);
+  }, [questionType]);
+
+  const handleTypeChange = (e)=>{
+    setquestionType(e.target.value);
+    console.log("ID",id);
+    console.log("question type",questionType);
+    // const newQuestion = {
+    //   text: "Enter text",
+    //   type: questionType,
+    //   id : id,
+    // };
+    // console.log("New Question", newQuestion);
+    // const updatedQuestions = questions.splice(id,1,newQuestion);
+    // setQuestions(updatedQuestions);
+  }
   
   if(questionType=="multipleChoice"){
     return (
@@ -28,7 +54,8 @@ function Question({ id, text, handleDeleteQuestion }) {
               padding: "5px",
               borderRadius: "5px",
             }}
-            onChange ={(e)=>setquestionType(e.target.value)}
+            // onChange ={(e)=>setquestionType(e.target.value)}
+            onChange ={handleTypeChange}
           >
             <option value="number">number</option>
             <option value="text">text</option>
@@ -80,7 +107,8 @@ function Question({ id, text, handleDeleteQuestion }) {
             padding: "5px",
             borderRadius: "5px",
           }}
-          onChange ={(e)=>setquestionType(e.target.value)}
+          // onChange ={(e)=>setquestionType(e.target.value)}
+          onChange ={handleTypeChange}
         >
           <option value="number">number</option>
           <option value="text">text</option>

@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import Question from "./Question";
 
 function EditQuestions({handleSubmit, questions, setQuestions}) {
-  // const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    console.log("RELOADING QUESTIONS");
-    console.log("QUESTIONS:", questions);
+    // console.log("RELOADING QUESTIONS");
+    // console.log("QUESTIONS:", questions);
   }, [questions]);
 
   const handleAddQuestion = () => {
@@ -15,7 +14,7 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
       type: "Number",
       id: questions.length,
     };
-    setQuestions([...questions, newQuestion]);
+    setQuestions([newQuestion, ...questions]);
     console.log(questions);
   };
   const handleDeleteQuestion = (e) => { 
@@ -51,6 +50,8 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
               id={question.id}
               text={question.text}
               type={question.type}
+              questions={questions}
+              setQuestions={setQuestions}
               handleDeleteQuestion={handleDeleteQuestion}
             />
           ))}
