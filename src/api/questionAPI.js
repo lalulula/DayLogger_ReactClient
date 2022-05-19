@@ -8,7 +8,7 @@ const defaultHeaders = {
   },
 };
 
-//Get: /questions
+//GET: /questions
 export const getQuestionAPI = () => {
   return fetch(`${backendURL}/api/questions`, {
     ...defaultHeaders,
@@ -16,36 +16,32 @@ export const getQuestionAPI = () => {
     .then(checkStatus)
     .then(parseJSON);
 };
-//Get: /questions/:id
-//Put: /questions/:id
-//Delete: /questions/:id
+//GET: /questions/:id
 
-// POST: /notes
-// export const createNoteAPI = (textTitle, text, tags, writer) => {
-export const createNoteAPI = (textTitle, text, tags) => {
-  return fetch(`${backendURL}/api/notes`, {
+// POST: /questions
+export const createQuestionAPI = (questionType, questionText) => {
+  return fetch(`${backendURL}/api/questions`, {
     //${backendURL}/api/notes`로 post 요청 날리는거임
     ...defaultHeaders,
     method: "POST",
-    body: JSON.stringify({ textTitle, text, tags }),
-    // body: JSON.stringify({ textTitle, text, tags, writer }),
+    body: JSON.stringify({ questionType, questionText }),
   })
     .then(checkStatus)
     .then(parseJSON);
 };
 
-// PUT: /notes/:id
-export const updateNoteAPI = (note) => {
-  return fetch(`${backendURL}/api/notes/${note._id}`, {
+// PUT: /questions/:id
+export const updateQuestionAPI = (questions) => {
+  return fetch(`${backendURL}/api/questions/${questions?._id}`, {
     ...defaultHeaders,
     method: "PUT",
-    body: JSON.stringify(note),
+    body: JSON.stringify(questions),
   }).then(checkStatus);
 };
 
-//DELETE: /notes/:id
-export const deleteNoteAPI = (id) => {
-  return fetch(`${backendURL}/api/notes/${id}`, {
+//DELETE: /questions/:id
+export const deleteQuestionAPI = (id) => {
+  return fetch(`${backendURL}/api/questions/${id}`, {
     ...defaultHeaders,
     method: "DELETE",
   })
