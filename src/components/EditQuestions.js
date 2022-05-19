@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
-function EditQuestions({handleSubmit, questions, setQuestions}) {
-
-
+function EditQuestions({ handleSubmit, questions, setQuestions }) {
   useEffect(() => {
     console.log("RELOADING QUESTIONS");
     console.log("QUESTIONS:", questions);
@@ -11,17 +9,17 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
   const handleAddQuestion = () => {
     const newQuestion = {
       text: "Enter text",
-      type: "Number",
+      type: "number",
       id: questions.length,
     };
     setQuestions([...questions, newQuestion]);
-    console.log(questions);
+    console.log("addquestion: question", questions);
   };
-  const handleDeleteQuestion = (e) => { 
+  const handleDeleteQuestion = (e) => {
     console.log("Target delete icon", e.target);
     console.log("Id of delete icon", e.target.id);
     console.log("Question to delete", questions[e.target.id]);
-    // const newQuestions = questions.splice(e.target.id, 1); 
+    // const newQuestions = questions.splice(e.target.id, 1);
     // console.log(newQuestions)
     // setQuestions(newQuestions);
   };
@@ -50,6 +48,8 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
               id={question.id}
               text={question.text}
               type={question.type}
+              questions={questions}
+              setQuestions={setQuestions}
               handleDeleteQuestion={handleDeleteQuestion}
             />
           ))}
