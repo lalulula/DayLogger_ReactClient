@@ -1,33 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
-import { nanoid } from 'nanoid'
-
-function EditQuestions({handleSubmit, questions, setQuestions}) {
-  const [questionText, setQuestionText] = useState('');
-  const [questionType, setQuestionType] = useState('');
-  const [currId, setCurrId] = useState('');
-  let i = 0;
+function EditQuestions({ handleSubmit, questions, setQuestions }) {
   useEffect(() => {
+    console.log("RELOADING QUESTIONS");
     console.log("QUESTIONS:", questions);
   }, [questions]);
-
-  useEffect(() => {
-    console.log("Question type changed: Rerendering array");
-    console.log("Current ID",currId);
-    console.log("question type", questionType);
-    handleRearrangeArray();
-  }, [questionType]);
-
-  const handleRearrangeArray = () =>{
-    const newQuestion = {
-      text: "Enter text",
-      type:  questionType,
-      id: nanoid(),
-    };
-    const newQuestions = questions.map( question => question.id !== currId ? question : newQuestion);
-    console.log("🚀 ~ file: EditQuestions.js ~ line 26 ~ handleRearrangeArray ~ newQuestions", newQuestions) //Ctr-Alt-L
-    setQuestions(newQuestions);
-  }
 
   const handleAddQuestion = () => {
     const newQuestion = {
@@ -46,7 +23,6 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
     // console.log(newQuestions)
     // setQuestions(newQuestions);
   };
-
   return (
     <div onSubmit={handleSubmit} className="editQContainer">
       <form className="editQContent">
@@ -68,9 +44,6 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
         <div>
           {questions.map((question) => (
             <Question
-              questionType={questionType}
-              setQuestionType={setQuestionType}
-              setCurrId = {setCurrId}
               key={question.id}
               id={question.id}
               text={question.text}
@@ -80,7 +53,58 @@ function EditQuestions({handleSubmit, questions, setQuestions}) {
               handleDeleteQuestion={handleDeleteQuestion}
             />
           ))}
-        </div> 
+        </div>
+
+        {/*  NOTE 얘넨 그냥 hardcode한 프론트 부분임
+                <div className='qDiv'>
+                    <input type="text" name='qText' value='Number of pushups' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
+                    <div className='qContainer'>
+                        <select name="qType" id="qType">
+                            <option value="number" selected>number</option>
+                            <option value="text">text</option>
+                            <option value="boolean">boolean</option>
+                            <option value="multipleChoice">multiple choice</option>
+                        </select>
+                        <span className="material-symbols-outlined">delete</span>
+                    </div>
+                </div>
+                <div className='qDiv'>
+                    <input type="text" name='qText' value='Had a long walk today' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
+                    <div className='qContainer'>
+                        <select name="qType" id="qType">
+                            <option value="number">number</option>
+                            <option value="text">text</option>
+                            <option value="boolean" selected>boolean</option>
+                            <option value="multipleChoice">multiple choice</option>
+                        </select>
+                        <span className="material-symbols-outlined">delete</span>
+                    </div>
+                </div>
+                <div className='qDiv'>
+                    <input type="text" name='qText' value='One great thing that happened today' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
+                    <div className='qContainer'>
+                        <select name="qType" id="qType">
+                            <option value="number">number</option>
+                            <option value="text" selected>text</option>
+                            <option value="boolean">boolean</option>
+                            <option value="multipleChoice">multiple choice</option>
+                        </select>
+                        <span className="material-symbols-outlined">delete</span>
+                    </div>
+                </div>
+                <div className='qDiv'>
+                    <input type="text" name='qText' value='Today was a:' style={{marginBottom:"5px" , width:"-webkit-fill-available"}}/><br/>
+                    <div className='qContainer'> 
+                        <select name="qType" id="qType">
+                            <option value="number" >number</option>
+                            <option value="text">text</option>
+                            <option value="boolean">boolean</option>
+                            <option value="multipleChoice" selected>multiple choice</option>
+                        </select>
+                        <span className="material-symbols-outlined">delete</span>
+                    </div>
+                </div>    */}
+
         <button className="saveBtn">Save</button>
       </form>
     </div>
