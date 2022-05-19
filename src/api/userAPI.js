@@ -1,7 +1,7 @@
 const defaultHeaders = {
   headers: {
     "Content-Type": "application/json; charset=UTF-8",
-    credentials: "includes",
+    credentials: "include",
   },
 };
 const backendURL = "https://cse316final.herokuapp.com";
