@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
+import {nanoid} from 'nanoid';
 function EditQuestions({ handleSubmit, questions, setQuestions }) {
 
   useEffect(() => {
@@ -11,32 +12,27 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
     const newQuestion = {
       text: "Enter text",
       type: "number",
-      id: questions.length,
+      id: nanoid(),
     };
     setQuestions([...questions, newQuestion]);
   };
 
   const handleDeleteQuestion = (e) => {
-    console.log("Clicked: ID to delete:", e.target.id);
+    // console.log("Clicked: icon to delete:", e.target);
+    // console.log("Clicked: ID to delete:", e.target.id);
     // console.log("🚀 ~ file: EditQuestions.js ~ line 26 ~ handleDeleteQuestion ~ clickedIcon", e.target.id)
-    // let index2Delete = -1;
-    // for (let i = 0 ; i < questions.length; i++){
-    //   if(questions[i].id === parseInt(e.target.id)){
-    //     console.log("FOUND");
-    //     index2Delete = i;
-    //     break;
-    //   }
-    //   else{
-    //     console.log("NOT FOUND");
-    //   }
-    // }
-    // console.log("🚀 ~ file: EditQuestions.js ~ line 23 ~ handleDeleteQuestion ~ index2Delete", index2Delete)
-    // let newQuestions = [...questions];
 
-    // // remove object
-    // // newQuestions.splice( index2Delete , 1 );
+    let index2Delete = -1;
+    for (let i = 0 ; i < questions.length; i++){
+      if(questions[i].id === e.target.id){
+        index2Delete = i;
+      }
+    }
+    console.log("🚀 ~ file: EditQuestions.js ~ line 23 ~ handleDeleteQuestion ~ index2Delete", index2Delete)
+    let newQuestions = [...questions];
+    newQuestions.splice( index2Delete , 1 );
     // newQuestions = questions.filter((question) => question.id !== index2Delete);
-    // setQuestions(newQuestions);
+    setQuestions(newQuestions);
   };
 
   return (

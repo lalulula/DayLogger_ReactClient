@@ -131,7 +131,10 @@ function App() {
               onClick={handleProfilePageClick}
             />
           </div>
-          {isLogDay && <LogDay handleSubmit={handleSubmit} />}
+          {isLogDay && 
+            <LogDay handleSubmit={handleSubmit}
+            questions = {questions}
+            setQuestions = {setQuestions}/>}
           {isEditQuestions && (
             <EditQuestions
               handleSubmit={handleSubmit}
