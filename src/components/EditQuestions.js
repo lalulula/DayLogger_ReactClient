@@ -18,8 +18,13 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
   const handleDeleteQuestion = (e) => {
     console.log("Id of delete icon", e.target.id);
     console.log("Question to delete", questions[e.target.id]);
-    const updatedQuestions =[...questions.splice(e.target.id, 1)];
-    setQuestions(updatedQuestions);
+    let newQuestions = [...questions];
+    // get index of object with id of e.target.id
+    const removeIndex = newQuestions.findIndex( q => q.id === e.target.id );
+    // remove object
+    newQuestions.splice( removeIndex, 1 );
+
+    setQuestions(newQuestions);
 
   };
   return (
