@@ -39,7 +39,7 @@ const Login = ({ user, setUser, pwd, setPwd, setUserdata }) => {
     <div className="login" id="login">
       <div className="login-wrap">
         <div className="title">
-          <div className="title-notes">Notes</div>
+          <div className="title-notes">Day Logger</div>
           <div className="title-descrition">
             Organize all your thoughts in one place.
           </div>

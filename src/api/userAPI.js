@@ -8,7 +8,6 @@ const defaultHeaders = {
   },
 };
 
-// const backendURL = "";
 // POST: /register
 export const registerAPI = (name, email, password) => {
   return fetch(`${backendURL}/api/register`, {
