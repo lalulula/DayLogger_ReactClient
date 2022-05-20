@@ -15,18 +15,30 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
     };
     setQuestions([...questions, newQuestion]);
   };
+
   const handleDeleteQuestion = (e) => {
-    console.log("Id of delete icon", e.target.id);
-    console.log("Question to delete", questions[e.target.id]);
-    let newQuestions = [...questions];
-    // get index of object with id of e.target.id
-    const removeIndex = newQuestions.findIndex( q => q.id === e.target.id );
-    // remove object
-    newQuestions.splice( removeIndex, 1 );
+    console.log("Clicked: ID to delete:", e.target.id);
+    // console.log("🚀 ~ file: EditQuestions.js ~ line 26 ~ handleDeleteQuestion ~ clickedIcon", e.target.id)
+    // let index2Delete = -1;
+    // for (let i = 0 ; i < questions.length; i++){
+    //   if(questions[i].id === parseInt(e.target.id)){
+    //     console.log("FOUND");
+    //     index2Delete = i;
+    //     break;
+    //   }
+    //   else{
+    //     console.log("NOT FOUND");
+    //   }
+    // }
+    // console.log("🚀 ~ file: EditQuestions.js ~ line 23 ~ handleDeleteQuestion ~ index2Delete", index2Delete)
+    // let newQuestions = [...questions];
 
-    setQuestions(newQuestions);
-
+    // // remove object
+    // // newQuestions.splice( index2Delete , 1 );
+    // newQuestions = questions.filter((question) => question.id !== index2Delete);
+    // setQuestions(newQuestions);
   };
+
   return (
     <div onSubmit={handleSubmit} className="editQContainer">
       <form className="editQContent">
@@ -58,57 +70,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
             />
           ))}
         </div>
-
-        {/*  NOTE 얘넨 그냥 hardcode한 프론트 부분임
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='Number of pushups' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'>
-                        <select name="qType" id="qType">
-                            <option value="number" selected>number</option>
-                            <option value="text">text</option>
-                            <option value="boolean">boolean</option>
-                            <option value="multipleChoice">multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='Had a long walk today' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'>
-                        <select name="qType" id="qType">
-                            <option value="number">number</option>
-                            <option value="text">text</option>
-                            <option value="boolean" selected>boolean</option>
-                            <option value="multipleChoice">multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='One great thing that happened today' style={{marginBottom:"5px", width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'>
-                        <select name="qType" id="qType">
-                            <option value="number">number</option>
-                            <option value="text" selected>text</option>
-                            <option value="boolean">boolean</option>
-                            <option value="multipleChoice">multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>
-                <div className='qDiv'>
-                    <input type="text" name='qText' value='Today was a:' style={{marginBottom:"5px" , width:"-webkit-fill-available"}}/><br/>
-                    <div className='qContainer'> 
-                        <select name="qType" id="qType">
-                            <option value="number" >number</option>
-                            <option value="text">text</option>
-                            <option value="boolean">boolean</option>
-                            <option value="multipleChoice" selected>multiple choice</option>
-                        </select>
-                        <span className="material-symbols-outlined">delete</span>
-                    </div>
-                </div>    */}
-
         <button className="saveBtn">Save</button>
       </form>
     </div>
