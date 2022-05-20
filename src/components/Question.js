@@ -3,37 +3,13 @@ import React, { useEffect, useState } from "react";
 function Question({ id, text, questions, setQuestions, handleDeleteQuestion }) {
   const [questionType, setquestionType] = useState("number");
 
-  // useEffect(() => {
-  //   const newQuestion = {
-  //     text: "Enter text",
-  //     type: questionType,
-  //     id: id,
-  //   };
-  //   console.log("New Question", newQuestion);
-  //   console.log(id);
-  //   // const updatedQuestions = questions.splice(id, 1, newQuestion);
-  //   // console.log("UpdatedQuestions", updatedQuestions);
-  //   // setQuestions(updatedQuestions);
-  //   const updatedQuestions = [
-  //     ...questions.map((q) => (q.id === id ? newQuestion : q)),
-  //   ];
-  //   setQuestions(updatedQuestions);
-  // }, [questionType]);
-
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
-    console.log("ID", id);
-    // console.log("question type", questionType);
     const newQuestion = {
-      text: "Enter text",
+      text: text,
       type: e.target.value,
       id: id,
     };
-    console.log("New Question", newQuestion);
-    console.log(id);
-    // const updatedQuestions = questions.splice(id, 1, newQuestion);
-    // console.log("UpdatedQuestions", updatedQuestions);
-    // setQuestions(updatedQuestions);
     const updatedQuestions = [
       ...questions.map((q) => (q.id === id ? newQuestion : q)),
     ];
