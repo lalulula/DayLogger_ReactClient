@@ -10,7 +10,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
 
   const handleAddQuestion = () => {
     const newQuestion = {
-      text: "Enter text",
+      text: "Enter question",
       type: "number",
       id: nanoid(),
     };
@@ -18,10 +18,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
   };
 
   const handleDeleteQuestion = (e) => {
-    // console.log("Clicked: icon to delete:", e.target);
-    // console.log("Clicked: ID to delete:", e.target.id);
-    // console.log("🚀 ~ file: EditQuestions.js ~ line 26 ~ handleDeleteQuestion ~ clickedIcon", e.target.id)
-
     let index2Delete = -1;
     for (let i = 0 ; i < questions.length; i++){
       if(questions[i].id === e.target.id){
@@ -31,7 +27,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
     console.log("🚀 ~ file: EditQuestions.js ~ line 23 ~ handleDeleteQuestion ~ index2Delete", index2Delete)
     let newQuestions = [...questions];
     newQuestions.splice( index2Delete , 1 );
-    // newQuestions = questions.filter((question) => question.id !== index2Delete);
     setQuestions(newQuestions);
   };
 

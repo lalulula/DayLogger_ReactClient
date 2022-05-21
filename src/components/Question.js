@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react";
 
-function Question({ id, text, questions, setQuestions, handleDeleteQuestion }) {
-  const [questionType, setquestionType] = useState("number");
+function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion }) {
+  const [questionType, setquestionType] = useState(type);
+  const [questionText, setquestionText] = useState(text);
 
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
     const newQuestion = {
-      text: text,
+      text: questionText,
       type: e.target.value,
+      id: id,
+    };
+    const updatedQuestions = [
+      ...questions.map((q) => (q.id === id ? newQuestion : q)),
+    ];
+    setQuestions(updatedQuestions);
+  };
+
+  const handleTextChange = (e) => {
+    setquestionText(e.target.value);
+    const newQuestion = {
+      text: e.target.value,
+      type: questionType ,
       id: id,
     };
     const updatedQuestions = [
@@ -22,7 +36,8 @@ function Question({ id, text, questions, setQuestions, handleDeleteQuestion }) {
         <input
           type="text"
           name="qText"
-          defaultValue={text}
+          onChange={handleTextChange}
+          value={questionText}
           style={{
             marginBottom: "5px",
             width: "-webkit-fill-available",
@@ -80,7 +95,8 @@ function Question({ id, text, questions, setQuestions, handleDeleteQuestion }) {
       <input
         type="text"
         name="qText"
-        defaultValue={text}
+        onChange={handleTextChange}
+        value={questionText}
         style={{
           marginBottom: "5px",
           width: "-webkit-fill-available",
