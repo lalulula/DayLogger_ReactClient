@@ -22,7 +22,7 @@ const Login = ({ user, setUser, pwd, setPwd, setUserdata }) => {
   const login = () => {
     loginAPI(user, pwd).then((result) => {
       if (result == true) {
-        window.location.reload();
+        // window.location.reload();
         getUserAPI().then((user) => {
           if (user) {
             console.log(user);
