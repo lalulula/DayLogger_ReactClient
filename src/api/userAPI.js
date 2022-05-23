@@ -78,8 +78,8 @@ export const logoutAPI = () => {
 };
 
 // GET: /user
-export const getUserAPI = () => {
-  return fetch(`${backendURL}/api/user`, {
+export const getUserAPI = async () => {
+  return await fetch(`${backendURL}/api/user`, {
     ...defaultHeaders,
   })
     .then(checkStatus)
