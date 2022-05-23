@@ -21,12 +21,12 @@ export const getQuestionAPI = () => {
 //GET: /questions/:id
 
 // POST: /questions
-export const createQuestionAPI = (questionType, questionText) => {
+export const createQuestionAPI = (question) => {
   return fetch(`${backendURL}/api/questions`, {
     //${backendURL}/api/notes`로 post 요청 날리는거임
     ...defaultHeaders,
     method: "POST",
-    body: JSON.stringify({ questionType, questionText }),
+    body: JSON.stringify(question),
   })
     .then(checkStatus)
     .then(parseJSON);
@@ -34,7 +34,7 @@ export const createQuestionAPI = (questionType, questionText) => {
 
 // PUT: /questions/:id
 export const updateQuestionAPI = (questions) => {
-  return fetch(`${backendURL}/api/questions/${questions?._id}`, {
+  return fetch(`${backendURL}/api/questions/${questions._id}`, {
     ...defaultHeaders,
     method: "PUT",
     body: JSON.stringify(questions),
