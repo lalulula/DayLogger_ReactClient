@@ -50,7 +50,11 @@ export const loginAPI = (email, password) => {
     }),
   }).then((response) => {
     if (response.status >= 200 && response.status < 300) {
-      return true;
+      if (response.status === 204) {
+        return false;
+      } else {
+        return response.json();
+      }
     } else {
       return false;
     }

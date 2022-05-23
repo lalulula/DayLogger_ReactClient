@@ -21,7 +21,7 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
 
   const login = async () => {
     const result = await loginAPI(user, pwd);
-    if (result == true) {
+    if (result) {
       const user = await getUserAPI();
       console.log("user", user);
       if (user) {
