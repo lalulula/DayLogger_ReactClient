@@ -22,11 +22,13 @@ function App() {
   const [pwd, setPwd] = useState("");
 
   const [profile, setProfile] = useState();
+  const [isUserDataLoading, setIsUserDataLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
       const userData = await getUserAPI();
       setProfile(userData);
+      setIsUserDataLoading(false);
     };
     fetchUserData();
   }, []);
@@ -81,7 +83,9 @@ function App() {
 
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
       {/* {profile ? ( */}
-      {!profile ? (
+      {isUserDataLoading ? (
+        <h1>Loading...</h1>
+      ) : !profile ? (
         <>
           <Login
             user={user}
