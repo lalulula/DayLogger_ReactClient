@@ -1,9 +1,9 @@
-// const backendURL =
-//   process.env.NODE_ENV === "production"
-//     ? "https://cse316final.herokuapp.com"
-//     : "http://localhost:5001";
+const backendURL =
+  process.env.NODE_ENV === "production"
+    ? "https://cse316final.herokuapp.com"
+    : "http://localhost:5001";
 // const backendURL =  "https://cse316final.herokuapp.com";
-const backendURL = "";
+// const backendURL = "";
 const defaultHeaders = {
   headers: {
     "Content-Type": "application/json",
@@ -23,15 +23,12 @@ export const registerAPI = async (name, email, password) => {
       email: email,
       password: password,
     }),
-  })
-    .then(checkStatus)
-    .then(parseJSON);
-  // .then((response) => {
-  //   if (response.status >= 500) {
-  //     return "duplicated";
-  //   }
-  //   return "sucess";
-  // });
+  }).then((response) => {
+    if (response.status >= 500) {
+      return "duplicated";
+    }
+    return "sucess";
+  });
 };
 // export const registerAPI = (name, email, password) => {
 //   return fetch(`/api/register`, {
@@ -55,20 +52,17 @@ export const loginAPI = (email, password) => {
       email: email,
       password: password,
     }),
-  })
-    .then(checkStatus)
-    .then(parseJSON);
-  // .then((response) => {
-  //   if (response.status >= 200 && response.status < 300) {
-  //     if (response.status === 204) {
-  //       return false;
-  //     } else {
-  //       return response.json();
-  //     }
-  //   } else {
-  //     return false;
-  //   }
-  // });
+  }).then((response) => {
+    if (response.status >= 200 && response.status < 300) {
+      if (response.status === 204) {
+        return false;
+      } else {
+        return response.json();
+      }
+    } else {
+      return false;
+    }
+  });
 };
 
 // export const loginAPI = (email, password) => {
@@ -97,15 +91,13 @@ export const getUserAPI = () => {
     ...defaultHeaders,
   })
     .then(checkStatus)
-    .then(parseJSON);
-  // .then(checkStatus)
-  // .then((response) => {
-  //   if (response.status === 204) {
-  //     return false;
-  //   } else {
-  //     return response.json();
-  //   }
-  // });
+    .then((response) => {
+      if (response.status === 204) {
+        return false;
+      } else {
+        return response.json();
+      }
+    });
 };
 
 // PUT: /user
