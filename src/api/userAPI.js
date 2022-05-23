@@ -88,7 +88,6 @@ export const logoutAPI = () => {
   return fetch(`${backendURL}/api/logout`, {
     ...defaultHeaders,
     method: "POST",
-    body: JSON.stringify(user),
   }).then(checkStatus);
 };
 
