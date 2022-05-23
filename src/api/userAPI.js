@@ -79,7 +79,7 @@ export const logoutAPI = () => {
 
 // GET: /user
 export const getUserAPI = () => {
-  return fetch(`${backendURL}/api/user`, {
+  return fetch(`${backendURL}/api/user`, { 
     ...defaultHeaders,
   })
     .then(checkStatus)
