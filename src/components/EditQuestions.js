@@ -12,6 +12,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
     const newQuestion = {
       questionText: "Enter question",
       questionType: "number",
+      multipleChoice:["option1","option2","option3"],
       user :user
     };
     createQuestionAPI(newQuestion).then((response) => {
@@ -67,6 +68,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
               id={question._id}
               text={question.text}
               type={question.type}
+              choice={question.multipleChoice}
               questions={questions}
               setQuestions={setQuestions}
               handleDeleteQuestion={handleDeleteQuestion}

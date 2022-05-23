@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {updateQuestionAPI} from "../api/questionAPI";
-function Question({ user, id, text,type, questions, setQuestions, handleDeleteQuestion }) {
+function Question({ user, id, text,type, choice, questions, setQuestions, handleDeleteQuestion }) {
   const [questionType, setquestionType] = useState(type);
   const [questionText, setquestionText] = useState(text);
+  const [multipleChoice, setMultipleChoice] = useState(choice);
 
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
     const newQuestion = {
       questionText: questionText,
       questionType: e.target.value,
+      multipleChoice: multipleChoice,
       user :user
     };
     const updatedQuestions = [
@@ -22,7 +24,8 @@ function Question({ user, id, text,type, questions, setQuestions, handleDeleteQu
     setquestionText(e.target.value);
     const newQuestion = {
       questionText: e.target.value,
-      questionType: questionType ,
+      questionType: questionType,
+      multipleChoice: multipleChoice,
       user :user
     };
     const updatedQuestions = [
@@ -31,6 +34,51 @@ function Question({ user, id, text,type, questions, setQuestions, handleDeleteQu
     setQuestions(updatedQuestions);
     saveQuestionOnServer(newQuestion);
   };
+
+  const handleEditMultipleChoice = (e) =>{
+    let optionIndex = e.target.name;
+    if(optionIndex === "op1"){
+      const newQuestion = {
+        questionText: questionText,
+        questionType: questionType,
+        multipleChoice: [e.target.value, multipleChoice[1], multipleChoice[2]],
+        user :user
+      };
+      const updatedQuestions = [
+        ...questions.map((q) => (q._id === id ? newQuestion : q)),
+      ];
+      setQuestions(updatedQuestions);
+      saveQuestionOnServer(newQuestion);
+    }
+    else if(optionIndex === "op2"){
+      const newQuestion = {
+        questionText: questionText,
+        questionType: questionType,
+        multipleChoice: [multipleChoice[0], e.target.value, multipleChoice[2]],
+        user :user
+      };
+      const updatedQuestions = [
+        ...questions.map((q) => (q._id === id ? newQuestion : q)),
+      ];
+      setQuestions(updatedQuestions);
+      saveQuestionOnServer(newQuestion);
+      
+    }
+    else if(optionIndex === "op3"){
+      const newQuestion = {
+        questionText: questionText,
+        questionType: questionType,
+        multipleChoice: [multipleChoice[0], multipleChoice[1],e.target.value],
+        user :user
+      };
+      const updatedQuestions = [
+        ...questions.map((q) => (q._id === id ? newQuestion : q)),
+      ];
+      setQuestions(updatedQuestions);
+      saveQuestionOnServer(newQuestion);
+      
+    }
+  }
 
   function debounce(func, timeout=1000){
     let timer;
@@ -95,13 +143,13 @@ function Question({ user, id, text,type, questions, setQuestions, handleDeleteQu
         </div>
 
         <div className="multipleChoice">
-          <input type="radio" name="op1" value="choice1" disabled />
+          <input type="radio" name="op1" value={multipleChoice[0]} onChange={handleEditMultipleChoice} disabled />
           <label>choice1</label>
           <br />
-          <input type="radio" name="op2" value="choice2" disabled />
+          <input type="radio" name="op2" value={multipleChoice[1]} onChange={handleEditMultipleChoice} disabled />
           <label>choice1</label>
           <br />
-          <input type="radio" name="op3" value="choice3" disabled />
+          <input type="radio" name="op3" value={multipleChoice[2]} onChange={handleEditMultipleChoice} disabled />
           <label>choice1</label>
           <br />
         </div>

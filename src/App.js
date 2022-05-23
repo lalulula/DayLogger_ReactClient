@@ -84,10 +84,11 @@ function App() {
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
       {/* {profile ? ( */}
 
-      {isUserDataLoading ? (
+      {/* {isUserDataLoading ? (
         <h1>Loading...</h1>
-      ) : profile ? (
+      ) : !profile ? ( */}
 
+      {profile ? (
         <>
           <Login
             user={user}
