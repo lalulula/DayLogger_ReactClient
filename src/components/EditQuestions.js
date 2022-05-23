@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Question from "./Question";
 // import {nanoid} from 'nanoid';
 import {createQuestionAPI, deleteQuestionAPI} from "../api/questionAPI";
-function EditQuestions({ handleSubmit, questions, setQuestions }) {
+function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
 
   useEffect(() => {
     console.log("RELOADING QUESTIONS");
@@ -11,12 +11,13 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
 
   const handleAddQuestion = () => {
     const newQuestion = {
-      text: "Enter question",
-      type: "number"
-      // ,id: nanoid(),
+      questionText: "Enter question",
+      questionType: "number",
+      // id: nanoid(),
+      user :user
     };
     createQuestionAPI(newQuestion).then((response) => {
-      console.log("Created the note on the server");
+      console.log("Created question on the server");
       console.dir(response);
       setQuestions([...questions, newQuestion]);
     });

@@ -83,9 +83,11 @@ function App() {
 
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
       {/* {profile ? ( */}
+
       {isUserDataLoading ? (
         <h1>Loading...</h1>
       ) : !profile ? (
+
         <>
           <Login
             user={user}
@@ -137,6 +139,7 @@ function App() {
           )}
           {isEditQuestions && (
             <EditQuestions
+              user ={user}
               handleSubmit={handleSubmit}
               questions={questions}
               setQuestions={setQuestions}

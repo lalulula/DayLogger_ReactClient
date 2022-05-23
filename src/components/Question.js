@@ -7,8 +7,8 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
     const newQuestion = {
-      text: questionText,
-      type: e.target.value
+      questionText: questionText,
+      questionType: e.target.value
       // , id: id,
     };
     const updatedQuestions = [
@@ -21,8 +21,8 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
   const handleTextChange = (e) => {
     setquestionText(e.target.value);
     const newQuestion = {
-      text: e.target.value,
-      type: questionType 
+      questionText: e.target.value,
+      questionType: questionType 
       // ,id: id,
     };
     const updatedQuestions = [
