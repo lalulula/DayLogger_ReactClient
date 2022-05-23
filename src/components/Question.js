@@ -37,6 +37,7 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
 
   const handleEditMultipleChoice = (e) =>{
     let optionIndex = e.target.name;
+    console.log(optionIndex);
     if(optionIndex === "op1"){
       const newQuestion = {
         questionText: questionText,
