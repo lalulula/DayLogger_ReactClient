@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { getUserAPI, loginAPI } from "../api/userAPI";
 
-const Login = ({ user, setUser, pwd, setPwd, setUserdata }) => {
+const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -19,21 +19,16 @@ const Login = ({ user, setUser, pwd, setPwd, setUserdata }) => {
     document.getElementById("signup-background").style.display = "block";
   };
 
-  const login = () => {
-    loginAPI(user, pwd).then((result) => {
-      if (result == true) {
-        window.location.reload();
-        getUserAPI().then((user) => {
-          if (user) {
-            console.log(user);
-            setUserdata(user);
-          }
-        });
-        console.log("login successful");
-      } else {
-        setErrMsg("Error: Invalid email and/or password");
-      }
-    });
+  const login = async () => {
+    const result = await loginAPI(user, pwd);
+    if (result == true) {
+      const user = await getUserAPI();
+      console.log("user", user);
+      setProfile(user);
+      console.log("login successful");
+    } else {
+      setErrMsg("Error: Invalid email and/or password");
+    }
   };
   return (
     <div className="login" id="login">

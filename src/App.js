@@ -18,7 +18,6 @@ function App() {
 
   const [questions, setQuestions] = useState([]);
 
-  const [userdata, setUserdata] = useState();
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
 
@@ -86,7 +85,7 @@ function App() {
             setUser={setUser}
             pwd={pwd}
             setPwd={setPwd}
-            setUserdata={setUserdata}
+            setProfile={setProfile}
           />
           <SignUp />
         </>
