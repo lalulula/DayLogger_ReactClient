@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import {createQuestionAPI} from "../api/questionAPI";
 function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion }) {
   const [questionType, setquestionType] = useState(type);
   const [questionText, setquestionText] = useState(text);
@@ -9,11 +9,10 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
     const newQuestion = {
       text: questionText,
       type: e.target.value
-      // ,
-      // id: id,
+      // , id: id,
     };
     const updatedQuestions = [
-      ...questions.map((q) => (q.id === id ? newQuestion : q)),
+      ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
   };
@@ -23,14 +22,15 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
     const newQuestion = {
       text: e.target.value,
       type: questionType 
-      // ,
-      // id: id,
+      // ,id: id,
     };
     const updatedQuestions = [
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
   };
+
+  
 
   if (questionType === "multipleChoice") {
     return (

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
 // import {nanoid} from 'nanoid';
-import {createQuestionAPI} from "../api/questionAPI";
+import {createQuestionAPI, deleteQuestionAPI} from "../api/questionAPI";
 function EditQuestions({ handleSubmit, questions, setQuestions }) {
+
   useEffect(() => {
     console.log("RELOADING QUESTIONS");
     console.log("QUESTIONS:", questions);
@@ -12,10 +13,15 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
     const newQuestion = {
       text: "Enter question",
       type: "number"
-      // ,
-      // id: nanoid(),
+      // ,id: nanoid(),
     };
-    setQuestions([...questions, newQuestion]);
+    createQuestionAPI(newQuestion).then((response) => {
+      console.log("Created the note on the server");
+      console.dir(response);
+      setQuestions([...questions, newQuestion]);
+      // setSelectedNoteId(response._id);
+    });
+
   };
 
   const handleDeleteQuestion = (e) => {
@@ -30,14 +36,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
     newQuestions.splice( index2Delete , 1 );
     setQuestions(newQuestions);
   };
-
-  const saveQuestions = () =>{
-  //   createQuestionAPI(newQuestion.text, newQuestion.type).then((response) => {
-  //     console.log("Created the note on the server");
-  //     console.dir(response);
-  //     setQuestions([...questions, newQuestion]);
-  // })
-  }
 
 
   return (
@@ -71,7 +69,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
             />
           ))}
         </div>
-        <button className="saveBtn" onClick={saveQuestions}>Save</button>
+        <button className="saveBtn">Save</button>
       </form>
     </div>
   );
