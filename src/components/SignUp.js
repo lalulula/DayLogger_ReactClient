@@ -34,6 +34,7 @@ const SignUp = () => {
     console.log(name, email, pwd);
     if (validateEmail(email) && validatePassword(pwd)) {
       registerAPI(name, email, pwd).then((result) => {
+        console.log("sucessully registered");
         window.location.reload();
       });
     }

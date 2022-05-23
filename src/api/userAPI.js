@@ -5,7 +5,7 @@ const defaultHeaders = {
     "Content-Type": "application/json",
     credentials: "include",
     // withCredentials: true,
-    // "Access-Control-Allow-Origin": backendURL,
+    "Access-Control-Allow-Origin": backendURL,
   },
 };
 
@@ -111,7 +111,6 @@ export const uploadImageToCloudinaryAPIMethod = (formData) => {
 };
 
 function checkStatus(response) {
-  console.log(response);
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else {
