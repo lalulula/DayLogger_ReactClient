@@ -5,7 +5,7 @@ const defaultHeaders = {
     "Content-Type": "application/json",
     credentials: "include",
     // withCredentials: true,
-    "Access-Control-Allow-Origin": backendURL,
+    // "Access-Control-Allow-Origin": backendURL,
   },
 };
 
@@ -83,7 +83,13 @@ export const getUserAPI = () => {
     ...defaultHeaders,
   })
     .then(checkStatus)
-    .then(parseJSON);
+    .then((response) => {
+      if (response.status === 204) {
+        return true;
+      } else {
+        return response.json();
+      }
+    });
 };
 
 // PUT: /user
