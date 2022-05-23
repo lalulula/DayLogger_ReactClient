@@ -1,29 +1,32 @@
 import React from "react";
 import defaultpImg from "../defaultpImg.jpg";
-import {uploadImageToCloudinaryAPIMethod} from "../api/userAPI";
+import { logoutAPI, uploadImageToCloudinaryAPIMethod } from "../api/userAPI";
 
-function ProfilePage() {
+function ProfilePage({ setProfile }) {
   const handleImageSelected = (event) => {
     // console.log("New File Selected");
     // if (event.target.files && event.target.files[0]) {
     //     const selectedFile = event.target.files[0];
     //     console.dir(selectedFile);
-
     //     const formData = new FormData();
     //     // const unsignedUploadPreset = 'pyf8kc0j' //하니
     //     const unsignedUploadPreset = 'pyf8kc0j' //윤앙
     //     formData.append('file', selectedFile);
     //     formData.append('upload_preset', unsignedUploadPreset);
-
     //     console.log("Cloudinary upload");
     //     uploadImageToCloudinaryAPIMethod(formData).then((response) => {
     //         console.log("Upload success");
     //         console.dir(response);
     //         const updatedProfile = {...userProfile, "profileImage": response.url};
-    //         updateUserProfile(updatedProfile); 
+    //         updateUserProfile(updatedProfile);
     //     });
     // }
-}
+  };
+
+  const handleLogout = async () => {
+    await logoutAPI();
+    setProfile(undefined);
+  };
 
   const handleRemoveImage = () => {
     // const updatedProfile = {...userProfile, "profileImage": ""};
@@ -118,7 +121,8 @@ function ProfilePage() {
 
       <div className="profileDiv5">
         <button className="saveBtn saveBtnforProfile">Save</button>
-        <span
+        <button
+          onClick={handleLogout}
           style={{
             textDecoration: "underline",
             fontSize: "medium",
@@ -126,7 +130,7 @@ function ProfilePage() {
           }}
         >
           Logout
-        </span>
+        </button>
       </div>
     </div>
   );

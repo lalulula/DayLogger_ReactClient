@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { registerAPI, loginAPI } from "../api/userAPI";
+import { registerAPI } from "../api/userAPI";
 import CloseIcon from "@mui/icons-material/Close";
 
 const SignUp = () => {

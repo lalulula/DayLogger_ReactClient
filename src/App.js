@@ -143,7 +143,7 @@ function App() {
             />
           )}
           {isViewData && <ViewData />}
-          {isProfilePage && <ProfilePage />}
+          {isProfilePage && <ProfilePage setProfile={setProfile} />}
         </>
       )}
     </React.Fragment>
