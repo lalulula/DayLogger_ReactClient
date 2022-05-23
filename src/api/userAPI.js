@@ -79,13 +79,13 @@ export const logoutAPI = () => {
 
 // GET: /user
 export const getUserAPI = () => {
-  return fetch(`${backendURL}/api/user`, { 
+  return fetch(`${backendURL}/api/user`, {
     ...defaultHeaders,
   })
     .then(checkStatus)
     .then((response) => {
       if (response.status === 204) {
-        return true;
+        return false;
       } else {
         return response.json();
       }

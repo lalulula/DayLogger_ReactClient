@@ -21,7 +21,7 @@ function App() {
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
 
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState(undefined);
   const [isUserDataLoading, setIsUserDataLoading] = useState(true);
 
   useEffect(() => {

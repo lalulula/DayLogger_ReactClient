@@ -24,8 +24,12 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
     if (result == true) {
       const user = await getUserAPI();
       console.log("user", user);
-      setProfile(user);
-      console.log("login successful");
+      if (user) {
+        setProfile(user);
+        console.log("login successful");
+      } else {
+        setErrMsg("Error: there is no such user");
+      }
     } else {
       setErrMsg("Error: Invalid email and/or password");
     }
