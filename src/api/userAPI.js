@@ -1,5 +1,5 @@
-// const backendURL = "https://cse316final.herokuapp.com";
-const backendURL = "";
+const backendURL = "https://cse316final.herokuapp.com";
+// const backendURL = "";
 const defaultHeaders = {
   headers: {
     "Content-Type": "application/json",
@@ -10,24 +10,8 @@ const defaultHeaders = {
 };
 
 // POST: /register
-// export const registerAPI = (name, email, password) => {
-//   return fetch(`${backendURL}/api/register`, {
-//     ...defaultHeaders,
-//     method: "POST",
-//     body: JSON.stringify({
-//       name: name,
-//       email: email,
-//       password: password,
-//     }),
-//   }).then((response) => {
-//     if (response.status >= 500) {
-//       return "duplicated";
-//     }
-//     return "sucess";
-//   });
-// };
-export const registerAPI = (name, email, password) => {
-  return fetch(`/api/register`, {
+export const registerAPI = async (name, email, password) => {
+  return await fetch(`${backendURL}/api/register`, {
     ...defaultHeaders,
     method: "POST",
     body: JSON.stringify({
@@ -35,39 +19,55 @@ export const registerAPI = (name, email, password) => {
       email: email,
       password: password,
     }),
-  })
-    .then(checkStatus)
-    .then(parseJSON);
+  }).then((response) => {
+    if (response.status >= 500) {
+      return "duplicated";
+    }
+    return "sucess";
+  });
 };
-// POST: /login
-// export const loginAPI = (email, password) => {
-//   return fetch(`${backendURL}/api/login`, {
+// export const registerAPI = (name, email, password) => {
+//   return fetch(`/api/register`, {
 //     ...defaultHeaders,
 //     method: "POST",
 //     body: JSON.stringify({
+//       name: name,
 //       email: email,
 //       password: password,
 //     }),
-//   }).then((response) => {
-//     if (response.status >= 200 && response.status < 300) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   });
+//   })
+//     .then(checkStatus)
+//     .then(parseJSON);
 // };
-
+// POST: /login
 export const loginAPI = (email, password) => {
-  return fetch(`/api/login`, {
+  return fetch(`${backendURL}/api/login`, {
     ...defaultHeaders,
     method: "POST",
     body: JSON.stringify({
       email: email,
       password: password,
     }),
-  }).then(checkStatus);
-  // .then(parseJSON);
+  }).then((response) => {
+    if (response.status >= 200 && response.status < 300) {
+      return true;
+    } else {
+      return false;
+    }
+  });
 };
+
+// export const loginAPI = (email, password) => {
+//   return fetch(`/api/login`, {
+//     ...defaultHeaders,
+//     method: "POST",
+//     body: JSON.stringify({
+//       email: email,
+//       password: password,
+//     }),
+//   }).then(checkStatus);
+//   // .then(parseJSON);
+// };
 
 // POST: /logout
 export const logoutAPI = () => {
