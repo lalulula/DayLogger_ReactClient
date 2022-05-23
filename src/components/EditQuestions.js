@@ -3,7 +3,6 @@ import Question from "./Question";
 // import {nanoid} from 'nanoid';
 import {createQuestionAPI} from "../api/questionAPI";
 function EditQuestions({ handleSubmit, questions, setQuestions }) {
-
   useEffect(() => {
     console.log("RELOADING QUESTIONS");
     console.log("QUESTIONS:", questions);

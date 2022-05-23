@@ -80,8 +80,8 @@ function App() {
       </div>
 
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
-      {profile ? (
-      // {!profile ? (
+      {/* {profile ? ( */}
+      {!profile ? (
         <>
           <Login
             user={user}
@@ -124,15 +124,20 @@ function App() {
               onClick={handleProfilePageClick}
             />
           </div>
-          {isLogDay && 
-            <LogDay handleSubmit={handleSubmit}
-            questions = {questions}
-            setQuestions = {setQuestions}/>}
+          {isLogDay && (
+            <LogDay
+              handleSubmit={handleSubmit}
+              questions={questions}
+              setQuestions={setQuestions}
+            />
+          )}
           {isEditQuestions && (
             <EditQuestions
               handleSubmit={handleSubmit}
               questions={questions}
               setQuestions={setQuestions}
+              isDeletedNumber={isDeletedNumber}
+              setIsDeletedNumber={setIsDeletedNumber}
             />
           )}
           {isViewData && <ViewData />}
