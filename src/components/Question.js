@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {createQuestionAPI} from "../api/questionAPI";
+import React, { useCallback, useEffect, useState } from "react";
+import {updateQuestionAPI} from "../api/questionAPI";
 function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion }) {
   const [questionType, setquestionType] = useState(type);
   const [questionText, setquestionText] = useState(text);
@@ -15,6 +15,7 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
+    saveQuestionOnServer(newQuestion);
   };
 
   const handleTextChange = (e) => {
@@ -28,9 +29,25 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
+    saveQuestionOnServer(newQuestion);
   };
 
-  
+  function debounce(func, timeout=1000){
+    let timer;
+    return(...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(()=>{func.apply (this, args);} , timeout);
+    }
+  }
+
+  const saveQuestionOnServer = useCallback(debounce(( question ) => {
+    /* your debounced code to save to the server here */
+    updateQuestionAPI(question).then((res)=>{
+      console.dir(res);
+    }).catch((err)=>{
+      console.error('Error retrieving question data: ', err);
+    })
+  }), []);
 
   if (questionType === "multipleChoice") {
     return (
