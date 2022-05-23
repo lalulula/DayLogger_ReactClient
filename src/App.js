@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp";
 import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 import { getUserAPI } from "./api/userAPI";
+import { Orbit } from "@uiball/loaders";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -84,11 +85,32 @@ function App() {
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
       {/* {profile ? ( */}
 
+<<<<<<< Updated upstream
       {/* {isUserDataLoading ? (
         <h1>Loading...</h1>
       ) : !profile ? ( */}
 
       {profile ? (
+=======
+      {isUserDataLoading ? (
+        <>
+          <div
+            style={{
+              display: "flex",
+              height: "80vh",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {/* <h1>Loading...</h1> */}
+
+            <div class="dot-pulse">
+              <div class="dot-pulse__dot"></div>
+            </div>
+          </div>
+        </>
+      ) : !profile ? (
+>>>>>>> Stashed changes
         <>
           <Login
             user={user}
@@ -140,7 +162,7 @@ function App() {
           )}
           {isEditQuestions && (
             <EditQuestions
-              user ={user}
+              user={user}
               handleSubmit={handleSubmit}
               questions={questions}
               setQuestions={setQuestions}
