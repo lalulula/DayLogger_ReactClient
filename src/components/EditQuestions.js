@@ -19,19 +19,23 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
       console.log("Created the note on the server");
       console.dir(response);
       setQuestions([...questions, newQuestion]);
-      // setSelectedNoteId(response._id);
     });
 
   };
 
   const handleDeleteQuestion = (e) => {
     let index2Delete = -1;
+    let id2Delete;
     for (let i = 0 ; i < questions.length; i++){
       if(questions[i]._id === e.target._id){
         index2Delete = i;
+        id2Delete = questions[i]._id;
       }
     }
     console.log("🚀 ~ file: EditQuestions.js ~ line 23 ~ handleDeleteQuestion ~ index2Delete", index2Delete)
+    deleteQuestionAPI(id2Delete).then((response) => {
+      console.log("Deleted the question on the server");
+    });
     let newQuestions = [...questions];
     newQuestions.splice( index2Delete , 1 );
     setQuestions(newQuestions);
