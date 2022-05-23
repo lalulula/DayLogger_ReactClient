@@ -86,7 +86,7 @@ function App() {
 
       {isUserDataLoading ? (
         <h1>Loading...</h1>
-      ) : !profile ? (
+      ) : profile ? (
 
         <>
           <Login

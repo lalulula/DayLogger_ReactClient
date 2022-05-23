@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
-// import {nanoid} from 'nanoid';
 import {createQuestionAPI, deleteQuestionAPI} from "../api/questionAPI";
 function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
 
@@ -13,7 +12,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
     const newQuestion = {
       questionText: "Enter question",
       questionType: "number",
-      // id: nanoid(),
       user :user
     };
     createQuestionAPI(newQuestion).then((response) => {
@@ -64,6 +62,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
         <div>
           {questions.map((question) => (
             <Question
+              user={user}
               key={question._id}
               id={question._id}
               text={question.text}

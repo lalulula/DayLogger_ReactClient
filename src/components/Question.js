@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {updateQuestionAPI} from "../api/questionAPI";
-function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion }) {
+function Question({ user, id, text,type, questions, setQuestions, handleDeleteQuestion }) {
   const [questionType, setquestionType] = useState(type);
   const [questionText, setquestionText] = useState(text);
 
@@ -8,8 +8,8 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
     setquestionType(e.target.value);
     const newQuestion = {
       questionText: questionText,
-      questionType: e.target.value
-      // , id: id,
+      questionType: e.target.value,
+      user :user
     };
     const updatedQuestions = [
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -22,8 +22,8 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
     setquestionText(e.target.value);
     const newQuestion = {
       questionText: e.target.value,
-      questionType: questionType 
-      // ,id: id,
+      questionType: questionType ,
+      user :user
     };
     const updatedQuestions = [
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
