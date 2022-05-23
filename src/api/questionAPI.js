@@ -17,6 +17,7 @@ export const getQuestionAPI = () => {
     .then(checkStatus)
     .then(parseJSON);
 };
+
 //GET: /questions/:id
 
 // POST: /questions
