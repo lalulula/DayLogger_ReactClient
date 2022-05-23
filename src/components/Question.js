@@ -8,8 +8,9 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
     setquestionType(e.target.value);
     const newQuestion = {
       text: questionText,
-      type: e.target.value,
-      id: id,
+      type: e.target.value
+      // ,
+      // id: id,
     };
     const updatedQuestions = [
       ...questions.map((q) => (q.id === id ? newQuestion : q)),
@@ -21,16 +22,17 @@ function Question({ id, text,type, questions, setQuestions, handleDeleteQuestion
     setquestionText(e.target.value);
     const newQuestion = {
       text: e.target.value,
-      type: questionType ,
-      id: id,
+      type: questionType 
+      // ,
+      // id: id,
     };
     const updatedQuestions = [
-      ...questions.map((q) => (q.id === id ? newQuestion : q)),
+      ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
   };
 
-  if (questionType == "multipleChoice") {
+  if (questionType === "multipleChoice") {
     return (
       <div className="qDiv">
         <input

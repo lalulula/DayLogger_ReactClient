@@ -75,7 +75,9 @@ export const updateUserAPI = (user) => {
 };
 
 export const uploadImageToCloudinaryAPIMethod = (formData) => {
-  const cloudName = "haeunpark"; // TODO: Write in your own Cloudinary account
+  //NOTE: test용으로 그냥 클라우드네임 넣어둔교!!!
+  // const cloudName = "haeunpark"; // TODO: Write in your own Cloudinary account
+  const cloudName = "yunahkim"; // TODO: Write in your own Cloudinary account
   return fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
     // We do NOT want to set the default headers – the formData will automatically set the
     // headers to tell the server of the data type (which is different than the JSON

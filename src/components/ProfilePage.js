@@ -1,10 +1,34 @@
 import React from "react";
 import defaultpImg from "../defaultpImg.jpg";
+import {uploadImageToCloudinaryAPIMethod} from "../api/userAPI";
 
 function ProfilePage() {
-  const handleImageSelected = () => {};
+  const handleImageSelected = (event) => {
+    // console.log("New File Selected");
+    // if (event.target.files && event.target.files[0]) {
+    //     const selectedFile = event.target.files[0];
+    //     console.dir(selectedFile);
 
-  const handleRemoveImage = () => {};
+    //     const formData = new FormData();
+    //     // const unsignedUploadPreset = 'pyf8kc0j' //하니
+    //     const unsignedUploadPreset = 'pyf8kc0j' //윤앙
+    //     formData.append('file', selectedFile);
+    //     formData.append('upload_preset', unsignedUploadPreset);
+
+    //     console.log("Cloudinary upload");
+    //     uploadImageToCloudinaryAPIMethod(formData).then((response) => {
+    //         console.log("Upload success");
+    //         console.dir(response);
+    //         const updatedProfile = {...userProfile, "profileImage": response.url};
+    //         updateUserProfile(updatedProfile); 
+    //     });
+    // }
+}
+
+  const handleRemoveImage = () => {
+    // const updatedProfile = {...userProfile, "profileImage": ""};
+    // updateUserProfile(updatedProfile);
+  };
   return (
     <div className="profileContainer">
       <div>

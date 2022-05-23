@@ -9,16 +9,9 @@ import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 import { getUserAPI } from "./api/userAPI";
 
+
+
 function App() {
-  //NOTE:얘네는 그 위에 헤더 눌리면 보이게 하려고 state하나씩 만들어 준거긴한데
-  //이거 너무 지저분해서 신경쓰임 ㅜㅜ 혹시라도 이거보다 ㄱㅊ은거 있으면 바꿔도돼ㅇㅇㅇ!!
-  //아직 로그인은 기능안했으니까 그냥 일단 isLoggedIn은 true로 하고
-  // isLogDay도 잠깐 true 로 설정해두꼐! (원래는 둘다 false)
-  //random
-
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [isLogDay, setIsLogDay] = useState(false);
-
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLogDay, setIsLogDay] = useState(true);
   const [isEditQuestions, setEditQuestions] = useState(false);
@@ -38,10 +31,10 @@ function App() {
     console.log(fetchedUserData);
   }, []);
 
-  //NOTE: 얘는 link 타고 들어갈떄 current link css있길래 그거 해주려고 만든거!
+  //NOTE: for current clicked link CSS
   const [active, setActiveLink] = useState([true, false, false, false]);
 
-  //NOTE: conditional rendering 해주려고 만들어둔고!
+  //NOTE: for conditional rendering
   const handleLogDayClick = () => {
     setActiveLink([true, false, false, false]);
     setIsLogDay(true);

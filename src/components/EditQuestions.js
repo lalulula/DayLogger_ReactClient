@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
-import {nanoid} from 'nanoid';
+// import {nanoid} from 'nanoid';
+import {createQuestionAPI} from "../api/questionAPI";
 function EditQuestions({ handleSubmit, questions, setQuestions }) {
 
   useEffect(() => {
@@ -11,8 +12,9 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
   const handleAddQuestion = () => {
     const newQuestion = {
       text: "Enter question",
-      type: "number",
-      id: nanoid(),
+      type: "number"
+      // ,
+      // id: nanoid(),
     };
     setQuestions([...questions, newQuestion]);
   };
@@ -20,7 +22,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
   const handleDeleteQuestion = (e) => {
     let index2Delete = -1;
     for (let i = 0 ; i < questions.length; i++){
-      if(questions[i].id === e.target.id){
+      if(questions[i]._id === e.target._id){
         index2Delete = i;
       }
     }
@@ -29,6 +31,15 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
     newQuestions.splice( index2Delete , 1 );
     setQuestions(newQuestions);
   };
+
+  const saveQuestions = () =>{
+  //   createQuestionAPI(newQuestion.text, newQuestion.type).then((response) => {
+  //     console.log("Created the note on the server");
+  //     console.dir(response);
+  //     setQuestions([...questions, newQuestion]);
+  // })
+  }
+
 
   return (
     <div onSubmit={handleSubmit} className="editQContainer">
@@ -51,8 +62,8 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
         <div>
           {questions.map((question) => (
             <Question
-              key={question.id}
-              id={question.id}
+              key={question._id}
+              id={question._id}
               text={question.text}
               type={question.type}
               questions={questions}
@@ -61,7 +72,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions }) {
             />
           ))}
         </div>
-        <button className="saveBtn">Save</button>
+        <button className="saveBtn" onClick={saveQuestions}>Save</button>
       </form>
     </div>
   );
