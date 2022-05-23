@@ -9,8 +9,6 @@ import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 import { getUserAPI } from "./api/userAPI";
 
-
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLogDay, setIsLogDay] = useState(true);
@@ -136,8 +134,6 @@ function App() {
               handleSubmit={handleSubmit}
               questions={questions}
               setQuestions={setQuestions}
-              isDeletedNumber={isDeletedNumber}
-              setIsDeletedNumber={setIsDeletedNumber}
             />
           )}
           {isViewData && <ViewData />}
