@@ -24,8 +24,11 @@ function App() {
   const [profile, setProfile] = useState();
 
   useEffect(() => {
-    const fetchedUserData = getUserAPI();
-    console.log(fetchedUserData);
+    const fetchUserData = async () => {
+      const userData = await getUserAPI();
+      setProfile(userData);
+    };
+    fetchUserData();
   }, []);
 
   //NOTE: for current clicked link CSS
