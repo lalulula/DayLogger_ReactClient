@@ -83,15 +83,8 @@ function App() {
       </div>
 
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
+
       {/* {profile ? ( */}
-
-<<<<<<< Updated upstream
-      {/* {isUserDataLoading ? (
-        <h1>Loading...</h1>
-      ) : !profile ? ( */}
-
-      {profile ? (
-=======
       {isUserDataLoading ? (
         <>
           <div
@@ -110,7 +103,6 @@ function App() {
           </div>
         </>
       ) : !profile ? (
->>>>>>> Stashed changes
         <>
           <Login
             user={user}
