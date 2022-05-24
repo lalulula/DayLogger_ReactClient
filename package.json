@@ -2,7 +2,7 @@
   "name": "cse316final",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://cse316final.herokuapp.com",
+  "proxy": "http://localhost:5001/",
   "dependencies": {
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.0",
