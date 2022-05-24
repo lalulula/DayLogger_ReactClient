@@ -84,8 +84,8 @@ function App() {
 
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
 
-      {!profile ? (
-        // {isUserDataLoading ? (
+      {/* {!profile ? ( */}
+      {isUserDataLoading ? (
         <>
           <div
             style={{
