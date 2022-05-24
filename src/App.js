@@ -102,7 +102,7 @@ function App() {
             </div>
           </div>
         </>
-      ) : profile ? (
+      ) : !profile ? (
         <>
           <Login
             user={user}
