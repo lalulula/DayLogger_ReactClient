@@ -84,8 +84,8 @@ function App() {
 
       {/* NOTE push하기전에 !profile로 바꿔주셈! */}
 
-      {/* {profile ? ( */}
-      {isUserDataLoading ? (
+      {profile ? (
+      // {isUserDataLoading ? (
         <>
           <div
             style={{
@@ -102,7 +102,7 @@ function App() {
             </div>
           </div>
         </>
-      ) : !profile ? (
+      ) : profile ? (
         <>
           <Login
             user={user}
@@ -148,6 +148,7 @@ function App() {
           {isLogDay && (
             <LogDay
               handleSubmit={handleSubmit}
+              user={user}
               questions={questions}
               setQuestions={setQuestions}
             />

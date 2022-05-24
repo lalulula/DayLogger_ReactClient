@@ -39,10 +39,11 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
     let optionIndex = e.target.name;
     console.log(optionIndex);
     if(optionIndex === "op1"){
+      setMultipleChoice([e.target.value, multipleChoice[1], multipleChoice[2]]);
       const newQuestion = {
         questionText: questionText,
         questionType: questionType,
-        multipleChoice: [e.target.value, multipleChoice[1], multipleChoice[2]],
+        multipleChoice: multipleChoice,
         user :user
       };
       const updatedQuestions = [
@@ -52,10 +53,11 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
       saveQuestionOnServer(newQuestion);
     }
     else if(optionIndex === "op2"){
+      setMultipleChoice([multipleChoice[0], e.target.value, multipleChoice[2]]);
       const newQuestion = {
         questionText: questionText,
         questionType: questionType,
-        multipleChoice: [multipleChoice[0], e.target.value, multipleChoice[2]],
+        multipleChoice: multipleChoice,
         user :user
       };
       const updatedQuestions = [
@@ -63,13 +65,13 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
       ];
       setQuestions(updatedQuestions);
       saveQuestionOnServer(newQuestion);
-      
     }
     else if(optionIndex === "op3"){
+      setMultipleChoice([multipleChoice[0], multipleChoice[1],e.target.value]);
       const newQuestion = {
         questionText: questionText,
         questionType: questionType,
-        multipleChoice: [multipleChoice[0], multipleChoice[1],e.target.value],
+        multipleChoice: multipleChoice,
         user :user
       };
       const updatedQuestions = [
@@ -90,7 +92,6 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
   }
 
   const saveQuestionOnServer = useCallback(debounce(( question ) => {
-    /* your debounced code to save to the server here */
     updateQuestionAPI(question).then((res)=>{
       console.dir(res);
     }).catch((err)=>{
@@ -98,6 +99,7 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
     })
   }), []);
 
+  //NOTE: rendering method here
   if (questionType === "multipleChoice") {
     return (
       <div className="qDiv">

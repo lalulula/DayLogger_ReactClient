@@ -66,8 +66,8 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
               user={user}
               key={question._id}
               id={question._id}
-              text={question.text}
-              type={question.type}
+              text={question.questionText}
+              type={question.questionType}
               choice={question.multipleChoice}
               questions={questions}
               setQuestions={setQuestions}
@@ -75,7 +75,8 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
             />
           ))}
         </div>
-        <button className="saveBtn">Save</button>
+        {/* Using debounce instead */}
+        {/* <button className="saveBtn">Save</button> */}
       </form>
     </div>
   );
