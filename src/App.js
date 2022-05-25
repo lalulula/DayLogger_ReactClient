@@ -27,8 +27,13 @@ function App() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const userData = await getUserAPI();
-      setProfile(userData);
+      try {
+        const userData = await getUserAPI();
+        setProfile(userData);
+        setIsUserDataLoading(false);
+      } catch (e) {
+        console.log(e);
+      }
       setIsUserDataLoading(false);
     };
     fetchUserData();
