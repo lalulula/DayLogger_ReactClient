@@ -20,8 +20,7 @@ function LogDay({handleSubmit,questions, setQuestions, user }) {
         </div>
 
         {questions.map((q)=>{
-          <LogDayQuestions      
-                            user={user}
+          <LogDayQuestions  user={user}
                             key={q._id}
                             id={q._id}
                             text={q.questionText}

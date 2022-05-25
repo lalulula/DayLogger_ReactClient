@@ -8,7 +8,7 @@ import SignUp from "./components/SignUp";
 import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 import { getUserAPI } from "./api/userAPI";
-import { Orbit } from "@uiball/loaders";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -102,8 +102,8 @@ function App() {
           >
             {/* <h1>Loading...</h1> */}
 
-            <div class="dot-pulse">
-              <div class="dot-pulse__dot"></div>
+            <div className="dot-pulse">
+              <div className="dot-pulse__dot"></div>
             </div>
           </div>
         </>
