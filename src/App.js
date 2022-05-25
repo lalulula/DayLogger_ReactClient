@@ -107,7 +107,7 @@ function App() {
             </div>
           </div>
         </>
-      ) : !profile ? (
+      ) : profile ? (
         <>
           <Login
             user={user}
@@ -121,7 +121,13 @@ function App() {
       ) : (
         <>
           <div className="pageHeader">
-            <h2 className="day-logger"> Day Logger </h2>
+            <h2
+              className="day-logger"
+              style={{ cursor: "pointer" }}
+              onClick={handleLogDayClick}
+            >
+              Day Logger
+            </h2>
             <div className="pageMenu">
               <span
                 className={active[0] ? "currentLink" : ""}
@@ -167,7 +173,9 @@ function App() {
             />
           )}
           {isViewData && <ViewData />}
-          {isProfilePage && <ProfilePage setProfile={setProfile} />}
+          {isProfilePage && (
+            <ProfilePage setProfile={setProfile} profile={profile} />
+          )}
         </>
       )}
     </React.Fragment>
