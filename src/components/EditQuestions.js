@@ -26,14 +26,12 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
   const handleDeleteQuestion = (e) => {
     let index2Delete = -1;
     let question2Delete;
-    console.log("🚀 ~ file: EditQuestions.js ~ line 30 ~ handleDeleteQuestion ~ e.target.id", e.target)
     for (let i = 0 ; i < questions.length; i++){
       if(questions[i]._id === e.target.id){
         index2Delete = i;
         question2Delete = questions[i];
       }
     }
-    console.log("🚀 ~ file: EditQuestions.js ~ line 23 ~ handleDeleteQuestion ~ index2Delete", index2Delete)
     deleteQuestionAPI(question2Delete._id).then((response) => {
       console.log("Deleted the question on the server");
     });
