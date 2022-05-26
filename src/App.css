@@ -178,8 +178,23 @@ button:hover {
 .qDiv .multipleChoice input{
   margin: 10px;
 }
-.qDiv .multipleChoice label{
+.qDiv .multipleChoice input{
+  border-bottom: 2px solid #d3d3d3;
+}
+.multChoiceDiv{
+  display: flex;
+  align-items: center;
+}
+.multChoiceDiv .radioBtn{
+  color: #e1e1e1;
+  font-size: 15px;
+}
+.multChoiceDiv input{
+  border: none;
   border-bottom: 2px solid black;
+}
+.multChoiceDiv input:focus{
+  outline: none;
 }
 /* NOTE Profile */
 .profileContainer{
