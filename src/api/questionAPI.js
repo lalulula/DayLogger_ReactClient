@@ -36,7 +36,7 @@ export const createQuestionAPI = (question) => {
     .then(parseJSON);
 };
 
-// PUT: /questions/:id
+// PUT:updating question : /questions/:id
 export const updateQuestionAPI = (question) => {
   return fetch(`${backendURL}/api/questions/${question._id}`, {
     ...defaultHeaders,
