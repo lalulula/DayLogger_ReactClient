@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
-import {createQuestionAPI, deleteQuestionAPI} from "../api/questionAPI";
+import { createQuestionAPI, deleteQuestionAPI } from "../api/questionAPI";
 function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
-
   useEffect(() => {
     console.log("RELOADING QUESTIONS");
     console.log("QUESTIONS:", questions);
@@ -12,22 +11,21 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
     const newQuestion = {
       questionText: "Enter question",
       questionType: "number",
-      multipleChoice:["option1","option2","option3"],
-      user :user
+      multipleChoice: ["option1", "option2", "option3"],
+      user: user,
     };
     createQuestionAPI(newQuestion).then((response) => {
       console.log("Created question on the server");
       console.dir(response);
       setQuestions([...questions, response]);
     });
-
   };
 
   const handleDeleteQuestion = (e) => {
     let index2Delete = -1;
     let question2Delete;
-    for (let i = 0 ; i < questions.length; i++){
-      if(questions[i]._id === e.target.id){
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i]._id === e.target.id) {
         index2Delete = i;
         question2Delete = questions[i];
       }
@@ -36,10 +34,9 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
       console.log("Deleted the question on the server");
     });
     let newQuestions = [...questions];
-    newQuestions.splice( index2Delete , 1 );
+    newQuestions.splice(index2Delete, 1);
     setQuestions(newQuestions);
   };
-
 
   return (
     <div onSubmit={handleSubmit} className="editQContainer">
@@ -61,10 +58,9 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
         </div>
         <div>
           {questions.map((question) => (
-            <div  key={question._id}>
             <Question
               user={user}
-              // key={question._id}
+              key={question._id}
               id={question._id}
               text={question.questionText}
               type={question.questionType}
@@ -73,10 +69,8 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
               setQuestions={setQuestions}
               handleDeleteQuestion={handleDeleteQuestion}
             />
-            </div>
           ))}
         </div>
-
       </form>
     </div>
   );
