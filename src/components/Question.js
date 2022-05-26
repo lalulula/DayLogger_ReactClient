@@ -93,7 +93,7 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
   }
 
   const saveQuestionOnServer = useCallback(debounce(( question ) => {
-    console.log(question._id);
+    console.log("🚀 ~ file: Question.js ~ line 97 ~ saveQuestionOnServer ~ question._id", question._id)
     updateQuestionAPI(question).then((res)=>{
       console.dir(res);
     }).catch((err)=>{
