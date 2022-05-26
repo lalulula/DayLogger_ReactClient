@@ -151,13 +151,7 @@ function App() {
               className={`profileImage header-profileImage ${
                 active[3] ? "currentLink" : ""
               }`}
-              src={
-                img
-                  ? URL.createObjectURL(img)
-                  : !(profile.profileImage == "") && img != ""
-                  ? profile?.profileImage
-                  : defaultpImg
-              }
+              src={profile?.profileImage || defaultpImg}
               onClick={handleProfilePageClick}
             />
           </div>

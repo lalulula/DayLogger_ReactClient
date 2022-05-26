@@ -218,6 +218,8 @@ function ProfilePage({ setProfile, profile }) {
             textDecoration: "underline",
             fontSize: "medium",
             cursor: "pointer",
+            backgroundColor: "transparent",
+            border: 0,
           }}
         >
           Logout
