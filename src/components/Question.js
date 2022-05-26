@@ -165,32 +165,14 @@ function Question({
         </div>
 
         <div className="multipleChoice">
-          <input
-            type="radio"
-            name="op1"
-            value={multipleChoice[0]}
-            onChange={handleEditMultipleChoice}
-            disabled
-          />
-          <label>choice1</label>
+          <input type="text" name="op1" value={multipleChoice[0]} onChange={handleEditMultipleChoice} disabled />
+          {/* <label>{multipleChoice[0]}</label> */}
           <br />
-          <input
-            type="radio"
-            name="op2"
-            value={multipleChoice[1]}
-            onChange={handleEditMultipleChoice}
-            disabled
-          />
-          <label>choice1</label>
+          <input type="text" name="op2" value={multipleChoice[1]} onChange={handleEditMultipleChoice} disabled />
+          {/* <label>{multipleChoice[1]}</label> */}
           <br />
-          <input
-            type="radio"
-            name="op3"
-            value={multipleChoice[2]}
-            onChange={handleEditMultipleChoice}
-            disabled
-          />
-          <label>choice1</label>
+          <input type="text" name="op3" value={multipleChoice[2]} onChange={handleEditMultipleChoice} disabled />
+          {/* <label>{multipleChoice[2]}</label> */}
           <br />
         </div>
       </div>
