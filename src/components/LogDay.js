@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LogDayQuestions from "./LogDayQuestions";
+import { getQuestionAPI } from "../api/questionAPI";
 
 function LogDay({handleSubmit,questions, setQuestions, user }) {
+  console.log("LogDay", questions);
 
   const handleDateBack = () =>{
     console.log("Date Back");
@@ -10,6 +12,17 @@ function LogDay({handleSubmit,questions, setQuestions, user }) {
     console.log("Date Forward");
   }
 
+  useEffect(() => {
+    function fetchData() {
+      getQuestionAPI().then((questions) => { 
+        setQuestions(questions);
+      }  ).catch((err) => {
+        console.error('Error retrieving note data: ' + err);
+      });
+    };
+    fetchData();
+  }, []);
+  
   return (
     <div className="logDayContainer">
       <form onSubmit={handleSubmit} className="logDayContent">

@@ -10,7 +10,6 @@ import defaultpImg from "./defaultpImg.jpg";
 import { getUserAPI } from "./api/userAPI";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLogDay, setIsLogDay] = useState(true);
   const [isEditQuestions, setEditQuestions] = useState(false);
   const [isViewData, setViewData] = useState(false);

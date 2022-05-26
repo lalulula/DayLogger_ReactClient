@@ -14,7 +14,7 @@ function Question({
   const [questionText, setquestionText] = useState(text);
   const [multipleChoice, setMultipleChoice] = useState(choice);
 
-  console.log(id);
+  // console.log(id);
 
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
@@ -43,7 +43,7 @@ function Question({
 
   const handleEditMultipleChoice = (e) => {
     let optionIndex = e.target.name;
-    console.log(optionIndex);
+    // console.log(optionIndex);
     if (optionIndex === "op1") {
       setMultipleChoice([e.target.value, multipleChoice[1], multipleChoice[2]]);
       const newQuestion = {
@@ -98,18 +98,18 @@ function Question({
 
   const saveQuestionOnServer = useCallback(
     debounce((question, questions) => {
-      console.log(
-        "🚀 ~ file: Question.js ~ line 97 ~ saveQuestionOnServer ~ question._id",
-        question._id
-      );
+      // console.log(
+      //   "🚀 ~ file: Question.js ~ line 97 ~ saveQuestionOnServer ~ question._id",
+      //   question._id
+      // );
       updateQuestionAPI(question)
         .then((res) => {
-          console.dir(res.body);
+          // console.dir(res.body);
           const updatedQuestions = [
             ...questions.map((q) => (q._id === id ? question : q)),
           ];
           setQuestions(updatedQuestions);
-          console.log(updatedQuestions);
+          // console.log(updatedQuestions);
         })
         .catch((err) => {
           console.error("Error retrieving question data: ", err);

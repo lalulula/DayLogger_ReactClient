@@ -145,6 +145,9 @@ button:hover {
   align-items: center;
   justify-content: space-between;
 }
+.addQuestionBtn{
+  cursor: pointer;
+}
 .qDiv{
   background-color: white;
   border-radius: 5px;;

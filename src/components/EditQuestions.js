@@ -50,7 +50,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
             Edit Questions
           </h2>
           <span
-            className="material-symbols-outlined"
+            className="material-symbols-outlined addQuestionBtn"
             onClick={handleAddQuestion}
           >
             add_circle
