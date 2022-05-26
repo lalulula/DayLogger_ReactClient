@@ -9,6 +9,7 @@ import {
 
 function ProfilePage({ setProfile, profile }) {
   const [img, setImg] = useState(null);
+
   const onSave = async (e) => {
     e.preventDefault();
     console.log("New File Selected");
@@ -19,7 +20,7 @@ function ProfilePage({ setProfile, profile }) {
       const formData = new FormData();
       // TODO: You need to create an "unsigned" upload preset on your Cloudinary account
       // Then enter the text for that here.
-      const unsignedUploadPreset = "hwnhe2xc";
+      const unsignedUploadPreset = "pyf8kc0j";
       formData.append("file", img);
       formData.append("upload_preset", unsignedUploadPreset);
 
@@ -40,51 +41,12 @@ function ProfilePage({ setProfile, profile }) {
       .then((response) => {
         setProfile(updatedProfile);
         console.log("Updated user on the server");
+        alert("Successly saved!");
       })
       .catch((err) => {
         console.log(profile);
         console.error("Error updating user data: " + err);
       });
-  };
-
-  // const handleImageSelected = (event) => {
-  //   // console.log("New File Selected");
-  //   // if (event.target.files && event.target.files[0]) {
-  //   //     const selectedFile = event.target.files[0];
-  //   //     console.dir(selectedFile);
-  //   //     const formData = new FormData();
-  //   //     // const unsignedUploadPreset = 'pyf8kc0j' //하니
-  //   //     const unsignedUploadPreset = 'pyf8kc0j' //윤앙
-  //   //     formData.append('file', selectedFile);
-  //   //     formData.append('upload_preset', unsignedUploadPreset);
-  //   //     console.log("Cloudinary upload");
-  //   //     uploadImageToCloudinaryAPIMethod(formData).then((response) => {
-  //   //         console.log("Upload success");
-  //   //         console.dir(response);
-  //   //         const updatedProfile = {...userProfile, "profileImage": response.url};
-  //   //         updateUserProfile(updatedProfile);
-  //   //     });
-  //   // }
-  // };
-
-  // const handleRemoveImage = () => {
-  //   // const updatedProfile = {...userProfile, "profileImage": ""};
-  //   // updateUserProfile(updatedProfile);
-  // };
-
-  const handleImageSelected = (event) => {
-    console.log("New File Selected");
-    if (event.target.files && event.target.files[0]) {
-      setImg(event.target.files[0]);
-    }
-  };
-
-  const handleRemoveImage = () => {
-    if (profile.profileImage) {
-      // let updatedProfile = { ...profile, profileImage: "" };
-      // setProfile(updatedProfile);
-      setImg("");
-    }
   };
 
   //Save the profile information
@@ -102,19 +64,43 @@ function ProfilePage({ setProfile, profile }) {
     });
   };
 
-  const saveUserAdress = (changeUserAdress) => {
-    console.log(changeUserAdress);
+  const saveUserAddress1 = (changeUserAddress) => {
+    console.log(changeUserAddress);
     setProfile({
       ...profile,
-      // colorScheme: changeUserColor,
-      adress: changeUserAdress,
+      address: [changeUserAddress, profile.address[1]],
     });
+  };
+
+  const saveUserAddress2 = (changeUserAddress) => {
+    console.log(changeUserAddress);
+    setProfile({
+      ...profile,
+      address: [profile.address[0], changeUserAddress],
+    });
+  };
+
+  const handleImageSelected = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setImg(event.target.files[0]);
+      console.log("New File Selected");
+    }
+  };
+
+  const handleRemoveImage = () => {
+    if (profile.profileImage) {
+      console.log(img);
+      // let updatedProfile = { ...profile, profileImage: "" };
+      // setProfile(updatedProfile);
+      setImg("");
+    }
   };
 
   const handleLogout = async () => {
     await logoutAPI();
     setProfile(undefined);
   };
+
   return (
     <div className="profileContainer">
       <div>
@@ -124,10 +110,22 @@ function ProfilePage({ setProfile, profile }) {
       <div className="profileDiv1">
         <div className="profileHeader">Profile Photo</div>
         <div className="changePIMG">
-          <img className="profileImage" src={defaultpImg} />
+          <img
+            className="profileImage"
+            src={
+              img
+                ? URL.createObjectURL(img)
+                : !(profile.profileImage == "") && img != ""
+                ? profile?.profileImage
+                : defaultpImg
+            }
+            alt="profile"
+          />
           <input
             type="file"
             id="file-input"
+            name="image"
+            accept="image/*"
             onChange={handleImageSelected}
           ></input>
           <label
@@ -192,8 +190,8 @@ function ProfilePage({ setProfile, profile }) {
             padding: "7px",
             borderRadius: "5px",
           }}
-          value={profile?.adress || ""}
-          onChange={(e) => saveUserAdress(e.target.value)}
+          value={profile?.address[0] || ""}
+          onChange={(e) => saveUserAddress1(e.target.value)}
         />
         <br />
         <input
@@ -205,17 +203,23 @@ function ProfilePage({ setProfile, profile }) {
             padding: "7px",
             borderRadius: "5px",
           }}
+          value={profile?.address[1] || ""}
+          onChange={(e) => saveUserAddress2(e.target.value)}
         />
       </div>
 
       <div className="profileDiv5">
-        <button className="saveBtn saveBtnforProfile">Save</button>
+        <button className="saveBtn saveBtnforProfile" onClick={onSave}>
+          Save
+        </button>
         <button
           onClick={handleLogout}
           style={{
             textDecoration: "underline",
             fontSize: "medium",
             cursor: "pointer",
+            backgroundColor: "transparent",
+            border: 0,
           }}
         >
           Logout

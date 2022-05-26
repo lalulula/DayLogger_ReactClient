@@ -9,7 +9,6 @@ import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 import { getUserAPI } from "./api/userAPI";
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLogDay, setIsLogDay] = useState(true);
@@ -152,7 +151,7 @@ function App() {
               className={`profileImage header-profileImage ${
                 active[3] ? "currentLink" : ""
               }`}
-              src={defaultpImg}
+              src={profile?.profileImage || defaultpImg}
               onClick={handleProfilePageClick}
             />
           </div>
