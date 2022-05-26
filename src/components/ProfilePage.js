@@ -41,13 +41,12 @@ function ProfilePage({ setProfile, profile }) {
       .then((response) => {
         setProfile(updatedProfile);
         console.log("Updated user on the server");
+        alert("Successly saved!");
       })
       .catch((err) => {
         console.log(profile);
         console.error("Error updating user data: " + err);
       });
-
-    console.log("done save");
   };
 
   //Save the profile information
@@ -210,13 +209,7 @@ function ProfilePage({ setProfile, profile }) {
       </div>
 
       <div className="profileDiv5">
-        <button
-          className="saveBtn saveBtnforProfile"
-          onClick={() => {
-            onSave();
-            alert("Successly saved!");
-          }}
-        >
+        <button className="saveBtn saveBtnforProfile" onClick={onSave}>
           Save
         </button>
         <button
