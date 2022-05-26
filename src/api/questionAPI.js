@@ -37,11 +37,11 @@ export const createQuestionAPI = (question) => {
 };
 
 // PUT: /questions/:id
-export const updateQuestionAPI = (questions) => {
-  return fetch(`${backendURL}/api/questions/${questions._id}`, {
+export const updateQuestionAPI = (question) => {
+  return fetch(`${backendURL}/api/questions/${question._id}`, {
     ...defaultHeaders,
     method: "PUT",
-    body: JSON.stringify(questions),
+    body: JSON.stringify(question),
   }).then(checkStatus);
 };
 
