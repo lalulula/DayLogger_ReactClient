@@ -15,6 +15,7 @@ function LogDay({handleSubmit,questions, setQuestions, user }) {
   useEffect(() => {
     function fetchData() {
       getQuestionAPI().then((questions) => { 
+        console.dir(questions);
         setQuestions(questions);
       }  ).catch((err) => {
         console.error('Error retrieving note data: ' + err);
