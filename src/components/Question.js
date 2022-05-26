@@ -93,7 +93,7 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
 
   const saveQuestionOnServer = useCallback(debounce(( question ) => {
     console.log(question._id);
-    updateQuestionAPI(question._id).then((res)=>{
+    updateQuestionAPI(question).then((res)=>{
       console.dir(res);
     }).catch((err)=>{
       console.error('Error retrieving question data: ', err);
