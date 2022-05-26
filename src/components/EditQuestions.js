@@ -18,22 +18,23 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
     createQuestionAPI(newQuestion).then((response) => {
       console.log("Created question on the server");
       console.dir(response);
-      setQuestions([...questions, newQuestion]);
+      setQuestions([...questions, response]);
     });
 
   };
 
   const handleDeleteQuestion = (e) => {
     let index2Delete = -1;
-    let id2Delete;
+    let question2Delete;
+    console.log("🚀 ~ file: EditQuestions.js ~ line 30 ~ handleDeleteQuestion ~ e.target.id", e.target)
     for (let i = 0 ; i < questions.length; i++){
-      if(questions[i]._id === e.target._id){
+      if(questions[i]._id === e.target.id){
         index2Delete = i;
-        id2Delete = questions[i]._id;
+        question2Delete = questions[i];
       }
     }
     console.log("🚀 ~ file: EditQuestions.js ~ line 23 ~ handleDeleteQuestion ~ index2Delete", index2Delete)
-    deleteQuestionAPI(id2Delete).then((response) => {
+    deleteQuestionAPI(question2Delete._id).then((response) => {
       console.log("Deleted the question on the server");
     });
     let newQuestions = [...questions];
@@ -62,9 +63,9 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
         </div>
         <div>
           {questions.map((question) => (
+            <div  key={question._id}>
             <Question
               user={user}
-              key={question._id}
               id={question._id}
               text={question.questionText}
               type={question.questionType}
@@ -73,6 +74,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
               setQuestions={setQuestions}
               handleDeleteQuestion={handleDeleteQuestion}
             />
+            </div>
           ))}
         </div>
         {/* Using debounce instead */}

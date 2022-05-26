@@ -5,6 +5,8 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
   const [questionText, setquestionText] = useState(text);
   const [multipleChoice, setMultipleChoice] = useState(choice);
 
+  console.log(id)
+
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
     const newQuestion = {
@@ -79,7 +81,6 @@ function Question({ user, id, text,type, choice, questions, setQuestions, handle
       ];
       setQuestions(updatedQuestions);
       saveQuestionOnServer(newQuestion);
-      
     }
   }
 
