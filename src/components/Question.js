@@ -24,6 +24,7 @@ function Question({
       questionType: e.target.value,
       multipleChoice: multipleChoice,
       user: user,
+      response:{}
     };
 
     saveQuestionOnServer(newQuestion, questions);
@@ -37,6 +38,7 @@ function Question({
       questionType: questionType,
       multipleChoice: multipleChoice,
       user: user,
+      response:{}
     };
     saveQuestionOnServer(newQuestion, questions);
   };
@@ -52,6 +54,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
+        response:{}
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -66,6 +69,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
+        response:{}
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -80,6 +84,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
+        response:{}
       };
 
       saveQuestionOnServer(newQuestion, questions);

@@ -1,6 +1,28 @@
 import React, { useCallback, useEffect, useState } from "react";
-function LogDayQuestions({ user, id, text, type, choice , response, setResponse, handleResponseChange}) {
+function LogDayQuestions({ user, id, text, type, choice, questions, setQuestions }) {
+  const[response, setResponse] = useState([]);  
+ 
+  useEffect(()=>{
+    console.log("updating response");
+    // console.log("🚀 ~ file: LogDayQuestions.js ~ line 12 ~ LogDayQuestions ~ response", response)
+    const newQuestion = {
+      _id: id,
+      questionText: text,
+      questionType: type,
+      multipleChoice: choice,
+      user: user,
+      response : response
+    };
+    const updatedQuestions = [
+      ...questions.map((q) => (q._id === id ? newQuestion : q)),
+    ];
+    setQuestions(updatedQuestions);
+    console.log(questions)
+  },[response])
 
+  const handleResponseChange = (e) =>{
+    setResponse({[e.target.name]:e.target.value});
+  }
     if(type==="number"){
       return (
       <div className="logDayDiv">

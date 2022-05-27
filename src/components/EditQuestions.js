@@ -13,6 +13,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
       questionType: "number",
       multipleChoice: ["option1", "option2", "option3"],
       user: user,
+      response:{}
     };
     createQuestionAPI(newQuestion).then((response) => {
       console.log("Created question on the server");
