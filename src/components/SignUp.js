@@ -22,7 +22,9 @@ const SignUp = () => {
       );
   };
   const validatePassword = (password) => {
-    return password.length >= 6;
+    return String(password).match(
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/
+    );
   };
 
   const closeSignupModal = () => {
@@ -31,12 +33,20 @@ const SignUp = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(name, email, pwd);
-    if (validateEmail(email) && validatePassword(pwd)) {
-      registerAPI(name, email, pwd).then((result) => {
-        console.log("sucessully registered");
-        window.location.reload();
-      });
+    // console.log(name, email, pwd);
+    if (validateEmail(email)) {
+      if (validatePassword(pwd)) {
+        registerAPI(name, email, pwd).then((result) => {
+          alert("sucessully registered");
+          window.location.reload();
+        });
+      } else {
+        setErrMsg(
+          "Password should include: at least 8 characters, 1 number, 1 lower and 1 uppercase letter"
+        );
+      }
+    } else {
+      setErrMsg("Email is invalid");
     }
   };
   return (
@@ -44,28 +54,32 @@ const SignUp = () => {
       <div className="signup">
         <div className="signup-white-box">
           <div className="signup-title">
-            <div>Sign up</div>
-            {/* <div
-              className="material-icons clickable"
-              onClick={closeSignupModal}
-            >
-              lc_close
-            </div> */}
+            <div style={{ paddingTop: "25px", fontSize: "25px" }}>Sign up</div>
             <CloseIcon onClick={closeSignupModal} sx={{ cursor: "pointer" }} />
           </div>
+          <hr
+            style={{
+              width: "80px",
+            }}
+          ></hr>
           <div className="signup-inputs">
             <div className="signup-input-wrap">
-              <div>Name</div>
+              <div style={{ paddingBottom: "3px" }}>Name</div>
               <input
                 className="signup-name"
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
                 required
+                style={{
+                  padding: "5px",
+                  marginBottom: "10px",
+                  borderRadius: "5px",
+                }}
               />
             </div>
             <div className="signup-input-wrap">
-              <div>Email</div>
+              <div style={{ paddingBottom: "3px" }}>Email</div>
               <input
                 className="signup-email"
                 type="email"
@@ -73,16 +87,26 @@ const SignUp = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 required
+                style={{
+                  padding: "5px",
+                  marginBottom: "10px",
+                  borderRadius: "5px",
+                }}
               />
             </div>
             <div className="signup-input-wrap">
-              <div>Password</div>
+              <div style={{ paddingBottom: "3px" }}>Password</div>
               <input
                 className="signup-password"
                 type="password"
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
                 required
+                style={{
+                  padding: "5px",
+                  marginBottom: "10px",
+                  borderRadius: "5px",
+                }}
               />
             </div>
           </div>
@@ -94,7 +118,7 @@ const SignUp = () => {
             {errMsg}
           </div>
           <div className="login-signup-button-wrap">
-            <button className="login-signup-button" onClick={handleFormSubmit}>
+            <button className="login-signup-button2" onClick={handleFormSubmit}>
               Sign Up
             </button>
           </div>

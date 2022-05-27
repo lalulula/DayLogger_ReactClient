@@ -28,7 +28,7 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
         setProfile(user);
         console.log("login successful");
       } else {
-        setErrMsg("Error: there is no such user");
+        setErrMsg("Error: There is no such user");
       }
     } else {
       setErrMsg("Error: Invalid email and/or password");
@@ -39,14 +39,26 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
       <div className="login-wrap">
         <div className="title">
           <div className="title-notes">Day Logger</div>
+          <hr
+            style={{
+              width: "150px",
+            }}
+          ></hr>
           <div className="title-descrition">
-            Organize all your thoughts in one place.
+            Welcome back! Login to access the day logger.
           </div>
         </div>
         <div className="white-box">
           <div className="inputs">
             <div className="login-email-wrap">
-              <div className="login-email">Email</div>
+              <div
+                className="login-email"
+                style={{
+                  paddingBottom: "2px",
+                }}
+              >
+                Email
+              </div>
               <input
                 type="email"
                 ref={userRef}
@@ -54,15 +66,30 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
                 onChange={(e) => setUser(e.target.value)}
                 value={user}
                 required
+                style={{
+                  padding: "4px",
+                  borderRadius: "5px",
+                }}
               />
             </div>
             <div>
-              <div className="login-password">Password</div>
+              <div
+                className="login-password"
+                style={{
+                  paddingBottom: "2px",
+                }}
+              >
+                Password
+              </div>
               <input
                 type="password"
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
                 required
+                style={{
+                  padding: "4px",
+                  borderRadius: "5px",
+                }}
               />
             </div>
           </div>
@@ -73,10 +100,12 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
           >
             {errMsg}
           </div>
-          <button className="login-button" onClick={login}>
-            Log in
-          </button>
-          <hr />
+          <div className="login-button-wrap">
+            <button className="login-button" onClick={login}>
+              Log in
+            </button>
+          </div>
+
           <div className="login-signup-button-wrap">
             <button className="login-signup-button" onClick={openSignup}>
               Create New Account

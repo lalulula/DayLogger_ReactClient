@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
+
+import AdminPage from "./components/AdminPage";
 import { getUserAPI } from "./api/userAPI";
 
 function App() {
@@ -173,6 +175,7 @@ function App() {
           {isProfilePage && (
             <ProfilePage setProfile={setProfile} profile={profile} />
           )}
+          {/* {isAdmin && <AdminPage />} */}
         </>
       )}
     </React.Fragment>
