@@ -9,7 +9,7 @@ import ProfilePage from "./components/ProfilePage";
 import defaultpImg from "./defaultpImg.jpg";
 
 import AdminPage from "./components/AdminPage";
-import { getUserAPI } from "./api/userAPI";
+import { getUserAPI, getUsersAPI } from "./api/userAPI";
 
 function App() {
   // NOTE page header
@@ -27,6 +27,9 @@ function App() {
   const [profile, setProfile] = useState(undefined);
   const [isUserDataLoading, setIsUserDataLoading] = useState(true);
 
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [allUsers, setAllUsers] = useState([]);
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -42,40 +45,59 @@ function App() {
   }, []);
 
   //NOTE: for current clicked link CSS
-  const [active, setActiveLink] = useState([true, false, false, false]);
+  const [active, setActiveLink] = useState([true, false, false, false, false]);
 
   //NOTE: for conditional rendering
   const handleLogDayClick = () => {
-    setActiveLink([true, false, false, false]);
+    setActiveLink([true, false, false, false, false]);
     setIsLogDay(true);
     setEditQuestions(false);
     setViewData(false);
     setIsProfilePage(false);
+    setIsAdmin(false);
   };
   const handleEditQuestionsClick = () => {
-    setActiveLink([false, true, false, false]);
+    setActiveLink([false, true, false, false, false]);
     setIsLogDay(false);
     setEditQuestions(true);
     setViewData(false);
     setIsProfilePage(false);
+    setIsAdmin(false);
   };
   const handleViewDataClick = () => {
-    setActiveLink([false, false, true, false]);
+    setActiveLink([false, false, true, false, false]);
     setIsLogDay(false);
     setEditQuestions(false);
     setViewData(true);
     setIsProfilePage(false);
+    setIsAdmin(false);
+  };
+  const handleAdminPageClick = () => {
+    setActiveLink([false, false, false, false, true]);
+    setIsLogDay(false);
+    setEditQuestions(false);
+    setViewData(false);
+    setIsProfilePage(false);
+    setIsAdmin(true);
   };
   const handleProfilePageClick = () => {
-    setActiveLink([false, false, false, true]);
+    setActiveLink([false, false, false, true, false]);
     setIsLogDay(false);
     setEditQuestions(false);
     setViewData(false);
     setIsProfilePage(true);
+    setIsAdmin(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const getAllUsers = async () => {
+    getUsersAPI().then((res) => {
+      console.log(res);
+      setAllUsers(res);
+    });
   };
 
   return (
@@ -87,8 +109,10 @@ function App() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      </link>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        ></link>
       </div>
 
       {isUserDataLoading ? (
@@ -116,6 +140,7 @@ function App() {
             pwd={pwd}
             setPwd={setPwd}
             setProfile={setProfile}
+            setIsAdmin={setIsAdmin}
           />
           <SignUp />
         </>
@@ -148,6 +173,14 @@ function App() {
               >
                 View Data{" "}
               </span>
+              {profile.isAdmin && (
+                <span
+                  className={active[4] ? "currentLink" : ""}
+                  onClick={handleAdminPageClick}
+                >
+                  Admin Page{" "}
+                </span>
+              )}
             </div>
             <img
               className={`profileImage header-profileImage ${
@@ -184,7 +217,9 @@ function App() {
             setViewData={setViewData}
             setIsProfilePage={setIsProfilePage}/>
           )}
-          {/* {isAdmin && <AdminPage />} */}
+          {isAdmin && (
+            <AdminPage getAllUsers={getAllUsers} allUsers={allUsers} />
+          )}
         </>
       )}
     </React.Fragment>

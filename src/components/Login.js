@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { getUserAPI, loginAPI } from "../api/userAPI";
 
-const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
+const Login = ({ user, setUser, pwd, setPwd, setProfile, setIsAdmin }) => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -21,9 +21,10 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile }) => {
 
   const login = async () => {
     const result = await loginAPI(user, pwd);
+    console.log(user);
     if (result) {
       const user = await getUserAPI();
-      console.log("user", user);
+
       if (user) {
         setProfile(user);
         console.log("login successful");

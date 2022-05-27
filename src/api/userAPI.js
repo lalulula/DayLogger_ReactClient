@@ -30,19 +30,7 @@ export const registerAPI = async (name, email, password) => {
     return "sucess";
   });
 };
-// export const registerAPI = (name, email, password) => {
-//   return fetch(`/api/register`, {
-//     ...defaultHeaders,
-//     method: "POST",
-//     body: JSON.stringify({
-//       name: name,
-//       email: email,
-//       password: password,
-//     }),
-//   })
-//     .then(checkStatus)
-//     .then(parseJSON);
-// };
+
 // POST: /login
 export const loginAPI = (email, password) => {
   return fetch(`${backendURL}/api/login`, {
@@ -64,18 +52,6 @@ export const loginAPI = (email, password) => {
     }
   });
 };
-
-// export const loginAPI = (email, password) => {
-//   return fetch(`/api/login`, {
-//     ...defaultHeaders,
-//     method: "POST",
-//     body: JSON.stringify({
-//       email: email,
-//       password: password,
-//     }),
-//   }).then(checkStatus);
-//   // .then(parseJSON);
-// };
 
 // POST: /logout
 export const logoutAPI = () => {
@@ -100,6 +76,19 @@ export const getUserAPI = () => {
     });
 };
 
+// GET: /users
+export const getUsersAPI = () => {
+  return fetch(`${backendURL}/api/users`, {
+    ...defaultHeaders,
+  }).then((response) => {
+    if (response.status >= 400) {
+      return null;
+    } else {
+      return parseJSON(response);
+    }
+  });
+};
+
 // PUT: /user
 export const updateUserAPI = (user) => {
   return fetch(`${backendURL}/api/user`, {
@@ -107,6 +96,16 @@ export const updateUserAPI = (user) => {
     method: "PUT",
     body: JSON.stringify(user),
   }).then(checkStatus);
+};
+
+//DELETE: /api/user/${userId}
+export const deleteUserByIdAPI = (userId) => {
+  return fetch(`${backendURL}/api/user/${userId}`, {
+    ...defaultHeaders,
+    method: "DELETE",
+  })
+    .then(checkStatus)
+    .then(parseJSON);
 };
 
 export const uploadImageToCloudinaryAPIMethod = (formData) => {

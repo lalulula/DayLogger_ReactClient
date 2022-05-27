@@ -7,7 +7,15 @@ import {
   updateUserAPI,
 } from "../api/userAPI";
 
-function ProfilePage({ setProfile, profile, setActiveLink , setIsLogDay, setEditQuestions, setViewData, setIsProfilePage}) {
+function ProfilePage({
+  setProfile,
+  profile,
+  setActiveLink,
+  setIsLogDay,
+  setEditQuestions,
+  setViewData,
+  setIsProfilePage,
+}) {
   const [img, setImg] = useState(null);
 
   const onSave = async (e) => {
@@ -97,15 +105,15 @@ function ProfilePage({ setProfile, profile, setActiveLink , setIsLogDay, setEdit
   };
 
   const handleLogout = async () => {
-    await logoutAPI();
-
-    setActiveLink([true, false, false, false]);
-    setIsLogDay(true);
-    setEditQuestions(false);
-    setViewData(false);
-    setIsProfilePage(false);
-
-    setProfile(undefined);
+    if (window.confirm("Do you want to logout?")) {
+      await logoutAPI();
+      setActiveLink([true, false, false, false]);
+      setIsLogDay(true);
+      setEditQuestions(false);
+      setViewData(false);
+      setIsProfilePage(false);
+      setProfile(undefined);
+    }
   };
 
   return (
