@@ -1,20 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-function LogDayQuestions({ user, id, text, type, choice }) {
-  const[response, setResponse] = useState([]);  
-  // const [numResponse, setNumResponse] = useState();
-  // const [boolResponse, setBoolResponse] = useState();
-  // const [textResponse, setTextResponse] = useState();
-  // const [choiceResponse, setChoiceResponse] = useState();  
-  useEffect(()=>{
-    console.log("updating response");
-    console.log("🚀 ~ file: LogDayQuestions.js ~ line 12 ~ LogDayQuestions ~ response", response)
-  },[response])
+function LogDayQuestions({ user, id, text, type, choice , response, setResponse, handleResponseChange}) {
 
-  const handleResponseChange = (e) =>{
-    setResponse((prevValues)=>({
-      ...prevValues,[e.target.name]:e.target.value
-    }))
-  }
     if(type==="number"){
       return (
       <div className="logDayDiv">

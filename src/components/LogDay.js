@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI } from "../api/questionAPI";
 
 function LogDay({handleSubmit, questions, setQuestions, user }) {
 
+  const[response, setResponse] = useState([]);  
+
+  useEffect(()=>{
+    console.log("updating response");
+  },[response]);
+  
   useEffect(() => {
     function fetchData() {
       getQuestionAPI().then((questions) => { 
@@ -14,13 +20,19 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
     fetchData();
   }, []);
 
-
   const handleDateBack = () =>{
     console.log("Date Back");
   }
   const handleDateForward = () =>{
     console.log("Date Forward");
   }
+
+  const handleResponseChange = (e) =>{
+    setResponse((prevValues)=>({
+      ...prevValues,[e.target.name]:e.target.value
+    }))
+  }
+
   const saveResponseOnServer = () =>{
     console.log("Clicked");
   }
@@ -53,6 +65,9 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
               choice={question.multipleChoice}
               questions={questions}
               setQuestions={setQuestions}
+              handleResponseChange={handleResponseChange}
+              response = {response}
+              setResponse ={setResponse}
             />
           ))}
         <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>
