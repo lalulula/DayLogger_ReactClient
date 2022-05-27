@@ -12,16 +12,18 @@ import AdminPage from "./components/AdminPage";
 import { getUserAPI } from "./api/userAPI";
 
 function App() {
+  // NOTE page header
   const [isLogDay, setIsLogDay] = useState(true);
   const [isEditQuestions, setEditQuestions] = useState(false);
   const [isViewData, setViewData] = useState(false);
   const [isProfilePage, setIsProfilePage] = useState(false);
-
+  
+  // NOTE question setters
   const [questions, setQuestions] = useState([]);
 
+  // NOTE states for user + profile
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
-
   const [profile, setProfile] = useState(undefined);
   const [isUserDataLoading, setIsUserDataLoading] = useState(true);
 
@@ -162,7 +164,7 @@ function App() {
               questions={questions}
               setQuestions={setQuestions}
             />
-          )}
+          )} 
           {isEditQuestions && (
             <EditQuestions
               user={user}
@@ -173,7 +175,14 @@ function App() {
           )}
           {isViewData && <ViewData />}
           {isProfilePage && (
-            <ProfilePage setProfile={setProfile} profile={profile} />
+            <ProfilePage 
+            setProfile={setProfile} 
+            profile={profile} 
+            setActiveLink={setActiveLink}
+            setIsLogDay={setIsLogDay}
+            setEditQuestions={setEditQuestions}
+            setViewData={setViewData}
+            setIsProfilePage={setIsProfilePage}/>
           )}
           {/* {isAdmin && <AdminPage />} */}
         </>
