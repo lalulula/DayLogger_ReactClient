@@ -1,18 +1,48 @@
 import React, { useCallback, useEffect, useState } from "react";
 function LogDayQuestions({ user, id, text, type, choice }) {
-  
+  const[response, setResponse] = useState([]);  
+  // const [numResponse, setNumResponse] = useState();
+  // const [boolResponse, setBoolResponse] = useState();
+  // const [textResponse, setTextResponse] = useState();
+  // const [choiceResponse, setChoiceResponse] = useState();  
+  useEffect(()=>{
+    console.log("updating response");
+    console.log("🚀 ~ file: LogDayQuestions.js ~ line 12 ~ LogDayQuestions ~ response", response)
+  },[response])
+
+  const handleResponseChange = (e) =>{
+    setResponse((prevValues)=>({
+      ...prevValues,[e.target.name]:e.target.value
+    }))
+  }
     if(type==="number"){
       return (
       <div className="logDayDiv">
           {text}
           <br/>
           <input
+            onChange={handleResponseChange}
             type="text"
-            name="text"
+            name="textResponse"
+            placeholder="Enter..."
             style={{ marginTop: "5px", padding: "5px", borderRadius: "5px" }} />
           <br />
        </div>
         );
+    }
+    
+    else if(type==="boolean"){
+      return (
+        <div className="logDayDiv">
+          {text}
+          <br />
+          <input onChange={handleResponseChange} type="radio" name="boolResponse"  value="true" style={{ marginTop: "10px" }} />
+          <label htmlFor="true" style={{ marginRight: "50px" }}> True   </label>
+          <input onChange={handleResponseChange} type="radio" name="boolResponse" value="false" />
+          <label htmlFor="false">False</label>
+          <br />
+        </div>
+      );
     }
 
     else if(type==="text"){
@@ -21,28 +51,10 @@ function LogDayQuestions({ user, id, text, type, choice }) {
           {text}
           <br />
           <input
-            type="radio"
-            name="tfchecked"
-            value="true"
-            style={{ marginTop: "10px" }} />
-          <label htmlFor="true" style={{ marginRight: "50px" }}>
-            True
-          </label>
-          <input type="radio" name="tfchecked" value="false" />
-          <label htmlFor="false">False</label>
-          <br />
-        </div>
-      );
-    }
-
-    else if(type==="boolean"){
-      return (
-        <div className="logDayDiv">
-          {text}
-          <br />
-          <input
+            onChange={handleResponseChange}
+            placeholder="Enter..."
             type="text"
-            name="onething"
+            name="textResponse"
             style={{
               marginTop: "5px",
               width: "-webkit-fill-available",
@@ -70,7 +82,7 @@ function LogDayQuestions({ user, id, text, type, choice }) {
               marginBottom: "10px",
             }}
           >
-            <input type="radio" name="op1" value={choice[0]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" value={choice[0]} />
             <label htmlFor="op1">{choice[0]}</label>
           </div>
           <div
@@ -78,7 +90,7 @@ function LogDayQuestions({ user, id, text, type, choice }) {
               marginBottom: "10px",
             }}
           >
-            <input type="radio" name="op2" value={choice[1]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" value={choice[1]} />
             <label htmlFor="op2">{choice[1]}</label>
           </div>
 
@@ -87,7 +99,7 @@ function LogDayQuestions({ user, id, text, type, choice }) {
               marginBottom: "5px",
             }}
           >
-            <input type="radio" name="op3" value={choice[2]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" value={choice[2]} />
             <label htmlFor="op3">{choice[2]}</label>
           </div>
         </div>

@@ -2,30 +2,29 @@ import React, { useEffect } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI } from "../api/questionAPI";
 
-function LogDay({ handleSubmit, questions, setQuestions, user }) {
-  // console.log("LogDay", questions);
-  // console.log("setQuestion", setQuestions);
-  const handleDateBack = () => {
-    console.log("Date Back");
-  };
-  const handleDateForward = () => {
-    console.log("Date Forward");
-  };
+function LogDay({handleSubmit, questions, setQuestions, user }) {
 
   useEffect(() => {
     function fetchData() {
-      getQuestionAPI()
-        .then((questions) => {
-          console.dir(questions);
-          setQuestions(questions);
-        })
-        .catch((err) => {
-          console.error("Error retrieving note data: " + err);
-        });
-    }
+      getQuestionAPI().then((questions) => { 
+      }  ).catch((err) => {
+        console.error('Error retrieving note data: ' + err);
+      });
+    };
     fetchData();
   }, []);
 
+
+  const handleDateBack = () =>{
+    console.log("Date Back");
+  }
+  const handleDateForward = () =>{
+    console.log("Date Forward");
+  }
+  const saveResponseOnServer = () =>{
+    console.log("Clicked");
+  }
+  
   return (
     <div className="logDayContainer">
       <form onSubmit={handleSubmit} className="logDayContent">
@@ -45,6 +44,7 @@ function LogDay({ handleSubmit, questions, setQuestions, user }) {
           </button>
         </div>
         {questions.map((question) => (
+<<<<<<< HEAD
           <LogDayQuestions
             user={user}
             key={question._id}
@@ -57,6 +57,20 @@ function LogDay({ handleSubmit, questions, setQuestions, user }) {
           />
         ))}
         <button className="submitBtn">Submit</button>
+=======
+            <LogDayQuestions
+              user={user}
+              key={question._id}
+              id={question._id}
+              text={question.questionText}
+              type={question.questionType}
+              choice={question.multipleChoice}
+              questions={questions}
+              setQuestions={setQuestions}
+            />
+          ))}
+        <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>
+>>>>>>> yunah
       </form>
     </div>
   );
