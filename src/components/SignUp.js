@@ -33,7 +33,6 @@ const SignUp = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // console.log(name, email, pwd);
     if (validateEmail(email)) {
       if (validatePassword(pwd)) {
         registerAPI(name, email, pwd).then((result) => {
