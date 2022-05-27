@@ -44,20 +44,6 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
           </button>
         </div>
         {questions.map((question) => (
-<<<<<<< HEAD
-          <LogDayQuestions
-            user={user}
-            key={question._id}
-            id={question._id}
-            text={question.questionText}
-            type={question.questionType}
-            choice={question.multipleChoice}
-            questions={questions}
-            setQuestions={setQuestions}
-          />
-        ))}
-        <button className="submitBtn">Submit</button>
-=======
             <LogDayQuestions
               user={user}
               key={question._id}
@@ -70,7 +56,6 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
             />
           ))}
         <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>
->>>>>>> yunah
       </form>
     </div>
   );
