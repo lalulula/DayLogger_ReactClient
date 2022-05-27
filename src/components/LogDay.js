@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI } from "../api/questionAPI";
 
-function LogDay({handleSubmit,questions, setQuestions, user }) {
+function LogDay({handleSubmit, questions, setQuestions, user }) {
   console.log("LogDay", questions);
-
+  console.log("setQuestion", setQuestions);
   const handleDateBack = () =>{
     console.log("Date Back");
   }
@@ -32,16 +32,18 @@ function LogDay({handleSubmit,questions, setQuestions, user }) {
           <h2> 2/21/2021 </h2>
           <button className="material-symbols-outlined dateBtn" onClick={handleDateForward}>arrow_forward_ios</button>
         </div>
-
-        {questions.map((q)=>{
-          <LogDayQuestions  user={user}
-                            key={q._id}
-                            id={q._id}
-                            text={q.questionText}
-                            type={q.questionType}
-                            choice={q.multipleChoice}
-                            />
-        })}
+        {questions.map((question) => (
+            <LogDayQuestions
+              user={user}
+              key={question._id}
+              id={question._id}
+              text={question.questionText}
+              type={question.questionType}
+              choice={question.multipleChoice}
+              questions={questions}
+              setQuestions={setQuestions}
+            />
+          ))}
         <button className="submitBtn">Submit</button>
       </form>
     </div>

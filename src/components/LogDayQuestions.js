@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
-function LogDayQuestions({ user, key, id, text, type, choice }) {
+function LogDayQuestions({ user, id, text, type, choice }) {
   
-    if(type=="number"){
+    if(type==="number"){
       return (
       <div className="logDayDiv">
           {text}
@@ -15,7 +15,7 @@ function LogDayQuestions({ user, key, id, text, type, choice }) {
         );
     }
 
-    else if(type=="text"){
+    else if(type==="text"){
       return (
         <div className="logDayDiv">
           {text}
@@ -35,7 +35,7 @@ function LogDayQuestions({ user, key, id, text, type, choice }) {
       );
     }
 
-    else if(type=="boolean"){
+    else if(type==="boolean"){
       return (
         <div className="logDayDiv">
           {text}
@@ -54,7 +54,7 @@ function LogDayQuestions({ user, key, id, text, type, choice }) {
       );
     }
 
-    else{ // if(type=="multiplechoice")
+    else{ // if(type==="multiplechoice")
       return (
         <div className="logDayDiv"> 
           <div
