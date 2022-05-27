@@ -3,26 +3,27 @@ import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI } from "../api/questionAPI";
 
 function LogDay({handleSubmit, questions, setQuestions, user }) {
-  console.log("LogDay", questions);
-  console.log("setQuestion", setQuestions);
-  const handleDateBack = () =>{
-    console.log("Date Back");
-  }
-  const handleDateForward = () =>{
-    console.log("Date Forward");
-  }
 
   useEffect(() => {
     function fetchData() {
       getQuestionAPI().then((questions) => { 
-        console.dir(questions);
-        setQuestions(questions);
       }  ).catch((err) => {
         console.error('Error retrieving note data: ' + err);
       });
     };
     fetchData();
   }, []);
+
+
+  const handleDateBack = () =>{
+    console.log("Date Back");
+  }
+  const handleDateForward = () =>{
+    console.log("Date Forward");
+  }
+  const saveResponseOnServer = () =>{
+    console.log("Clicked");
+  }
   
   return (
     <div className="logDayContainer">
@@ -44,7 +45,7 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
               setQuestions={setQuestions}
             />
           ))}
-        <button className="submitBtn">Submit</button>
+        <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>
       </form>
     </div>
   );

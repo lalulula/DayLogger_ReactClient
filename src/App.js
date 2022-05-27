@@ -18,9 +18,10 @@ function App() {
   const [isViewData, setViewData] = useState(false);
   const [isProfilePage, setIsProfilePage] = useState(false);
   
-  // NOTE question setters
+  // NOTE question state
   const [questions, setQuestions] = useState([]);
-
+  // NOTE response state
+  const [response, setResponse] = useState([]);
   // NOTE states for user + profile
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
