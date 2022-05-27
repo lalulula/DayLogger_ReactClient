@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import LogDayQuestions from "./LogDayQuestions";
-import { getQuestionAPI } from "../api/questionAPI";
+import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
 function LogDay({handleSubmit, questions, setQuestions, user }) {
-
+  useEffect(() => {
+    console.log("RELOADING QUESTIONS");
+    console.log("QUESTIONS:", questions);
+  }, [questions]);
   useEffect(() => {
     function fetchData() {
       getQuestionAPI().then((questions) => { 
@@ -14,17 +17,31 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
     fetchData();
   }, []);
 
-
-  
   const handleDateBack = () =>{
     console.log("Date Back");
   }
   const handleDateForward = () =>{
     console.log("Date Forward");
   }
-  const saveResponseOnServer = () =>{
-    console.log("Clicked");
+
+  function debounce(func, timeout = 1000) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
+    };
   }
+
+  const saveResponseOnServer = useCallback(debounce(( question ) => {
+    console.log("Clicked");
+    updateQuestionAPI(question).then((res)=>{
+      console.dir(res);
+    }).catch((err)=>{
+      console.error('Error retrieving note data: ', err);
+    })
+  }), []);
   
   return (
     <div className="logDayContainer">

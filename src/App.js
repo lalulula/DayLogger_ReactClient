@@ -21,7 +21,7 @@ function App() {
   // NOTE question state
   const [questions, setQuestions] = useState([]);
   // NOTE response state
-  const [response, setResponse] = useState([]);
+  const [responses, setResponse] = useState([]);
   // NOTE states for user + profile
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");

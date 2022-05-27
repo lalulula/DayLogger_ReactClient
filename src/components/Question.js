@@ -24,7 +24,7 @@ function Question({
       questionType: e.target.value,
       multipleChoice: multipleChoice,
       user: user,
-      response:{}
+      responses:{}
     };
 
     saveQuestionOnServer(newQuestion, questions);
@@ -38,7 +38,7 @@ function Question({
       questionType: questionType,
       multipleChoice: multipleChoice,
       user: user,
-      response:{}
+      responses:{}
     };
     saveQuestionOnServer(newQuestion, questions);
   };
@@ -54,7 +54,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
-        response:{}
+        responses:{}
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -69,13 +69,14 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
-        response:{}
+        responses:{}
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
       ];
       setQuestions(updatedQuestions);
       saveQuestionOnServer(newQuestion, questions);
+      
     } else if (optionIndex === "op3") {
       setMultipleChoice([multipleChoice[0], multipleChoice[1], e.target.value]);
       const newQuestion = {
@@ -84,7 +85,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
-        response:{}
+        responses:{}
       };
 
       saveQuestionOnServer(newQuestion, questions);

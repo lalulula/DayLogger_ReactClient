@@ -26,6 +26,7 @@ export const getQuestionAPI = () => {
 
 // POST: /questions
 export const createQuestionAPI = (question) => {
+  console.log(question);
   return fetch(`${backendURL}/api/questions`, {
     //${backendURL}/api/notes`로 post 요청 날리는거임
     ...defaultHeaders,
@@ -36,11 +37,25 @@ export const createQuestionAPI = (question) => {
     .then(parseJSON);
 };
 
+// const getCircularReplacer = () => {
+//   const seen = new WeakSet();
+//   return (key, value) => {
+//     if (typeof value === 'object' && value !== null) {
+//       if (seen.has(value)) {
+//         return;
+//       }
+//       seen.add(value);
+//     }
+//     return value;
+//   };
+// };
+
 // PUT:updating question : /questions/:id
 export const updateQuestionAPI = (question) => {
   return fetch(`${backendURL}/api/questions/${question._id}`, {
     ...defaultHeaders,
     method: "PUT",
+    // body: JSON.stringify(question, getCircularReplacer()),
     body: JSON.stringify(question),
   }).then(checkStatus);
 };

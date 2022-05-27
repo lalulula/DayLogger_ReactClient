@@ -4,7 +4,7 @@ function LogDayQuestions({ user, id, text, type, choice, questions, setQuestions
  
   useEffect(()=>{
     console.log("updating response");
-    // console.log("🚀 ~ file: LogDayQuestions.js ~ line 12 ~ LogDayQuestions ~ response", response)
+    console.log("🚀 ~ file: LogDayQuestions.js ~ line 12 ~ LogDayQuestions ~ response", response)
     const newQuestion = {
       _id: id,
       questionText: text,
@@ -17,7 +17,7 @@ function LogDayQuestions({ user, id, text, type, choice, questions, setQuestions
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
-    console.log(questions)
+    // console.table(questions)
   },[response])
 
   const handleResponseChange = (e) =>{
