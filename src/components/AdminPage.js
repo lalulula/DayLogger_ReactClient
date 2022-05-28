@@ -5,6 +5,7 @@ import { deleteQuestionAPI } from "../api/questionAPI";
 const AdminPage = ({ getAllUsers, allUsers }) => {
   useEffect(() => {
     getAllUsers();
+    console.log(allUsers)
   }, []);
 
   const deleteUser = (user) => {

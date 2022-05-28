@@ -95,9 +95,9 @@ function App() {
   };
 
   const getAllUsers = async () => {
-    getUserAPI().then((res) => {
+    getUsersAPI().then((res) => {
       console.log(res);
-      setUser(res);
+      setAllUsers(res);
     });
   };
 
