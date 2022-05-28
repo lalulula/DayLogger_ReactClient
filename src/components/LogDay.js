@@ -3,10 +3,12 @@ import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
 function LogDay({handleSubmit, questions, setQuestions, user }) {
-  useEffect(() => {
-    console.log("RELOADING QUESTIONS");
-    console.log("QUESTIONS:", questions);
-  }, [questions]);
+
+  // //NOTE made for testing purposes
+  // useEffect(() => {
+  //   console.log("RELOADING QUESTIONS");
+  //   console.log("QUESTIONS:", questions);
+  // }, [questions]);
 
   useEffect(() => {
     function fetchData() {
