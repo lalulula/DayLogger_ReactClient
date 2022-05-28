@@ -57,6 +57,7 @@ export const updateQuestionAPI = (question) => {
     method: "PUT",
     // body: JSON.stringify(question, getCircularReplacer()),
     body: JSON.stringify(question),
+    
   }).then(checkStatus);
 };
 

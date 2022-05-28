@@ -43,7 +43,6 @@ function App() {
       setIsUserDataLoading(false);
     };
     fetchUserData();
-    console.log("Current App user is: ",profile);
   }, []);
 
   //NOTE: for current clicked link CSS
