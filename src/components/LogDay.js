@@ -7,9 +7,11 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
     console.log("RELOADING QUESTIONS");
     console.log("QUESTIONS:", questions);
   }, [questions]);
+
   useEffect(() => {
     function fetchData() {
       getQuestionAPI().then((questions) => { 
+        setQuestions(questions);
       }  ).catch((err) => {
         console.error('Error retrieving note data: ' + err);
       });

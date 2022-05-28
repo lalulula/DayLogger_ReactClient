@@ -20,8 +20,8 @@ function App() {
   
   // NOTE question state
   const [questions, setQuestions] = useState([]);
-  // NOTE response state
-  const [responses, setResponse] = useState([]);
+  // // NOTE response state
+  // const [responses, setResponse] = useState([]);
   // NOTE states for user + profile
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
@@ -43,6 +43,7 @@ function App() {
       setIsUserDataLoading(false);
     };
     fetchUserData();
+    console.log("Current App user is: ",profile);
   }, []);
 
   //NOTE: for current clicked link CSS
@@ -95,9 +96,9 @@ function App() {
   };
 
   const getAllUsers = async () => {
-    getUsersAPI().then((res) => {
+    getUserAPI().then((res) => {
       console.log(res);
-      setAllUsers(res);
+      setUser(res);
     });
   };
 

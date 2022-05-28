@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-function LogDayQuestions({ user, id, text, type, choice, questions, setQuestions }) {
+
+
+function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions }) {
   const[response, setResponse] = useState([]);  
- 
+
   useEffect(()=>{
     console.log("updating response");
     console.log("🚀 ~ file: LogDayQuestions.js ~ line 12 ~ LogDayQuestions ~ response", response)
@@ -11,7 +13,7 @@ function LogDayQuestions({ user, id, text, type, choice, questions, setQuestions
       questionType: type,
       multipleChoice: choice,
       user: user,
-      response : response
+      responses : response
     };
     const updatedQuestions = [
       ...questions.map((q) => (q._id === id ? newQuestion : q)),

@@ -26,7 +26,7 @@ export const getQuestionAPI = () => {
 
 // POST: /questions
 export const createQuestionAPI = (question) => {
-  console.log(question);
+  // console.log(question);
   return fetch(`${backendURL}/api/questions`, {
     //${backendURL}/api/notes`로 post 요청 날리는거임
     ...defaultHeaders,
