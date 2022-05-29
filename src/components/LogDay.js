@@ -21,44 +21,74 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
     fetchData();
   }, []);
 
-  let mainDate = new Date();
-  const[date, setNextDate] = useState(mainDate);
+  // let mainDate = new Date();
+  // const[date, setNextDate] = useState(mainDate);
 
-  useEffect(()=>{
-    // console.log("console logging",date);
-    // console.log("console logging",mainDate);
-    mainDate = date;
-    setNextDate(mainDate);
-  }, [date])
+  // useEffect(()=>{
+  //   // console.log("console logging",date);
+  //   // console.log("console logging",mainDate);
+  //   mainDate = date;
+  //   setNextDate(mainDate);
+  // }, [date])
 
-  const handleDateBack = () =>{
-    console.log("Date Back");
-    mainDate.setDate(mainDate.getDate() - 1);
-    setNextDate(mainDate);
+  // const handleDateBack = () =>{
+  //   console.log("Date Back");
+  //   mainDate.setDate(mainDate.getDate() - 1);
+  //   setNextDate(mainDate);
+  // }
+
+  // const handleDateForward = () =>{
+  //   console.log("Date Forward");
+  //   mainDate.setDate(mainDate.getDate() + 1);
+  //   if(mainDate <= new Date()){
+  //     console.log("true");
+  //     setNextDate(mainDate);
+  //   }
+  //   else{
+  //     console.log("false");
+  //     setNextDate(new Date());
+  //     console.log("Cannot get next date");
+  //   }
+  // }
+
+  const [date, setDate] = useState(new Date());
+  const [tempLogs, setTempLogs] = useState({});
+
+  // useEffect(() => {
+  //   let currentLogs = {};
+  //   questions.forEach(question => currentLogs[question?._id] = { date: formatDate(date), responseText: "", parentQuestion: question?._id })
+  //   questions.forEach(question => logs.filter(log => log?.date === formatDate(date)).forEach(log => { if (log?.parentQuestion === question?._id) { currentLogs[question?._id] = log } }))
+  //   setTempLogs(currentLogs)
+  // }, [date, logs, questions]);
+
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    return `${month}/${day}/${year}`;
   }
 
-  const handleDateForward = () =>{
-    console.log("Date Forward");
-    mainDate.setDate(mainDate.getDate() + 1);
-    if(mainDate <= new Date()){
-      console.log("true");
-      setNextDate(mainDate);
-    }
-    else{
-      console.log("false");
-      setNextDate(new Date());
-      console.log("Cannot get next date");
-    }
-
+  const checkValidDate = (date) => {
+    const today = new Date();
+    const addDate = new Date(date);
+    addDate.setDate(addDate.getDate() + 1);
+    return addDate.getTime() <= today.getTime() ? true : false;
   }
 
-// const date = new Date();
-// const year = date.getFullYear();
-// const month = date.getMonth() + 1;
-// const day = date.getDate();
+  const handleDateForward = (e) => {
+    e.preventDefault();
+    console.log("next day");
+    checkValidDate(date)
+      ? setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1))
+      : setDate(new Date(date));
+  }
 
-// const withSlashes = [year, month, day].join('/');
-// console.log(withSlashes); // 👉️ 2022/10/25
+  const handleDateBack = (e) => {
+    e.preventDefault();
+    console.log("previous day");
+    setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1));
+  }
 
   const saveResponseOnServer = () =>{
     questions.map(question =>
