@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
@@ -30,13 +30,47 @@ function LogDay({handleSubmit, questions, setQuestions, user, responses, setResp
   //   setTempLogs(currentLogs)
   // }, [date, responses, questions]);
 
+  // let mainDate = new Date();
+  // const[date, setNextDate] = useState(mainDate);
+
+  // useEffect(()=>{
+  //   // console.log("console logging",date);
+  //   // console.log("console logging",mainDate);
+  //   mainDate = date;
+  //   setNextDate(mainDate);
+  // }, [date])
+
+  // const handleDateBack = () =>{
+  //   console.log("Date Back");
+  //   mainDate.setDate(mainDate.getDate() - 1);
+  //   setNextDate(mainDate);
+  // }
+
+  // const handleDateForward = () =>{
+  //   console.log("Date Forward");
+  //   mainDate.setDate(mainDate.getDate() + 1);
+  //   if(mainDate <= new Date()){
+  //     console.log("true");
+  //     setNextDate(mainDate);
+  //   }
+  //   else{
+  //     console.log("false");
+  //     setNextDate(new Date());
+  //     console.log("Cannot get next date");
+  //   }
+  // }
+
+
+
   const [date, setDate] = useState(new Date());
-  console.log(date);
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
-    return `${month}/${day}/${year}`;
+  const handleDateForward = () => {
+    checkValidDate(date)
+      ? setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1))
+      : setDate(new Date(date));
+  }
+
+  const handleDateBack = () => {
+    setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1));
   }
 
   const checkValidDate = (date) => {
@@ -46,14 +80,11 @@ function LogDay({handleSubmit, questions, setQuestions, user, responses, setResp
     return addDate.getTime() <= today.getTime() ? true : false;
   }
 
-  const handleDateForward = () => {
-    checkValidDate(date)
-      ? setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1))
-      : setDate(new Date(date));
-  }
-
-  const handleDateBack = () => {
-    setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1));
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    return `${month}/${day}/${year}`;
   }
 
   const saveResponseOnServer = () =>{
@@ -79,7 +110,7 @@ function LogDay({handleSubmit, questions, setQuestions, user, responses, setResp
           >
             arrow_back_ios
           </button>
-          <h2> {date.toISOString().replace('-', '/').split('T')[0].replace('-', '/')}</h2>
+          <h2> {formatDate(date)}</h2>
           <button
             className="material-symbols-outlined dateBtn"
             onClick={handleDateForward}
