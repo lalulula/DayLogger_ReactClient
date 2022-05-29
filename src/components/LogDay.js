@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
-function LogDay({handleSubmit, questions, setQuestions, user }) {
+function LogDay({handleSubmit, questions, setQuestions, user, responses, setResponse }) {
 
   // //NOTE made for testing purposes
   // useEffect(() => {
@@ -21,47 +21,17 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
     fetchData();
   }, []);
 
-  // let mainDate = new Date();
-  // const[date, setNextDate] = useState(mainDate);
 
-  // useEffect(()=>{
-  //   // console.log("console logging",date);
-  //   // console.log("console logging",mainDate);
-  //   mainDate = date;
-  //   setNextDate(mainDate);
-  // }, [date])
-
-  // const handleDateBack = () =>{
-  //   console.log("Date Back");
-  //   mainDate.setDate(mainDate.getDate() - 1);
-  //   setNextDate(mainDate);
-  // }
-
-  // const handleDateForward = () =>{
-  //   console.log("Date Forward");
-  //   mainDate.setDate(mainDate.getDate() + 1);
-  //   if(mainDate <= new Date()){
-  //     console.log("true");
-  //     setNextDate(mainDate);
-  //   }
-  //   else{
-  //     console.log("false");
-  //     setNextDate(new Date());
-  //     console.log("Cannot get next date");
-  //   }
-  // }
-
-  const [date, setDate] = useState(new Date());
-  const [tempLogs, setTempLogs] = useState({});
-
+  // const [tempLogs, setTempLogs] = useState({});
   // useEffect(() => {
   //   let currentLogs = {};
-  //   questions.forEach(question => currentLogs[question?._id] = { date: formatDate(date), responseText: "", parentQuestion: question?._id })
-  //   questions.forEach(question => logs.filter(log => log?.date === formatDate(date)).forEach(log => { if (log?.parentQuestion === question?._id) { currentLogs[question?._id] = log } }))
+  //   questions.forEach(question => currentLogs[question?._id] = { date: formatDate(date), responses: "", parentQuestion: question?._id })
+  //   questions.forEach(question => responses.filter(response => response?.date === formatDate(date)).forEach(response => { if (response?.parentQuestion === question?._id) { currentLogs[question?._id] = response } }))
   //   setTempLogs(currentLogs)
-  // }, [date, logs, questions]);
+  // }, [date, responses, questions]);
 
-
+  const [date, setDate] = useState(new Date());
+  console.log(date);
   const formatDate = (date) => {
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -76,17 +46,13 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
     return addDate.getTime() <= today.getTime() ? true : false;
   }
 
-  const handleDateForward = (e) => {
-    e.preventDefault();
-    console.log("next day");
+  const handleDateForward = () => {
     checkValidDate(date)
       ? setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1))
       : setDate(new Date(date));
   }
 
-  const handleDateBack = (e) => {
-    e.preventDefault();
-    console.log("previous day");
+  const handleDateBack = () => {
     setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1));
   }
 
@@ -131,6 +97,8 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
               choice={question.multipleChoice}
               questions={questions}
               setQuestions={setQuestions}
+              responses = {responses}
+              setResponse = {setResponse}
             />
           ))}
         <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>

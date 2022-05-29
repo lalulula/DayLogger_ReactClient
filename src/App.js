@@ -21,7 +21,7 @@ function App() {
   // NOTE question state
   const [questions, setQuestions] = useState([]);
   // // NOTE response state
-  // const [responses, setResponse] = useState([]);
+  const[responses, setResponse] = useState([]);  
   // NOTE states for user + profile
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
@@ -198,6 +198,8 @@ function App() {
               user={user}
               questions={questions}
               setQuestions={setQuestions}
+              responses={responses}
+              setResponse ={setResponse}
             />
           )} 
           {isEditQuestions && (

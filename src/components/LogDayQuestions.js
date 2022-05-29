@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 
-function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions }) {
-  const[responses, setResponse] = useState([]);  
+function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions, responses, setResponse }) {
+  // const[responses, setResponse] = useState([]);  
 
   useEffect(()=>{
     const newQuestion = {
