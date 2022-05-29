@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
@@ -21,13 +21,45 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
     fetchData();
   }, []);
 
+  let mainDate = new Date();
+  const[date, setNextDate] = useState(mainDate);
+
+  useEffect(()=>{
+    // console.log("console logging",date);
+    // console.log("console logging",mainDate);
+    mainDate = date;
+    setNextDate(mainDate);
+  }, [date])
+
   const handleDateBack = () =>{
     console.log("Date Back");
+    mainDate.setDate(mainDate.getDate() - 1);
+    setNextDate(mainDate);
   }
+
   const handleDateForward = () =>{
     console.log("Date Forward");
+    mainDate.setDate(mainDate.getDate() + 1);
+    if(mainDate <= new Date()){
+      console.log("true");
+      setNextDate(mainDate);
+    }
+    else{
+      console.log("false");
+      setNextDate(new Date());
+      console.log("Cannot get next date");
+    }
+
   }
-  
+
+// const date = new Date();
+// const year = date.getFullYear();
+// const month = date.getMonth() + 1;
+// const day = date.getDate();
+
+// const withSlashes = [year, month, day].join('/');
+// console.log(withSlashes); // 👉️ 2022/10/25
+
   const saveResponseOnServer = () =>{
     questions.map(question =>
       updateQuestionAPI(question)
@@ -51,7 +83,7 @@ function LogDay({handleSubmit, questions, setQuestions, user }) {
           >
             arrow_back_ios
           </button>
-          <h2> 2/21/2021 </h2>
+          <h2> {date.toISOString().replace('-', '/').split('T')[0].replace('-', '/')}</h2>
           <button
             className="material-symbols-outlined dateBtn"
             onClick={handleDateForward}
