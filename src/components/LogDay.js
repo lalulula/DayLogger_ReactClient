@@ -99,8 +99,8 @@ function LogDay({handleSubmit, questions, setQuestions, user, responses, setResp
               setQuestions={setQuestions}
               responses = {responses}
               setResponse = {setResponse}
-              date = {date}
-              // date = {formatDate(date)}
+              // date = {date}
+              date = {formatDate(date)}
             />
           ))}
         <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>
