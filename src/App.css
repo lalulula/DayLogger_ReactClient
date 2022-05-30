@@ -15,24 +15,26 @@ body {
   background-color: var(--alternativeBackgroundColor);
   height: 100%;
 }
-body input{
+
+body input {
   border: solid 1px black;
 }
 
 input:focus,
 select:focus,
 textarea:focus,
-button:focus  {
+button:focus {
   outline-color: var(--activeColor);
 }
 
 select {
   border-color: var(--moderateColor);
 }
-button:hover{
+
+button:hover {
   cursor: pointer;
 }
- 
+
 
 input[type=submit]:hover,
 input[type=button]:hover,
@@ -41,220 +43,259 @@ button:hover {
 }
 
 /* NOTE MainPage Header */
-.currentLink{
+.currentLink {
   color: #75c3c5;
   text-decoration: underline;
 }
-.day-logger{
+
+.day-logger {
   margin-left: 5px;
 }
-.pageHeader{
+
+.pageHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
-  background-color: white; 
+  justify-content: space-between;
+  background-color: white;
   /* margin: 2px; */
   padding: 8px;
   padding-left: 15px;
   height: 70px;
 }
-.pageHeader .profileImage{
+
+.pageHeader .profileImage {
   width: 40px;
   height: 40px;
   margin-left: 10px;
   border-radius: 70px;
 }
-.profileImage{
-  margin:0px !important;
+
+.profileImage {
+  margin: 0px !important;
   padding: 15px;
 }
-.header-profileImage{
+
+.header-profileImage {
   cursor: pointer;
 }
-.pageMenu{
+
+.pageMenu {
   display: flex;
   gap: 20px;
   font-weight: 500;
 }
-.pageMenu:hover{
+
+.pageMenu:hover {
   cursor: pointer;
 }
 
 /* NOTE LogDay */
-.logDayContainer{
+.logDayContainer {
   /* display: flex; */
   flex-wrap: nowrap;
   justify-content: center;
-  margin-left:100px;
+  margin-left: 100px;
   margin-right: 100px;
 
 }
-.logDayDate{
+
+.logDayDate {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.logDayDiv1, .logDayDiv2, .logDayDiv3, .logDayDiv4{
+
+.logDayDiv1,
+.logDayDiv2,
+.logDayDiv3,
+.logDayDiv4 {
   background-color: white;
-  border-radius: 5px;;
+  border-radius: 5px;
+  ;
   /* width: 400px; */
-  margin:10px;
+  margin: 10px;
   padding: 10px;
-  padding-top:15px
+  padding-top: 15px
 }
-.logDayDiv{
+
+.logDayDiv {
   background-color: white;
-  border-radius: 5px;;
+  border-radius: 5px;
+  ;
   /* width: 400px; */
-  margin:10px;
+  margin: 10px;
   padding: 10px;
-  padding-top:15px
+  padding-top: 15px
 }
 
-.multipleChoice{
+.multipleChoice {}
 
-}
-
-.submitBtn{
-  margin:10px;
+.submitBtn {
+  margin: 10px;
   padding: 10px 20px 10px 20px;
   border-radius: 8px;
   background-color: #ed6687;
-  color:white;
+  color: white;
   border: none;
 }
+
 .dateBtn {
   background: none;
   border: none;
 }
-.dateBtn :hover{
+
+.dateBtn :hover {
   cursor: pointer;
-  color: gray ;
+  color: gray;
 }
 
 /*NOTE Edit questions */
-.editQContainer{
+.editQContainer {
   flex-wrap: nowrap;
   justify-content: center;
-  margin-left:100px;
+  margin-left: 100px;
   margin-right: 100px;
 }
 
-.editQHeader{
+.editQHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.addQuestionBtn{
+
+.addQuestionBtn {
   cursor: pointer;
 }
-.qDiv{
+
+.qDiv {
   background-color: white;
-  border-radius: 5px;;
-  margin:10px;
+  border-radius: 5px;
+  ;
+  margin: 10px;
   padding: 10px;
-  padding-top:15px
+  padding-top: 15px
 }
 
-.qContainer{
+.qContainer {
   display: flex;
   justify-content: space-between;
 }
-.saveBtn{
-  margin:10px;
+
+.saveBtn {
+  margin: 10px;
   padding: 10px 20px 10px 20px;
   border-radius: 8px;
   background-color: #ed6687;
-  color:white;
+  color: white;
   border: none;
 }
-.saveBtnforProfile{
+
+.saveBtnforProfile {
   padding: 10px 35px 10px 35px;
   font-size: large;
 }
 
 /* NOTE Question */
-.qDiv .multipleChoice{
+.qDiv .multipleChoice {
   margin: 10px;
-  
+
 }
-.qDiv .multipleChoice input{
+
+.qDiv .multipleChoice input {
   margin: 10px;
 }
-.qDiv .multipleChoice input{
+
+.qDiv .multipleChoice input {
   border-bottom: 2px solid #d3d3d3;
 }
-.multChoiceDiv{
+
+.multChoiceDiv {
   display: flex;
   align-items: center;
 }
-.multChoiceDiv .radioBtn{
+
+.multChoiceDiv .radioBtn {
   color: #e1e1e1;
   font-size: 15px;
 }
-.multChoiceDiv input{
+
+.multChoiceDiv input {
   border: none;
   border-bottom: 2px solid black;
 }
-.multChoiceDiv input:focus{
+
+.multChoiceDiv input:focus {
   outline: none;
 }
+
 /* NOTE Profile */
-.profileContainer{
+.profileContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
-  
+
 }
-.profileContainer h3{
-  margin:10px;
+
+.profileContainer h3 {
+  margin: 10px;
 }
-.profileHeader{
+
+.profileHeader {
   font-weight: bolder;
 }
-.changePIMG{
+
+.changePIMG {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.profileDiv1 img{
+
+.profileDiv1 img {
   width: 40px;
   height: 40px;
   margin-left: 10px;
   border-radius: 70px;
 }
-input#file-input{
+
+input#file-input {
   display: none;
 }
-.handleImageBtn:hover{
+
+.handleImageBtn:hover {
   cursor: pointer;
-  color: gray ;
+  color: gray;
 }
-.put-img-box{
+
+.put-img-box {
   border-radius: 8px;
   background-color: var(--activeColor);
-  padding:8px;
+  padding: 8px;
 }
-.removeImage{
+
+.removeImage {
   text-decoration: underline;
 
 }
-.profileDiv1,.profileDiv2, .profileDiv3, .profileDiv4{
+
+.profileDiv1,
+.profileDiv2,
+.profileDiv3,
+.profileDiv4 {
   background-color: white;
   border-radius: 8px;
   width: 400px;
-  margin:5px;
+  margin: 5px;
   padding: 15px;
 }
 
-.profileDiv5{
+.profileDiv5 {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   width: 400px;
-  margin:10px;
+  margin: 10px;
 }
 
 /* NOTE Login Page */
@@ -272,6 +313,7 @@ input#file-input{
   padding-top: 140px;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
   width: 400px;
   background-color: white;
@@ -280,7 +322,7 @@ input#file-input{
   border: 1px solid #888;
   border-radius: 5%;
   align-items: center;
-} 
+}
 
 /* The Close Button */
 .close {
@@ -296,41 +338,47 @@ input#file-input{
   text-decoration: none;
   cursor: pointer;
 }
+
 .signUp1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.signUp2{
+
+.signUp2 {
   text-align: center;
 }
-.signUpBtn{
+
+.signUpBtn {
   background-color: #4AA12E;
   border-radius: 5px;
   border: none;
   color: white;
   font-size: small;
-  margin:20px 0px 10px 0px;
+  margin: 20px 0px 10px 0px;
   padding: 10px 15px 10px 15px;
 }
 
 
 /* These rules only apply if the window's max-width is 500px or less */
 @media all and (max-width: 600px) {
-  .pageHeader h2{
+  .pageHeader h2 {
     display: none;
   }
+
   /* .logDayDiv4{
     display: block;
   } */
-  .logDayContainer{
-    margin-left:0px;
-  margin-right: 0px;
+  .logDayContainer {
+    margin-left: 0px;
+    margin-right: 0px;
   }
-  .logDayDate{
+
+  .logDayDate {
     padding-left: 15px;
     padding-right: 15px;
   }
+
   .loginModal {
     display: none;
     position: fixed;
@@ -343,72 +391,81 @@ input#file-input{
     padding-top: 0px;
     background-color: rgba(256, 256, 256, 1);
   }
+
   .modal-content {
-      background-color: white;
-      display: contents;
+    background-color: white;
+    display: contents;
   }
-  .registerModal{
+
+  .registerModal {
     height: 100vh;
     background-color: white;
     padding: 0;
   }
+
   .editRegisterContainer {
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-bottom: 300px;
-      overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 300px;
+    overflow: hidden;
   }
 }
 
-.login-wrap{
+.login-wrap {
   background-color: white;
   border-radius: 10px;
   padding: 10px;
 }
 
-.login{
+.login {
   display: flex;
   height: 100vh;
   width: 100vw;
   justify-content: center;
   align-items: center;
 }
-.title{
+
+.title {
   text-align: center;
   padding: 5px;
 }
-.title-notes{
-font-size:xx-large;
-font-weight: bolder;
-padding: 15px;
-padding-bottom: 0px;
+
+.title-notes {
+  font-size: xx-large;
+  font-weight: bolder;
+  padding: 15px;
+  padding-bottom: 0px;
 }
-.title-descrition{
-  font-size:large;
+
+.title-descrition {
+  font-size: large;
   font-weight: bolder;
   padding: 15px;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
-.white-box{
+.white-box {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;
 }
 
-.inputs input{
+.inputs input {
   -webkit-box-sizing: border-box;
   width: 100%;
   margin: 0px;
-} 
-.login-email-wrap{
+}
+
+.login-email-wrap {
   margin-bottom: 10px;
 }
-.login-button-wrap{
+
+.login-button-wrap {
   text-align: -webkit-center;
 }
-.login-button{
+
+.login-button {
   font-size: 15px;
   -webkit-box-sizing: border-box;
   width: 50%;
@@ -421,46 +478,47 @@ padding-bottom: 0px;
   margin-bottom: 10px;
 }
 
-.login-signup-button-wrap{
+.login-signup-button-wrap {
   text-align: -webkit-center;
 }
 
-.login-signup-button{
+.login-signup-button {
   font-size: 13px;
   background-color: white;
   text-align: center;
-  display:inline-block;
-  border:0;
+  display: inline-block;
+  border: 0;
   text-decoration: underline;
   padding: 10px;
   color: #275D16;
 }
 
-.login-signup-button2{
+.login-signup-button2 {
   font-size: 15px;
   background-color: #275D16;
   text-align: center;
-  display:inline-block;
+  display: inline-block;
   padding: 8px;
   padding-left: 50px;
   padding-right: 50px;
   border-radius: 10px;
   color: white;
   margin: 5px;
-  margin-top:10px;
+  margin-top: 10px;
   margin-bottom: 22px;
-  text-decoration:none
+  text-decoration: none
 }
 
-.signup-background{
+.signup-background {
   background-color: rgba(126, 126, 126, 0.5);
   display: none;
   position: fixed;
   z-index: 1;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
-.signup{
+
+.signup {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -468,18 +526,18 @@ padding-bottom: 0px;
   align-items: center;
 }
 
-.signup-white-box{
+.signup-white-box {
   width: 400px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 15px;
 }
 
-.signup-title{
+.signup-title {
   display: flex;
   text-align: center;
   font-size: 20px;
-  font-weight:bolder;
+  font-weight: bolder;
   justify-content: space-between;
   margin-bottom: 10px;
   /* padding-top: 5px; */
@@ -487,32 +545,32 @@ padding-bottom: 0px;
   padding-left: 155px;
 }
 
-.signup-input-wrap{
+.signup-input-wrap {
   padding-bottom: 7px;
 }
 
-.signup-inputs input{
+.signup-inputs input {
   -webkit-box-sizing: border-box;
   width: 100%;
   padding: 3px;
 }
 
-.signup-name{
+.signup-name {
   float: left;
 }
 
-.signup-email{
+.signup-email {
   float: left;
 }
 
-.signup-password{
+.signup-password {
   float: left;
 }
 
 
-.errmsg{
-  margin-top:5px;
-  color:red
+.errmsg {
+  margin-top: 5px;
+  color: red
 }
 
 
@@ -546,16 +604,15 @@ padding-bottom: 0px;
 }
 
 .dot-pulse__dot {
-  animation: pulse var(--uib-speed) ease-in-out
-    calc(var(--uib-speed) * 0.125) infinite both;
+  animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * 0.125) infinite both;
 }
 
 .dot-pulse::after {
-  animation: pulse var(--uib-speed) ease-in-out
-    calc(var(--uib-speed) * 0.25) infinite;
+  animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * 0.25) infinite;
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(0);
@@ -567,11 +624,25 @@ padding-bottom: 0px;
 }
 
 
-.userdata-delete-btn{
-  font-size:12px;
+.userdata-delete-btn {
+  font-size: 12px;
   font-weight: 500;
   border-radius: 5px;
   background-color: #ed6687;
-  color:white;
+  color: white;
   border: none;
+}
+
+
+.view-data-container {
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.view-data-select {
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 15px
 }
