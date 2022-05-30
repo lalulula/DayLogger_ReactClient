@@ -9,6 +9,7 @@ function Question({
   questions,
   setQuestions,
   handleDeleteQuestion,
+  responses
 }) {
   const [questionType, setquestionType] = useState(type);
   const [questionText, setquestionText] = useState(text);
@@ -24,7 +25,7 @@ function Question({
       questionType: e.target.value,
       multipleChoice: multipleChoice,
       user: user,
-      responses:{}
+      responses:responses
     };
 
     saveQuestionOnServer(newQuestion, questions);
@@ -38,7 +39,7 @@ function Question({
       questionType: questionType,
       multipleChoice: multipleChoice,
       user: user,
-      responses:{}
+      responses:responses
     };
     saveQuestionOnServer(newQuestion, questions);
   };
@@ -54,7 +55,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
-        responses:{}
+        responses:responses
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -69,7 +70,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
-        responses:{}
+        responses:responses
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -85,7 +86,7 @@ function Question({
         questionType: questionType,
         multipleChoice: multipleChoice,
         user: user,
-        responses:{}
+        responses:responses
       };
 
       saveQuestionOnServer(newQuestion, questions);

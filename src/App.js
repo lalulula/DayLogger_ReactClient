@@ -210,6 +210,8 @@ function App() {
               handleSubmit={handleSubmit}
               questions={questions}
               setQuestions={setQuestions}
+              responses ={responses}
+              setResponse = {setResponse}
             />
           )}
           {isViewData && <ViewData />}

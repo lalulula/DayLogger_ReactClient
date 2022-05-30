@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
 import { createQuestionAPI, deleteQuestionAPI } from "../api/questionAPI";
-function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
+function EditQuestions({ handleSubmit, questions, setQuestions, user, responses, setResponse }) {
   useEffect(() => {
     console.log("RELOADING QUESTIONS");
     console.log("QUESTIONS:", questions);
@@ -13,7 +13,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
       questionType: "number",
       multipleChoice: ["option1", "option2", "option3"],
       user: user,
-      responses:{}
+      responses:responses
     };
     createQuestionAPI(newQuestion).then((response) => {
       console.log("Created question on the server");
@@ -69,6 +69,8 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
               questions={questions}
               setQuestions={setQuestions}
               handleDeleteQuestion={handleDeleteQuestion}
+              responses = {responses}
+              setResponse = {setResponse}
             />
           ))}
         </div>

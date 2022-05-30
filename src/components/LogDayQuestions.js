@@ -1,11 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { getQuestionAPI } from "../api/questionAPI";
 
-
-function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions, responses, setResponse }) {
-  // const[responses, setResponse] = useState([]);  
-  useEffect(()=>{
-    setResponse(questions.responses);
-  },[]);
+function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions, responses, setResponse }) { 
+  // console.log(Object.keys(responses));
 
   useEffect(()=>{
     const newQuestion = {
@@ -21,15 +18,10 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
-    if(responses){
-      let existingDateInfo = Object.keys(responses);
-      console.log(existingDateInfo);
-    }
   },[responses])
 
   const handleResponseChange = (e) =>{
     setResponse( {...responses, [date]: e.target.value});
-    // setResponse( JSON.stringify({...responses, [date]: e.target.value}));
   }
     if(type==="number"){
       return (
