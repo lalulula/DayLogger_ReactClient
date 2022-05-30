@@ -149,6 +149,7 @@ function Question({
               borderRadius: "5px",
             }}
             onChange={handleTypeChange}
+            value={questionType}
           >
             <option value="number">number</option>
             <option value="text">text</option>
@@ -193,8 +194,8 @@ function Question({
       <input
         type="text"
         name="qText"
-        placeholder="Enter question..."
         onChange={handleTextChange}
+        value={questionText}
         style={{
           marginBottom: "5px",
           width: "-webkit-fill-available",
