@@ -99,7 +99,7 @@ function LogDay({handleSubmit, questions, setQuestions, user}) {
               choice={question.multipleChoice}
               questions={questions}
               setQuestions={setQuestions}
-              // responses = {question.responses}
+              answers = {question.responses}
               // setResponse = {setResponse}
               // date = {date}
               date = {formatDate(date)}

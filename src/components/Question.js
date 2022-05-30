@@ -15,7 +15,6 @@ function Question({
   const [questionText, setquestionText] = useState(text);
   const [multipleChoice, setMultipleChoice] = useState(choice);
 
-  // console.log(id);
 
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
@@ -39,7 +38,7 @@ function Question({
       questionType: questionType,
       multipleChoice: multipleChoice,
       user: user,
-      responses:responses
+      responses : responses
     };
     saveQuestionOnServer(newQuestion, questions);
   };
@@ -129,6 +128,7 @@ function Question({
         <input
           type="text"
           name="qText"
+          placeholder="Enter question..."
           onChange={handleTextChange}
           value={questionText}
           style={{
@@ -149,7 +149,6 @@ function Question({
               borderRadius: "5px",
             }}
             onChange={handleTypeChange}
-            value={questionType}
           >
             <option value="number">number</option>
             <option value="text">text</option>
@@ -194,8 +193,8 @@ function Question({
       <input
         type="text"
         name="qText"
+        placeholder="Enter question..."
         onChange={handleTextChange}
-        value={questionText}
         style={{
           marginBottom: "5px",
           width: "-webkit-fill-available",

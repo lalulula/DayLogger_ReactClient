@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getQuestionAPI } from "../api/questionAPI";
 
-function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions }) { 
+function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions, answers }) { 
   // console.log(Object.keys(responses));
+  console.log(answers);
   const[responses, setResponse] = useState([]);  
   useEffect(()=>{
     const newQuestion = {
