@@ -30,37 +30,6 @@ function LogDay({handleSubmit, questions, setQuestions, user, responses, setResp
   //   setTempLogs(currentLogs)
   // }, [date, responses, questions]);
 
-  // let mainDate = new Date();
-  // const[date, setNextDate] = useState(mainDate);
-
-  // useEffect(()=>{
-  //   // console.log("console logging",date);
-  //   // console.log("console logging",mainDate);
-  //   mainDate = date;
-  //   setNextDate(mainDate);
-  // }, [date])
-
-  // const handleDateBack = () =>{
-  //   console.log("Date Back");
-  //   mainDate.setDate(mainDate.getDate() - 1);
-  //   setNextDate(mainDate);
-  // }
-
-  // const handleDateForward = () =>{
-  //   console.log("Date Forward");
-  //   mainDate.setDate(mainDate.getDate() + 1);
-  //   if(mainDate <= new Date()){
-  //     console.log("true");
-  //     setNextDate(mainDate);
-  //   }
-  //   else{
-  //     console.log("false");
-  //     setNextDate(new Date());
-  //     console.log("Cannot get next date");
-  //   }
-  // }
-
-
 
   const [date, setDate] = useState(new Date());
   const handleDateForward = () => {
@@ -130,6 +99,8 @@ function LogDay({handleSubmit, questions, setQuestions, user, responses, setResp
               setQuestions={setQuestions}
               responses = {responses}
               setResponse = {setResponse}
+              date = {date}
+              // date = {formatDate(date)}
             />
           ))}
         <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 
 
-function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions, responses, setResponse }) {
+function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions, responses, setResponse }) {
   // const[responses, setResponse] = useState([]);  
 
   useEffect(()=>{
@@ -11,7 +11,8 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
       questionType: type,
       multipleChoice: choice,
       user: user,
-      responses : responses
+      responses : responses,
+      date : date
     };
     const updatedQuestions = [
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -20,7 +21,7 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
   },[responses])
 
   const handleResponseChange = (e) =>{
-    setResponse({[e.target.name]:e.target.value});
+    setResponse( {...responses, [date]: e.target.value});
   }
     if(type==="number"){
       return (
@@ -29,8 +30,9 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
           <br/>
           <input
             onChange={handleResponseChange}
-            type="text"
-            name="textResponse"
+            type="numeric"
+            name="numResponse"
+            id="numResponse"
             placeholder="Enter..."
             style={{ marginTop: "5px", padding: "5px", borderRadius: "5px" }} />
           <br />
@@ -43,9 +45,9 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
         <div className="logDayDiv">
           {text}
           <br />
-          <input onChange={handleResponseChange} type="radio" name="boolResponse"  value="true" style={{ marginTop: "10px" }} />
+          <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse1" value="true" style={{ marginTop: "10px" }} />
           <label htmlFor="true" style={{ marginRight: "50px" }}> True   </label>
-          <input onChange={handleResponseChange} type="radio" name="boolResponse" value="false" />
+          <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse2" value="false" />
           <label htmlFor="false">False</label>
           <br />
         </div>
@@ -62,6 +64,7 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
             placeholder="Enter..."
             type="text"
             name="textResponse"
+            id="textResponse"
             style={{
               marginTop: "5px",
               width: "-webkit-fill-available",
@@ -89,7 +92,7 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
               marginBottom: "10px",
             }}
           >
-            <input onChange={handleResponseChange} type="radio" name="choiceResponse" value={choice[0]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice1" value={choice[0]} />
             <label htmlFor="op1">{choice[0]}</label>
           </div>
           <div
@@ -97,7 +100,7 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
               marginBottom: "10px",
             }}
           >
-            <input onChange={handleResponseChange} type="radio" name="choiceResponse" value={choice[1]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice2" value={choice[1]} />
             <label htmlFor="op2">{choice[1]}</label>
           </div>
 
@@ -106,7 +109,7 @@ function LogDayQuestions({user,  id, text, type, choice, questions, setQuestions
               marginBottom: "5px",
             }}
           >
-            <input onChange={handleResponseChange} type="radio" name="choiceResponse" value={choice[2]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice3" value={choice[2]} />
             <label htmlFor="op3">{choice[2]}</label>
           </div>
         </div>
