@@ -3,7 +3,9 @@ import { getQuestionAPI } from "../api/questionAPI";
 
 function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions, answers }) { 
   // console.log(Object.keys(responses));
-  console.log(answers);
+  
+  // console.log(answers);
+  // const [displayedR, setDisplayedResponse]
   const[responses, setResponse] = useState([]);  
   useEffect(()=>{
     const newQuestion = {
@@ -19,6 +21,14 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
+    // console.log("answers",answers);
+    // console.log(date);
+    // console.log("answers-key",Object.keys(answers));
+    // console.log("answers-value",Object.values(answers));
+    // for(let i = 0 ; i<answers.length; i++){
+      
+    // }
+    // console.log("date",date);
   },[responses])
 
   const handleResponseChange = (e) =>{

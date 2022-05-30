@@ -32,12 +32,13 @@ function LogDay({handleSubmit, questions, setQuestions, user}) {
   //   setTempLogs(currentLogs)
   // }, [date, responses, questions]);
 
-
   const [date, setDate] = useState(new Date());
+  
   const handleDateForward = () => {
     checkValidDate(date)
       ? setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1))
       : setDate(new Date(date));
+
   }
 
   const handleDateBack = () => {
