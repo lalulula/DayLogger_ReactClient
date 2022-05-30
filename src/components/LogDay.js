@@ -24,16 +24,8 @@ function LogDay({handleSubmit, questions, setQuestions, user}) {
   }, []);
 
 
-  // const [tempLogs, setTempLogs] = useState({});
-  // useEffect(() => {
-  //   let currentLogs = {};
-  //   questions.forEach(question => currentLogs[question?._id] = { date: formatDate(date), responses: "", parentQuestion: question?._id })
-  //   questions.forEach(question => responses.filter(response => response?.date === formatDate(date)).forEach(response => { if (response?.parentQuestion === question?._id) { currentLogs[question?._id] = response } }))
-  //   setTempLogs(currentLogs)
-  // }, [date, responses, questions]);
-
   const [date, setDate] = useState(new Date());
-  
+
   const handleDateForward = () => {
     checkValidDate(date)
       ? setDate(new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1))

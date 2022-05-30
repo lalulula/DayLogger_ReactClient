@@ -5,7 +5,6 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
   // console.log(Object.keys(responses));
   
   // console.log(answers);
-  // const [displayedR, setDisplayedResponse]
   const[responses, setResponse] = useState([]);  
   useEffect(()=>{
     const newQuestion = {
@@ -21,15 +20,9 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
       ...questions.map((q) => (q._id === id ? newQuestion : q)),
     ];
     setQuestions(updatedQuestions);
-    // console.log("answers",answers);
-    // console.log(date);
-    // console.log("answers-key",Object.keys(answers));
-    // console.log("answers-value",Object.values(answers));
-    // for(let i = 0 ; i<answers.length; i++){
-      
-    // }
-    // console.log("date",date);
+
   },[responses])
+
 
   const handleResponseChange = (e) =>{
     setResponse( {...responses, [date]: e.target.value});
@@ -40,6 +33,7 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
           {text}
           <br/>
           <input
+            value={answers[date]||""}
             onChange={handleResponseChange}
             type="numeric"
             name="numResponse"
@@ -56,9 +50,9 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
         <div className="logDayDiv">
           {text}
           <br />
-          <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse1" value="true" style={{ marginTop: "10px" }} />
+          <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse1" value={answers[date]||""} style={{ marginTop: "10px" }} />
           <label htmlFor="true" style={{ marginRight: "50px" }}> True   </label>
-          <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse2" value="false" />
+          <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse2" value={answers[date]||""} />
           <label htmlFor="false">False</label>
           <br />
         </div>
@@ -71,6 +65,7 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
           {text}
           <br />
           <input
+            value={answers[date]||""}
             onChange={handleResponseChange}
             placeholder="Enter..."
             type="text"
@@ -103,7 +98,7 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
               marginBottom: "10px",
             }}
           >
-            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice1" value={choice[0]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice1" value={answers[date]||""} />
             <label htmlFor="op1">{choice[0]}</label>
           </div>
           <div
@@ -111,7 +106,7 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
               marginBottom: "10px",
             }}
           >
-            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice2" value={choice[1]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice2" value={answers[date]||""} />
             <label htmlFor="op2">{choice[1]}</label>
           </div>
 
@@ -120,7 +115,7 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
               marginBottom: "5px",
             }}
           >
-            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice3" value={choice[2]} />
+            <input onChange={handleResponseChange} type="radio" name="choiceResponse" id="choice3" value={answers[date]||""} />
             <label htmlFor="op3">{choice[2]}</label>
           </div>
         </div>

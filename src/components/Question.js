@@ -106,8 +106,6 @@ function Question({
     debounce((question, questions) => {
       updateQuestionAPI(question)
         .then((res) => {
-          // console.log("🚀 ~ file: Question.js ~ line 109 ~ .then ~ res", res)
-          // console.dir(res);
           const updatedQuestions = [
             ...questions.map((q) => (q._id === id ? question : q)),
           ];
