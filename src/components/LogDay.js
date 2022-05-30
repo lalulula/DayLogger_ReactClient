@@ -2,20 +2,22 @@ import React, { useEffect, useState } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
-function LogDay({handleSubmit, questions, setQuestions, user, responses, setResponse }) {
+function LogDay({handleSubmit, questions, setQuestions, user}) {
+  // const[responses, setResponse] = useState([]);  
 
-  //NOTE made for testing purposes
-  useEffect(() => {
-    console.log("RELOADING QUESTIONS");
-    console.log("QUESTIONS:", questions);
-  }, [questions]);
+  // //NOTE made for testing purposes
+  // useEffect(() => {
+  //   console.log("RELOADING QUESTIONS");
+  //   console.log("QUESTIONS:", questions);
+  // }, [questions]);
 
   useEffect(() => {
     function fetchData() {
-      getQuestionAPI().then((questions) => { 
+      getQuestionAPI().then((questions) => {
+      // console.log("🚀 ~ file: LogDay.js ~ line 16 ~ getQuestionAPI ~ questions", questions[1].responses)
         setQuestions(questions);
       }  ).catch((err) => {
-        console.error('Error retrieving note data: ' + err);
+        console.error('Error retrieving question data: ' + err);
       });
     };
     fetchData();
@@ -97,8 +99,8 @@ function LogDay({handleSubmit, questions, setQuestions, user, responses, setResp
               choice={question.multipleChoice}
               questions={questions}
               setQuestions={setQuestions}
-              responses = {responses}
-              setResponse = {setResponse}
+              // responses = {question.responses}
+              // setResponse = {setResponse}
               // date = {date}
               date = {formatDate(date)}
             />
