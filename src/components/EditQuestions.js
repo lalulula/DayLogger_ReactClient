@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Question from "./Question";
 import { createQuestionAPI, deleteQuestionAPI } from "../api/questionAPI";
-function EditQuestions({ handleSubmit, questions, setQuestions, user, responses, setResponse }) {
+function EditQuestions({ handleSubmit, questions, setQuestions, user}) {
   // useEffect(() => {
   //   console.log("RELOADING QUESTIONS");
   //   console.log("QUESTIONS:", questions);
@@ -12,13 +12,12 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user, responses,
       questionText: "Enter question",
       questionType: "number",
       multipleChoice: ["", "", ""],
-      user: user,
-      responses:responses
+      user: user
     };
     createQuestionAPI(newQuestion).then((response) => {
-      console.log("Created question on the server");
-      console.dir(response);
-      setQuestions([...questions, response]);
+      // console.log("Created question on the server");
+      // console.dir(response);
+      setQuestions([response,...questions]);
     });
   };
 
@@ -31,8 +30,8 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user, responses,
         question2Delete = questions[i];
       }
     }
-    deleteQuestionAPI(question2Delete._id).then((response) => {
-      console.log("Deleted the question on the server");
+    deleteQuestionAPI(question2Delete._id).then(() => {
+      // console.log("Deleted the question on the server");
     });
     let newQuestions = [...questions];
     newQuestions.splice(index2Delete, 1);
@@ -69,8 +68,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user, responses,
               questions={questions}
               setQuestions={setQuestions}
               handleDeleteQuestion={handleDeleteQuestion}
-              responses = {responses}
-              setResponse = {setResponse}
             />
           ))}
         </div>

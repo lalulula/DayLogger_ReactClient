@@ -23,8 +23,8 @@ function Question({
       questionText: questionText,
       questionType: e.target.value,
       multipleChoice: multipleChoice,
-      user: user,
-      responses:responses
+      user: user
+      // , responses:responses
     };
 
     saveQuestionOnServer(newQuestion, questions);
@@ -37,8 +37,8 @@ function Question({
       questionText: e.target.value,
       questionType: questionType,
       multipleChoice: multipleChoice,
-      user: user,
-      responses : responses
+      user: user
+      // , responses : responses
     };
     saveQuestionOnServer(newQuestion, questions);
   };
