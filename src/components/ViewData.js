@@ -4,7 +4,7 @@ import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 function ViewData({ handleSubmit, questions, setQuestions, user }) {
-  console.log(questions);
+  //   console.log(questions);
   const [viewMode, setViewMode] = useState("by-question");
 
   const textType = (question) => {
@@ -35,6 +35,8 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           numTrue++;
         } else if (response === "false") {
           numFalse++;
+        } else {
+          console.log("undefined response");
         }
       });
     }
@@ -75,10 +77,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
       var responseNum = question.responses[date];
       return { date, responseNum };
     });
-    // console.log(numberData);
-    // for (let i = 0; i < numberData.length; i++) {
-    // console.log(numberData[0].date);
-    // }
+    console.log(numberData);
 
     return (
       <div id="chart" className="chart-box">
@@ -97,10 +96,11 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           series={[
             {
               name: "VALUE",
-              data: [
-                // { x: numberData[3].date, y: numberData[3].responseNum },
-                // { x: numberData[4].date, y: numberData[4].responseNum },
-              ],
+              data: numberData.map((data) => {
+                return { x: data.date, y: data.responseNum };
+                //   console.log(data.date);
+                //   console.log(data.responseNum);
+              }),
             },
           ]}
           type="line"
@@ -124,6 +124,8 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           option2Num++;
         } else if (response === 2) {
           option3Num++;
+        } else {
+          console.log("undefined response");
         }
       });
     }

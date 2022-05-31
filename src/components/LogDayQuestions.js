@@ -74,12 +74,14 @@ function LogDayQuestions({
         {text}
         <br />
         <input
+          // value={answers[date] || true}
+          value="true"
           onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
           id="bResponse1"
           // value={answers ? "true" :""}
-          value={answers[date] || true}
+
           style={{ marginTop: "10px" }}
           disabled={disabled}
         />
@@ -87,12 +89,14 @@ function LogDayQuestions({
           True
         </label>
         <input
+          // value={answers[date] || false}
+          value="false"
           onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
           id="bResponse2"
           // value={answers[date] ? false : ""}
-          value={answers[date] || false}
+
           disabled={disabled}
         />
         <label htmlFor="false">False</label>
