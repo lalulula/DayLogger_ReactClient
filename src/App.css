@@ -635,13 +635,15 @@ input#file-input {
 
 
 .view-data-container {
+  justify-content: space-between;
+  display:flex;
   flex-wrap: nowrap;
-  justify-content: center;
   margin-left: 100px;
   margin-right: 100px;
 }
 
 .view-data-select {
+  margin-top: 23px;
   border-radius: 5px;
   padding: 3px;
   font-size: 15px

@@ -1,20 +1,39 @@
-import React  from 'react';
+import React from "react";
+import LogDay from "./LogDay";
+import { useState } from "react";
 
-
-function ViewData(){
-    return(
-        <div className="view-data-container">
+function ViewData({ handleSubmit, questions, setQuestions, user }) {
+  const [viewMode, setViewMode] = useState("by-question");
+  return (
+    <div>
+      <div className="view-data-container">
+        <h2>View Data</h2>
         <div>
-            <h2>View Data</h2>
+          <select
+            className="view-data-select"
+            value={viewMode}
+            onChange={(e) => setViewMode(e.currentTarget.value)}
+          >
+            <option value="by-question">By question</option>
+            <option value="by-date">By value</option>
+          </select>
         </div>
-        <div >
-            <select className="view-data-select">
-                <option value="">By date</option>
-                <option value="">By value</option>
-            </select>
-        </div>
-        </div>
-    );
-};
- 
+      </div>
+      <div>
+        {viewMode === "by-question" ? (
+          <div>by-question</div>
+        ) : (
+          <LogDay
+            handleSubmit={handleSubmit}
+            user={user}
+            questions={questions}
+            setQuestions={setQuestions}
+            disabled
+          ></LogDay>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default ViewData;
