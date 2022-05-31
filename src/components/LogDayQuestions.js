@@ -13,9 +13,8 @@ function LogDayQuestions({
   answers,
   disabled,
 }) {
-  // console.log(Object.keys(responses));
 
-  // console.log(answers);
+  console.log(answers);
   const [responses, setResponse] = useState([]);
   useEffect(() => {
     const newQuestion = {
@@ -42,7 +41,7 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          value={answers[date] ? answers[date] : ""}
+          value={answers[date] || ""}
           onChange={handleResponseChange}
           type="numeric"
           name="numResponse"
@@ -64,7 +63,7 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse1"
-          value={answers[date] ? answers[date] : ""}
+          value={answers? "true":""}
           style={{ marginTop: "10px" }}
           disabled={disabled}
         />
@@ -77,7 +76,7 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse2"
-          value={answers[date] ? answers[date] : ""}
+          value={answers?  "false": "" }
           disabled={disabled}
         />
         <label htmlFor="false">False</label>
@@ -90,7 +89,7 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          value={answers[date] ? answers[date] : ""}
+          value={answers? answers[date] : ""}
           onChange={handleResponseChange}
           placeholder="Enter..."
           type="text"
