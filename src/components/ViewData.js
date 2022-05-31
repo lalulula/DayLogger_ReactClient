@@ -72,7 +72,15 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const numberType = (question) => {
-    // console.log(question);
+    const numberData = Object.keys(question.responses).map((date) => {
+      var responseNum = question.responses[date];
+      return { date, responseNum };
+    });
+    console.log(numberData);
+    // for (let i = 0; i < numberData.length; i++) {
+    console.log(numberData[0].date);
+    // }
+
     return (
       <div id="chart" className="chart-box">
         <div className="question-text">{question?.questionText}</div>
@@ -90,7 +98,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           series={[
             {
               name: "VALUE",
-              data: [],
+              data: [{ x: numberData[4].date, y: numberData[4].responseNum }],
               //   data: [{ x: { date }, y: question.responses[date] }],
               //   data: [
               //     {
@@ -165,7 +173,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           }}
           series={[
             {
-              name: "value",
+              name: "VALUE",
               data: [option1Num, option2Num, option3Num],
             },
           ]}
