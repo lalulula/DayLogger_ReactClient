@@ -12,8 +12,6 @@ function LogDayQuestions({
   setQuestions,
   answers,
   disabled,
-  responses, 
-  setResponse
 }) {
   // console.log(Object.keys(responses));
 
@@ -44,7 +42,7 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          value={answers[date] || ""}
+          value={answers[date] ? answers[date] : ""}
           onChange={handleResponseChange}
           type="numeric"
           name="numResponse"
@@ -66,7 +64,7 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse1"
-          value={answers[date] || ""}
+          value={answers[date] ? answers[date] : ""}
           style={{ marginTop: "10px" }}
           disabled={disabled}
         />
@@ -79,7 +77,7 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse2"
-          value={answers[date] || ""}
+          value={answers[date] ? answers[date] : ""}
           disabled={disabled}
         />
         <label htmlFor="false">False</label>
@@ -92,7 +90,7 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          value={answers[date] || ""}
+          value={answers[date] ? answers[date] : ""}
           onChange={handleResponseChange}
           placeholder="Enter..."
           type="text"
@@ -131,7 +129,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice1"
-            value={answers[date] || ""}
+            value={answers[date] ? answers[date] : ""}
             disabled={disabled}
           />
           <label htmlFor="op1">{choice[0]}</label>
@@ -146,7 +144,8 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice2"
-            value={answers[date] || ""}
+            value={answers[date] ? answers[date] : ""}
+            // value={answers[date] || ""}
             disabled={disabled}
           />
           <label htmlFor="op2">{choice[1]}</label>
@@ -162,7 +161,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice3"
-            value={answers[date] || ""}
+            value={answers[date] ? answers[date] : ""}
             disabled={disabled}
           />
           <label htmlFor="op3">{choice[2]}</label>
