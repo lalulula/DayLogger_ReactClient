@@ -212,6 +212,7 @@ function Question({
             borderRadius: "5px",
           }}
           onChange={handleTypeChange}
+          value={questionType}
         >
           <option value="number">number</option>
           <option value="text">text</option>
