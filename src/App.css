@@ -648,3 +648,33 @@ input#file-input {
   padding: 3px;
   font-size: 15px
 }
+
+.chart-box{
+  padding: 5px;
+  border-radius: 5px;
+  background-color:white;
+  margin: 10px 100px 10px 100px;
+
+}
+
+.question-text{
+  font-size: 17px;
+  font-weight: 700;
+  margin: 10px 0px 10px 10px;
+}
+
+.text-container{
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  margin:10px;
+  padding: 10px;
+}
+
+.text-container-key{
+  font-weight: 600;
+}
+
+.text-container-value{
+  margin-left: 15px;
+}
