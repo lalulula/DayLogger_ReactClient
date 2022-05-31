@@ -31,12 +31,10 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     // console.log(Object.values(question.responses));
     {
       Object.values(question.responses).map((response) => {
-        if (response === true) {
+        if (response === "true") {
           numTrue++;
-          //   console.log(numTrue);
-        } else {
+        } else if (response === "false") {
           numFalse++;
-          //   console.log(numFalse);
         }
       });
     }

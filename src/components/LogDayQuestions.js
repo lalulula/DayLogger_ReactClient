@@ -41,7 +41,8 @@ function LogDayQuestions({
   };
 
   const handleBooleanChange = (e) => {
-    setResponses({ ...responses, [date]: e.target.checked });
+    console.log(e);
+    setResponses({ ...responses, [date]: e.target.value });
   };
 
   const handleMultipleChange = (e, idx) => {
@@ -78,7 +79,7 @@ function LogDayQuestions({
           name="boolResponse"
           id="bResponse1"
           // value={answers ? "true" :""}
-          value={answers[date] || ""}
+          value={answers[date] || true}
           style={{ marginTop: "10px" }}
           disabled={disabled}
         />
@@ -91,7 +92,7 @@ function LogDayQuestions({
           name="boolResponse"
           id="bResponse2"
           // value={answers[date] ? false : ""}
-          value={answers[date] || ""}
+          value={answers[date] || false}
           disabled={disabled}
         />
         <label htmlFor="false">False</label>
