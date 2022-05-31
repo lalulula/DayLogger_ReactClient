@@ -13,13 +13,13 @@ function LogDayQuestions({
   answers,
   disabled,
 }) {
-
-  useEffect(()=>{
-    console.log(date);
-    console.log(answers);
+  useEffect(() => {
+    // console.log(date);
+    // console.log(answers);
   }, [date]);
 
-  const [responses, setResponse] = useState([]);
+  const [responses, setResponses] = useState([]);
+
   useEffect(() => {
     const newQuestion = {
       _id: id,
@@ -37,8 +37,17 @@ function LogDayQuestions({
   }, [responses]);
 
   const handleResponseChange = (e) => {
-    setResponse({ ...responses, [date]: e.target.value });
+    setResponses({ ...responses, [date]: e.target.value });
   };
+
+  const handleBooleanChange = (e) => {
+    setResponses({ ...responses, [date]: e.target.checked });
+  };
+
+  const handleMultipleChange = (e, idx) => {
+    setResponses({ ...responses, [date]: e.target.checked ? idx : 0 });
+  };
+
   if (type === "number") {
     return (
       <div className="logDayDiv">
@@ -63,7 +72,7 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          onChange={handleResponseChange}
+          onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
           id="bResponse1"
@@ -77,7 +86,7 @@ function LogDayQuestions({
           True{" "}
         </label>
         <input
-          onChange={handleResponseChange}
+          onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
           id="bResponse2"
@@ -95,7 +104,7 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          value={answers? answers[date] : ""}
+          value={answers ? answers[date] : ""}
           onChange={handleResponseChange}
           placeholder="Enter..."
           type="text"
@@ -130,11 +139,11 @@ function LogDayQuestions({
           }}
         >
           <input
-            onChange={handleResponseChange}
+            onChange={(e) => handleMultipleChange(e, 0)}
             type="radio"
             name="choiceResponse"
             id="choice1"
-            value={answers[date] ? answers[date] : ""}
+            value={answers[date] === 0 ? true : false}
             disabled={disabled}
           />
           <label htmlFor="op1">{choice[0]}</label>
@@ -145,11 +154,11 @@ function LogDayQuestions({
           }}
         >
           <input
-            onChange={handleResponseChange}
+            onChange={(e) => handleMultipleChange(e, 1)}
             type="radio"
             name="choiceResponse"
             id="choice2"
-            value={answers[date] ? answers[date] : ""}
+            value={answers[date] === 1 ? true : false}
             // value={answers[date] || ""}
             disabled={disabled}
           />
@@ -162,11 +171,11 @@ function LogDayQuestions({
           }}
         >
           <input
-            onChange={handleResponseChange}
+            onChange={(e) => handleMultipleChange(e, 2)}
             type="radio"
             name="choiceResponse"
             id="choice3"
-            value={answers ? choice[2] : ""}
+            value={answers[date] === 2 ? true : false}
             disabled={disabled}
           />
           <label htmlFor="op3">{choice[2]}</label>

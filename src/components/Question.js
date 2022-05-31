@@ -9,12 +9,11 @@ function Question({
   questions,
   setQuestions,
   handleDeleteQuestion,
-  responses
+  responses,
 }) {
   const [questionType, setquestionType] = useState(type);
   const [questionText, setquestionText] = useState(text);
   const [multipleChoice, setMultipleChoice] = useState(choice);
-
 
   const handleTypeChange = (e) => {
     setquestionType(e.target.value);
@@ -23,7 +22,8 @@ function Question({
       questionText: questionText,
       questionType: e.target.value,
       multipleChoice: multipleChoice,
-      user: user
+      user: user,
+      responses: responses,
       // , responses:responses
     };
 
@@ -37,7 +37,8 @@ function Question({
       questionText: e.target.value,
       questionType: questionType,
       multipleChoice: multipleChoice,
-      user: user
+      user: user,
+      responses: responses,
       // , responses : responses
     };
     saveQuestionOnServer(newQuestion, questions);
@@ -47,14 +48,19 @@ function Question({
     let optionIndex = e.target.name;
     // console.log(optionIndex);
     if (optionIndex === "op1") {
-      setMultipleChoice([e.target.value, multipleChoice[1], multipleChoice[2]]);
+      const newMultChoice = [
+        e.target.value,
+        multipleChoice[1],
+        multipleChoice[2],
+      ];
+      setMultipleChoice(newMultChoice);
       const newQuestion = {
         _id: id,
         questionText: questionText,
         questionType: questionType,
-        multipleChoice: multipleChoice,
+        multipleChoice: newMultChoice,
         user: user,
-        responses:responses
+        responses: responses,
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
@@ -62,37 +68,46 @@ function Question({
       setQuestions(updatedQuestions);
       saveQuestionOnServer(newQuestion, questions);
     } else if (optionIndex === "op2") {
-      setMultipleChoice([multipleChoice[0], e.target.value, multipleChoice[2]]);
+      const newMultChoice = [
+        multipleChoice[0],
+        e.target.value,
+        multipleChoice[2],
+      ];
+      setMultipleChoice(newMultChoice);
       const newQuestion = {
         _id: id,
         questionText: questionText,
         questionType: questionType,
-        multipleChoice: multipleChoice,
+        multipleChoice: newMultChoice,
         user: user,
-        responses:responses
+        responses: responses,
       };
       const updatedQuestions = [
         ...questions.map((q) => (q._id === id ? newQuestion : q)),
       ];
       setQuestions(updatedQuestions);
       saveQuestionOnServer(newQuestion, questions);
-      
     } else if (optionIndex === "op3") {
-      setMultipleChoice([multipleChoice[0], multipleChoice[1], e.target.value]);
+      const newMultChoice = [
+        multipleChoice[0],
+        multipleChoice[1],
+        e.target.value,
+      ];
+      setMultipleChoice(newMultChoice);
       const newQuestion = {
         _id: id,
         questionText: questionText,
         questionType: questionType,
-        multipleChoice: multipleChoice,
+        multipleChoice: newMultChoice,
         user: user,
-        responses:responses
+        responses: responses,
       };
 
       saveQuestionOnServer(newQuestion, questions);
     }
   };
 
-  function debounce(func, timeout = 1000) {
+  function debounce(func, timeout = 300) {
     let timer;
     return (...args) => {
       clearTimeout(timer);
@@ -168,18 +183,39 @@ function Question({
 
         <div className="multipleChoice">
           <div className="multChoiceDiv">
-            <span className="material-icons radioBtn">radio_button_unchecked</span>
-            <input type="text" name="op1" value={multipleChoice[0]} onChange={handleEditMultipleChoice} />
+            <span className="material-icons radioBtn">
+              radio_button_unchecked
+            </span>
+            <input
+              type="text"
+              name="op1"
+              value={multipleChoice[0]}
+              onChange={handleEditMultipleChoice}
+            />
           </div>
           <br />
           <div className="multChoiceDiv">
-            <span className="material-icons radioBtn">radio_button_unchecked</span>
-            <input type="text" name="op2" value={multipleChoice[1]} onChange={handleEditMultipleChoice} />
+            <span className="material-icons radioBtn">
+              radio_button_unchecked
+            </span>
+            <input
+              type="text"
+              name="op2"
+              value={multipleChoice[1]}
+              onChange={handleEditMultipleChoice}
+            />
           </div>
           <br />
           <div className="multChoiceDiv">
-            <span className="material-icons radioBtn">radio_button_unchecked</span>
-            <input type="text" name="op3" value={multipleChoice[2]} onChange={handleEditMultipleChoice} />
+            <span className="material-icons radioBtn">
+              radio_button_unchecked
+            </span>
+            <input
+              type="text"
+              name="op3"
+              value={multipleChoice[2]}
+              onChange={handleEditMultipleChoice}
+            />
           </div>
           <br />
         </div>
