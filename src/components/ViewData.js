@@ -4,6 +4,7 @@ import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 function ViewData({ handleSubmit, questions, setQuestions, user }) {
+  console.log(questions);
   const [viewMode, setViewMode] = useState("by-question");
 
   const textType = (question) => {
@@ -98,26 +99,10 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           series={[
             {
               name: "VALUE",
-              data: [{ x: numberData[4].date, y: numberData[4].responseNum }],
-              //   data: [{ x: { date }, y: question.responses[date] }],
-              //   data: [
-              //     {
-              //       x: "2020/01/01",
-              //       y: 540,
-              //     },
-              //     {
-              //       x: "2020/04/01",
-              //       y: 580,
-              //     },
-              //     {
-              //       x: "2020/07/01",
-              //       y: 800,
-              //     },
-              //     {
-              //       x: "2020/10/01",
-              //       y: 690,
-              //     },
-              //   ],
+              data: [
+                { x: numberData[3].date, y: numberData[3].responseNum },
+                { x: numberData[4].date, y: numberData[4].responseNum },
+              ],
             },
           ]}
           type="line"

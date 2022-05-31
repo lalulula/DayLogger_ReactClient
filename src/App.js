@@ -17,10 +17,10 @@ function App() {
   const [isEditQuestions, setEditQuestions] = useState(false);
   const [isViewData, setViewData] = useState(false);
   const [isProfilePage, setIsProfilePage] = useState(false);
-  
+
   // NOTE question state
   const [questions, setQuestions] = useState([]);
-  
+
   // NOTE states for user + profile
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
@@ -99,7 +99,6 @@ function App() {
       setAllUsers(res);
     });
   };
-
 
   return (
     <React.Fragment>
@@ -200,7 +199,7 @@ function App() {
               // responses={responses}
               // setResponse ={setResponse}
             />
-          )} 
+          )}
           {isEditQuestions && (
             <EditQuestions
               user={user}
@@ -211,16 +210,24 @@ function App() {
               // setResponse = {setResponse}
             />
           )}
-          {isViewData && <ViewData />}
+          {isViewData && (
+            <ViewData
+              handleSubmit={handleSubmit}
+              questions={questions}
+              setQuestions={setQuestions}
+              user={user}
+            />
+          )}
           {isProfilePage && (
-            <ProfilePage 
-            setProfile={setProfile} 
-            profile={profile} 
-            setActiveLink={setActiveLink}
-            setIsLogDay={setIsLogDay}
-            setEditQuestions={setEditQuestions}
-            setViewData={setViewData}
-            setIsProfilePage={setIsProfilePage}/>
+            <ProfilePage
+              setProfile={setProfile}
+              profile={profile}
+              setActiveLink={setActiveLink}
+              setIsLogDay={setIsLogDay}
+              setEditQuestions={setEditQuestions}
+              setViewData={setViewData}
+              setIsProfilePage={setIsProfilePage}
+            />
           )}
           {isAdmin && (
             <AdminPage getAllUsers={getAllUsers} allUsers={allUsers} />
