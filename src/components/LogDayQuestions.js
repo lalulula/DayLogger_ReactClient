@@ -14,7 +14,11 @@ function LogDayQuestions({
   disabled,
 }) {
 
-  console.log(answers);
+  useEffect(()=>{
+    console.log(date);
+    console.log(answers);
+  }, [date]);
+
   const [responses, setResponse] = useState([]);
   useEffect(() => {
     const newQuestion = {
@@ -63,7 +67,8 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse1"
-          value={answers ? "true" :""}
+          // value={answers ? "true" :""}
+          value={answers[date] || ""}
           style={{ marginTop: "10px" }}
           disabled={disabled}
         />
@@ -76,7 +81,8 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse2"
-          value={answers? "false": "" }
+          // value={answers? "false": "" }
+          value={answers[date] || ""}
           disabled={disabled}
         />
         <label htmlFor="false">False</label>
@@ -160,7 +166,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice3"
-            value={answers[date] ? answers[date] : ""}
+            value={answers ? choice[2] : ""}
             disabled={disabled}
           />
           <label htmlFor="op3">{choice[2]}</label>

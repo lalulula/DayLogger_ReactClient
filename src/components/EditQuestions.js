@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Question from "./Question";
 import { createQuestionAPI, deleteQuestionAPI } from "../api/questionAPI";
 function EditQuestions({ handleSubmit, questions, setQuestions, user, responses, setResponse }) {
-  useEffect(() => {
-    console.log("RELOADING QUESTIONS");
-    console.log("QUESTIONS:", questions);
-  }, [questions]);
+  // useEffect(() => {
+  //   console.log("RELOADING QUESTIONS");
+  //   console.log("QUESTIONS:", questions);
+  // }, [questions]);
 
   const handleAddQuestion = () => {
     const newQuestion = {
