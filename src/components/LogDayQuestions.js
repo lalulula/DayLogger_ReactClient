@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getQuestionAPI } from "../api/questionAPI";
 
-function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions, answers }) { 
+function LogDayQuestions({user,  id, text, type, choice, date, questions, setQuestions, answers, responses, setResponse }) { 
   // console.log(Object.keys(responses));
   
   // console.log(answers);
-  const[responses, setResponse] = useState([]);  
+  // const[responses, setResponse] = useState([]);  
   useEffect(()=>{
     const newQuestion = {
       _id: id,
@@ -51,7 +51,7 @@ function LogDayQuestions({user,  id, text, type, choice, date, questions, setQue
           {text}
           <br />
           <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse1" value={answers[date]||""} style={{ marginTop: "10px" }} />
-          <label htmlFor="true" style={{ marginRight: "50px" }}> True   </label>
+          <label htmlFor="true" style={{ marginRight: "50px" }}> True</label>
           <input onChange={handleResponseChange} type="radio" name="boolResponse" id="bResponse2" value={answers[date]||""} />
           <label htmlFor="false">False</label>
           <br />

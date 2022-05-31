@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
-function LogDay({handleSubmit, questions, setQuestions, user}) {
+function LogDay({handleSubmit, questions, setQuestions, user, responses, setResponse}) {
   // const[responses, setResponse] = useState([]);  
 
   // //NOTE made for testing purposes
@@ -93,7 +93,8 @@ function LogDay({handleSubmit, questions, setQuestions, user}) {
               questions={questions}
               setQuestions={setQuestions}
               answers = {question.responses}
-              // setResponse = {setResponse}
+              responses={responses}
+              setResponse = {setResponse}
               // date = {date}
               date = {formatDate(date)}
             />
