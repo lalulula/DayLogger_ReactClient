@@ -24,9 +24,25 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const booleanType = (question) => {
+    var numTrue = 0;
+    var numFalse = 0;
+    // console.log(question);
+    // console.log(Object.values(question.responses));
+    {
+      Object.values(question.responses).map((response) => {
+        if (response === "true") {
+          numTrue++;
+          //   console.log(numTrue);
+        } else {
+          numFalse++;
+          //   console.log(numFalse);
+        }
+      });
+    }
     return (
       <div id="chart" className="chart-box">
         <div className="question-text">{question?.questionText}</div>
+
         <ReactApexChart
           options={{
             chart: {
@@ -48,7 +64,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
               },
             ],
           }}
-          series={[44, 55]}
+          series={[numTrue, numFalse]}
           type="pie"
           width={380}
         />
@@ -56,9 +72,11 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const numberType = (question) => {
+    // console.log(question);
     return (
       <div id="chart" className="chart-box">
         <div className="question-text">{question?.questionText}</div>
+
         <ReactApexChart
           options={{
             chart: {
@@ -72,25 +90,26 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           series={[
             {
               name: "VALUE",
-              // data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-              data: [
-                {
-                  x: "2020/01/01",
-                  y: 540,
-                },
-                {
-                  x: "2020/04/01",
-                  y: 580,
-                },
-                {
-                  x: "2020/07/01",
-                  y: 800,
-                },
-                {
-                  x: "2020/10/01",
-                  y: 690,
-                },
-              ],
+              data: [],
+              //   data: [{ x: { date }, y: question.responses[date] }],
+              //   data: [
+              //     {
+              //       x: "2020/01/01",
+              //       y: 540,
+              //     },
+              //     {
+              //       x: "2020/04/01",
+              //       y: 580,
+              //     },
+              //     {
+              //       x: "2020/07/01",
+              //       y: 800,
+              //     },
+              //     {
+              //       x: "2020/10/01",
+              //       y: 690,
+              //     },
+              //   ],
             },
           ]}
           type="line"
@@ -100,6 +119,24 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const multipleChoiceType = (question) => {
+    console.log(question.multipleChoice);
+    console.log(question);
+    var option1Num = 0;
+    var option2Num = 0;
+    var option3Num = 0;
+
+    {
+      Object.values(question.responses).map((response) => {
+        if (response === question.multipleChoice[0]) {
+          option1Num++;
+        } else if (response === question.multipleChoice[1]) {
+          option2Num++;
+        } else if (response === question.multipleChoice[2]) {
+          option3Num++;
+        }
+      });
+    }
+
     return (
       <div id="chart" className="chart-box">
         <div className="question-text">{question?.questionText}</div>
@@ -120,22 +157,16 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
             },
             xaxis: {
               categories: [
-                "South Korea",
-                "Canada",
-                "United Kingdom",
-                "Netherlands",
-                "Italy",
-                "France",
-                "Japan",
-                "United States",
-                "China",
-                "Germany",
+                question.multipleChoice[0],
+                question.multipleChoice[1],
+                question.multipleChoice[2],
               ],
             },
           }}
           series={[
             {
-              data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380],
+              name: "value",
+              data: [option1Num, option2Num, option3Num],
             },
           ]}
           type="bar"
