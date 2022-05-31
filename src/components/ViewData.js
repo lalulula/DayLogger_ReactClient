@@ -31,7 +31,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     // console.log(Object.values(question.responses));
     {
       Object.values(question.responses).map((response) => {
-        if (response === "true") {
+        if (response === true) {
           numTrue++;
           //   console.log(numTrue);
         } else {
@@ -77,9 +77,9 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
       var responseNum = question.responses[date];
       return { date, responseNum };
     });
-    console.log(numberData);
+    // console.log(numberData);
     // for (let i = 0; i < numberData.length; i++) {
-    console.log(numberData[0].date);
+    // console.log(numberData[0].date);
     // }
 
     return (
@@ -100,8 +100,8 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
             {
               name: "VALUE",
               data: [
-                { x: numberData[3].date, y: numberData[3].responseNum },
-                { x: numberData[4].date, y: numberData[4].responseNum },
+                // { x: numberData[3].date, y: numberData[3].responseNum },
+                // { x: numberData[4].date, y: numberData[4].responseNum },
               ],
             },
           ]}
@@ -120,11 +120,11 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
 
     {
       Object.values(question.responses).map((response) => {
-        if (response === question.multipleChoice[0]) {
+        if (response === 0) {
           option1Num++;
-        } else if (response === question.multipleChoice[1]) {
+        } else if (response === 1) {
           option2Num++;
-        } else if (response === question.multipleChoice[2]) {
+        } else if (response === 2) {
           option3Num++;
         }
       });

@@ -45,7 +45,7 @@ function LogDayQuestions({
   };
 
   const handleMultipleChange = (e, idx) => {
-    setResponses({ ...responses, [date]: e.target.checked ? idx : 0 });
+    setResponses({ ...responses, [date]: e.target.checked ? idx : -1 });
   };
 
   if (type === "number") {
@@ -67,6 +67,7 @@ function LogDayQuestions({
       </div>
     );
   } else if (type === "boolean") {
+    // console.log(answers[date]);
     return (
       <div className="logDayDiv">
         {text}
@@ -82,15 +83,14 @@ function LogDayQuestions({
           disabled={disabled}
         />
         <label htmlFor="true" style={{ marginRight: "50px" }}>
-          {" "}
-          True{" "}
+          True
         </label>
         <input
           onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
           id="bResponse2"
-          // value={answers? "false": "" }
+          // value={answers[date] ? false : ""}
           value={answers[date] || ""}
           disabled={disabled}
         />
