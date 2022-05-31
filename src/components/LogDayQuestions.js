@@ -63,7 +63,7 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse1"
-          value={answers? "true":""}
+          value={answers ? "true" :""}
           style={{ marginTop: "10px" }}
           disabled={disabled}
         />
@@ -76,7 +76,7 @@ function LogDayQuestions({
           type="radio"
           name="boolResponse"
           id="bResponse2"
-          value={answers?  "false": "" }
+          value={answers? "false": "" }
           disabled={disabled}
         />
         <label htmlFor="false">False</label>
