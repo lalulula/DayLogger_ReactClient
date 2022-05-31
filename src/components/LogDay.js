@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import LogDayQuestions from "./LogDayQuestions";
 import { getQuestionAPI, updateQuestionAPI } from "../api/questionAPI";
 
-function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
-  // const[responses, setResponse] = useState([]);
+function LogDay({handleSubmit, questions, setQuestions, user, responses, setResponse}) {
+  // const[responses, setResponse] = useState([]);  
 
   // //NOTE made for testing purposes
   // useEffect(() => {
@@ -85,27 +85,23 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
           </button>
         </div>
         {questions.map((question) => (
-          <LogDayQuestions
-            user={user}
-            key={question._id}
-            id={question._id}
-            text={question.questionText}
-            type={question.questionType}
-            choice={question.multipleChoice}
-            questions={questions}
-            setQuestions={setQuestions}
-            answers={question.responses}
-            // setResponse = {setResponse}
-            // date = {date}
-            date={formatDate(date)}
-            disabled={disabled}
-          />
-        ))}
-        {!disabled && (
-          <button className="submitBtn" onClick={saveResponseOnServer}>
-            Submit
-          </button>
-        )}
+            <LogDayQuestions
+              user={user}
+              key={question._id}
+              id={question._id}
+              text={question.questionText}
+              type={question.questionType}
+              choice={question.multipleChoice}
+              questions={questions}
+              setQuestions={setQuestions}
+              answers = {question.responses}
+              responses={responses}
+              setResponse = {setResponse}
+              // date = {date}
+              date = {formatDate(date)}
+            />
+          ))}
+        <button className="submitBtn" onClick={saveResponseOnServer}>Submit</button>
       </form>
     </div>
   );

@@ -12,6 +12,8 @@ function LogDayQuestions({
   setQuestions,
   answers,
   disabled,
+  responses, 
+  setResponse
 }) {
   // console.log(Object.keys(responses));
 
