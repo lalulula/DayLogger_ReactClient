@@ -11,7 +11,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user, responses,
     const newQuestion = {
       questionText: "Enter question",
       questionType: "number",
-      multipleChoice: ["option1", "option2", "option3"],
+      multipleChoice: ["", "", ""],
       user: user,
       responses:responses
     };
