@@ -7,7 +7,15 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
   //   console.log(questions);
   const [viewMode, setViewMode] = useState("by-question");
 
+  const sortByDate = (arr) => {
+    return arr.sort(function (a, b) {
+      return new Date(a) - new Date(b);
+    });
+  };
+
   const textType = (question) => {
+    // const sortQuestion = sortByDate(Object.keys(question.responses));
+    // console.log(sortQuestion);
     return (
       <div className="chart-box">
         <div className="question-text">{question?.questionText}</div>
@@ -30,7 +38,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     // console.log(question);
     // console.log(Object.values(question.responses));
     {
-      Object.values(question.responses).map((response) => {
+      sortByDate(Object.keys(question.responses)).map((response) => {
         if (response === "true") {
           numTrue++;
         } else if (response === "false") {
@@ -73,11 +81,13 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const numberType = (question) => {
-    const numberData = Object.keys(question.responses).map((date) => {
-      var responseNum = question.responses[date];
-      return { date, responseNum };
-    });
-    console.log(numberData);
+    const numberData = sortByDate(Object.keys(question.responses)).map(
+      (date) => {
+        var responseNum = question.responses[date];
+        return { date, responseNum };
+      }
+    );
+    // console.log(numberData);
 
     return (
       <div id="chart" className="chart-box">
