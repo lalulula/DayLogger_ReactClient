@@ -67,7 +67,9 @@ function LogDayQuestions({
         <br />
       </div>
     );
-  } else if (type === "boolean") {
+  }
+  //TODO boolean! 
+  else if (type === "boolean") {
     // console.log(answers[date]);
     return (
       <div className="logDayDiv">
@@ -126,8 +128,9 @@ function LogDayQuestions({
         <br />
       </div>
     );
-  } else {
-    // if(type==="multiplechoice")
+  }
+  //TODO multiple choice!  
+  else {
     return (
       <div className="logDayDiv">
         <div
