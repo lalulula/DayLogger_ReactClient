@@ -68,7 +68,7 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
   };
   return (
     <div className="logDayContainer">
-      <form onSubmit={handleSubmit} className="logDayContent">
+      <form onSubmit={handleSubmit} className="logDayContent" id="lDContent">
         <div className="logDayDate">
           <button
             className="material-symbols-outlined dateBtn"

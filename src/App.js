@@ -88,9 +88,10 @@ function App() {
     setIsProfilePage(true);
     setIsAdmin(false);
   };
-
+  const form = document.getElementById('lDContent');
   const handleSubmit = (e) => {
     e.preventDefault();
+    form.reset();
   };
 
   const getAllUsers = async () => {
