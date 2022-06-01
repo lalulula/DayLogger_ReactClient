@@ -41,7 +41,7 @@ function LogDayQuestions({
   };
 
   const handleBooleanChange = (e) => {
-    console.log(e);
+    // console.log(e);
     setResponses({ ...responses, [date]: e.target.value });
   };
 
@@ -148,7 +148,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice1"
-            value={answers[date] === 0 ? true : false}
+            value={answers[date] === 0 ? choice[0] : ""}
             disabled={disabled}
           />
           <label htmlFor="op1">{choice[0]}</label>
@@ -163,7 +163,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice2"
-            value={answers[date] === 1 ? true : false}
+            value={answers[date] === 1 ? choice[1] : ""}
             // value={answers[date] || ""}
             disabled={disabled}
           />
@@ -180,7 +180,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice3"
-            value={answers[date] === 2 ? true : false}
+            value={answers[date] === 2 ? choice[2] : ""}
             disabled={disabled}
           />
           <label htmlFor="op3">{choice[2]}</label>
