@@ -38,7 +38,9 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     // console.log(question);
     // console.log(Object.values(question.responses));
     {
-      sortByDate(Object.keys(question.responses)).map((response) => {
+      sortByDate(Object.values(question.responses)).map((response) => {
+        // console.log(question.responses);
+        // console.log(response);
         if (response === "true") {
           numTrue++;
         } else if (response === "false") {
@@ -120,19 +122,27 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const multipleChoiceType = (question) => {
-    console.log(question.multipleChoice);
-    console.log(question);
+    // console.log(question.multipleChoice);
+    // console.log(questions[0].multipleChoice[0]);
+
+    var option1Choice = question.multipleChoice[0];
+    var option2Choice = question.multipleChoice[1];
+    var option3Choice = question.multipleChoice[2];
+
     var option1Num = 0;
     var option2Num = 0;
     var option3Num = 0;
 
     {
-      Object.values(question.responses).map((response) => {
-        if (response === 0) {
+      Object.keys(question.responses).map((date) => {
+        console.log(question.responses);
+        var qr = question.responses[date];
+        console.log(qr);
+        if (qr === option1Choice) {
           option1Num++;
-        } else if (response === 1) {
+        } else if (qr === option2Choice) {
           option2Num++;
-        } else if (response === 2) {
+        } else if (qr === option3Choice) {
           option3Num++;
         } else {
           console.log("undefined response");
