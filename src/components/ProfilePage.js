@@ -118,7 +118,7 @@ function ProfilePage({
 
   return (
     <div className="profileContainer">
-      <div>
+      <div style={{ textAlign: "-webkit-left", maxWidth: "600px" }}>
         <h2>EditProfile</h2>
       </div>
 
