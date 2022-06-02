@@ -54,6 +54,7 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
   };
 
   const saveResponseOnServer = () => {
+    console.log(questions);
     questions.map((question) =>
       updateQuestionAPI(question)
         .then((res) => {

@@ -18,7 +18,7 @@ function LogDayQuestions({
     // console.log(answers);
   }, [date]);
 
-  const [responses, setResponses] = useState([]);
+  const [responses, setResponses] = useState({});
 
   useEffect(() => {
     const newQuestion = {
@@ -27,7 +27,7 @@ function LogDayQuestions({
       questionType: type,
       multipleChoice: choice,
       user: user,
-      responses: responses,
+      responses: { ...answers, ...responses },
       date: date,
     };
     const updatedQuestions = [
@@ -68,7 +68,7 @@ function LogDayQuestions({
       </div>
     );
   }
-  //TODO boolean! 
+  //TODO boolean!
   else if (type === "boolean") {
     // console.log(answers[date]);
     return (
@@ -133,7 +133,7 @@ function LogDayQuestions({
       </div>
     );
   }
-  //TODO multiple choice!  
+  //TODO multiple choice!
   else {
     return (
       <div className="logDayDiv">
@@ -155,7 +155,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice1"
-            checked={answers[date] === choice[0] }
+            checked={answers[date] === choice[0]}
             value={choice[0]}
             disabled={disabled}
           />
@@ -171,7 +171,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice2"
-            checked={answers[date] ===choice[1] }
+            checked={answers[date] === choice[1]}
             value={choice[1]}
             disabled={disabled}
           />
@@ -188,7 +188,7 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice3"
-            checked={answers[date] ===choice[2] }
+            checked={answers[date] === choice[2]}
             value={choice[2]}
             disabled={disabled}
           />
