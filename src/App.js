@@ -126,7 +126,6 @@ function App() {
               alignItems: "center",
             }}
           >
-            {/* <h1>Loading...</h1> */}
 
             <div className="dot-pulse">
               <div className="dot-pulse__dot"></div>
@@ -197,8 +196,6 @@ function App() {
               user={user}
               questions={questions}
               setQuestions={setQuestions}
-              // responses={responses}
-              // setResponse ={setResponse}
             />
           )}
           {isEditQuestions && (

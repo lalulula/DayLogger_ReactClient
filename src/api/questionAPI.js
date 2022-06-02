@@ -1,15 +1,9 @@
-// const backendURL =
-//   process.env.NODE_ENV === "production"
-//     ? "https://cse316final.herokuapp.com"
-//     : "http://localhost:5001";
 const backendURL = "";
-// const backendURL = "https://cse316final.herokuapp.com";
+
 const defaultHeaders = {
   headers: {
     "Content-Type": "application/json",
     credentials: "include",
-    // withCredentials: true,
-    // "Access-Control-Allow-Origin": backendURL,
   },
 };
 
@@ -36,19 +30,6 @@ export const createQuestionAPI = (question) => {
     .then(checkStatus)
     .then(parseJSON);
 };
-
-// const getCircularReplacer = () => {
-//   const seen = new WeakSet();
-//   return (key, value) => {
-//     if (typeof value === 'object' && value !== null) {
-//       if (seen.has(value)) {
-//         return;
-//       }
-//       seen.add(value);
-//     }
-//     return value;
-//   };
-// };
 
 // PUT:updating question : /questions/:id
 export const updateQuestionAPI = (question) => {
@@ -84,6 +65,5 @@ function checkStatus(response) {
 }
 
 function parseJSON(response) {
-  // console.log(response);
   return response.json(); //response중에 json 응답만 걸러준다.
 }

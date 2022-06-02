@@ -23,8 +23,7 @@ function Question({
       questionType: e.target.value,
       multipleChoice: multipleChoice,
       user: user,
-      responses: responses,
-      // , responses:responses
+      responses: responses
     };
 
     saveQuestionOnServer(newQuestion, questions);
@@ -38,8 +37,7 @@ function Question({
       questionType: questionType,
       multipleChoice: multipleChoice,
       user: user,
-      responses: responses,
-      // , responses : responses
+      responses: responses
     };
     saveQuestionOnServer(newQuestion, questions);
   };
@@ -125,7 +123,6 @@ function Question({
             ...questions.map((q) => (q._id === id ? question : q)),
           ];
           setQuestions(updatedQuestions);
-          // console.log(updatedQuestions);
         })
         .catch((err) => {
           console.error("Error retrieving question data: ", err);

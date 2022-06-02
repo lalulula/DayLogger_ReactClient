@@ -16,8 +16,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
       responses: {},
     };
     createQuestionAPI(newQuestion).then((response) => {
-      // console.log("Created question on the server");
-      // console.dir(response);
       setQuestions([response, ...questions]);
     });
   };
@@ -32,7 +30,6 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
       }
     }
     deleteQuestionAPI(question2Delete._id).then(() => {
-      // console.log("Deleted the question on the server");
     });
     let newQuestions = [...questions];
     newQuestions.splice(index2Delete, 1);

@@ -49,7 +49,6 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     a.remove();
 
   }
-  
   const exportToJson = (e) =>{
     e.preventDefault();
     console.log(user);
@@ -59,11 +58,9 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
       fileType:'text/json'
     })
   }
-   // ANCHOR ///////////////////////////////////////////////////////////////
+ // ANCHOR csv file download code ////////////////////////////////////////////////
 
   const textType = (question) => {
-    // const sortQuestion = sortByDate(Object.keys(question.responses));
-    // console.log(sortQuestion);
     return (
       <div className="chart-box">
         <div className="question-text">{question?.questionText}</div>
@@ -83,12 +80,8 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
   const booleanType = (question) => {
     var numTrue = 0;
     var numFalse = 0;
-    // console.log(question);
-    // console.log(Object.values(question.responses));
     {
       sortByDate(Object.values(question.responses)).map((response) => {
-        // console.log(question.responses);
-        // console.log(response);
         if (response === "true") {
           numTrue++;
         } else if (response === "false") {
@@ -137,7 +130,6 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
         return { date, responseNum };
       }
     );
-    // console.log(numberData);
 
     return (
       <div id="chart" className="chart-box">
@@ -158,8 +150,6 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
               name: "VALUE",
               data: numberData.map((data) => {
                 return { x: data.date, y: data.responseNum };
-                //   console.log(data.date);
-                //   console.log(data.responseNum);
               }),
             },
           ]}
@@ -170,8 +160,6 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const multipleChoiceType = (question) => {
-    // console.log(question.multipleChoice);
-    // console.log(questions[0].multipleChoice[0]);
 
     var option1Choice = question.multipleChoice[0];
     var option2Choice = question.multipleChoice[1];
@@ -183,9 +171,9 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
 
     {
       Object.keys(question.responses).map((date) => {
-        // console.log(question.responses);
+
         var qr = question.responses[date];
-        // console.log(qr);
+
         if (qr === option1Choice) {
           option1Num++;
         } else if (qr === option2Choice) {
@@ -252,7 +240,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           </select>
         </div>
       </div>
-      <div id="csvDownload"><button onClick={exportToJson}>Save Data</button></div>
+      <div id="csvDownload"><span onClick={exportToJson}>Save Data</span></div>
       <div>
         {viewMode === "by-question" ? (
           questions.map((question, idx) => {

@@ -13,10 +13,6 @@ function LogDayQuestions({
   answers,
   disabled,
 }) {
-  useEffect(() => {
-    // console.log(date);
-    // console.log(answers);
-  }, [date]);
 
   const [responses, setResponses] = useState({});
 
@@ -68,7 +64,7 @@ function LogDayQuestions({
       </div>
     );
   }
-  //TODO boolean!
+
   else if (type === "boolean") {
     // console.log(answers[date]);
     return (
@@ -92,12 +88,7 @@ function LogDayQuestions({
         </label>
         <input
           checked={answers[date] === "false"}
-          // value={answers[date] || ""}
           value="false"
-          // value={answers[date]?  "false": ""}
-          // value={answers[date] || ""}
-          // checked={false}
-          // value="false"
           onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
@@ -114,7 +105,6 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          // value={answers ? answers[date] : ""}
           value={answers[date] || ""}
           onChange={handleResponseChange}
           placeholder="Enter..."
@@ -133,7 +123,7 @@ function LogDayQuestions({
       </div>
     );
   }
-  //TODO multiple choice!
+
   else {
     return (
       <div className="logDayDiv">

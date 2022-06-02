@@ -98,8 +98,6 @@ function ProfilePage({
   const handleRemoveImage = () => {
     if (profile.profileImage) {
       console.log(img);
-      // let updatedProfile = { ...profile, profileImage: "" };
-      // setProfile(updatedProfile);
       setImg("");
     }
   };

@@ -14,7 +14,6 @@ const AdminPage = ({ getAllUsers, allUsers }) => {
         `Are you sure you want to delete ${user?.name}'s infromation?`
       )
     ) {
-      //   user?.questions.forEach((question) => deleteQuestionAPI(question._id));
       deleteUserByIdAPI(user?._id).then((res) => getAllUsers());
     }
   };

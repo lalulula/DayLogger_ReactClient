@@ -365,10 +365,23 @@ input#file-input {
   padding: 10px 15px 10px 15px;
 }
 
-#csvDownload{
+#csvDownload {
   text-align: right;
   max-width: 600px;
   width: 100%;
+  margin-bottom: 30px;
+}
+#csvDownload span{
+  padding: 5px;
+  margin-top: 23px;
+  border-radius: 5px;
+  padding: 3px 3px 6px 3px;
+  font-size: 15px;
+  background-color: #fcfefe;
+  border: 0.5px solid black;
+}
+#csvDownload:hover{
+  cursor: pointer;;  
 }
 
 
