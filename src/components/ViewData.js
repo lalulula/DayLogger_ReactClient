@@ -204,6 +204,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           </select>
         </div>
       </div>
+      <div id="csvDownload"><button>Save Data</button></div>
       <div>
         {viewMode === "by-question" ? (
           questions.map((question, idx) => {
