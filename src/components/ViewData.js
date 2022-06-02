@@ -13,6 +13,35 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     });
   };
 
+ // ANCHOR csv file download code ////////////////////////////////////////////////
+  let responseArray = [];
+  for(let i = 0; i<questions.length; i++){
+    responseArray[i] = questions[i].responses;
+  }
+  const downloadFile = ({data, fileName, fileType}) => {
+    const blob = new Blob([data], {type:fileType});
+    const a  = document.createElement('a');
+    a.download = fileName;
+    a.href = window.URL.createObjectURL(blob);
+    const clickEvt = new MouseEvent('click', {
+      view: window,
+      bubbles:true,
+      cancelable :true,
+    })
+    a.dispatchEvent(clickEvt);
+    a.remove();
+
+  }
+  const exportToJson = (e) =>{
+    e.preventDeafult();
+    downloadFile({
+      data :JSON.stringify({user, questions, responseArray}),
+      fileName :`${user.name}.json`,
+      fileType:'text/json'
+    })
+  }
+   // ANCHOR ///////////////////////////////////////////////////////////////
+
   const textType = (question) => {
     // const sortQuestion = sortByDate(Object.keys(question.responses));
     // console.log(sortQuestion);
@@ -204,7 +233,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           </select>
         </div>
       </div>
-      <div id="csvDownload"><button>Save Data</button></div>
+      <div id="csvDownload"><button onClick={exportToJson}>Save Data</button></div>
       <div>
         {viewMode === "by-question" ? (
           questions.map((question, idx) => {
