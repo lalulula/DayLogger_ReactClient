@@ -34,6 +34,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
   for(let i = 0; i<questions.length; i++){
     responseArray[i] = questions[i].responses;
   }
+
   const downloadFile = ({data, fileName, fileType}) => {
     const blob = new Blob([data], {type:fileType});
     const a  = document.createElement('a');
@@ -48,12 +49,13 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     a.remove();
 
   }
+  
   const exportToJson = (e) =>{
     e.preventDefault();
     console.log(user);
     downloadFile({
       data :JSON.stringify({user, questions, responseArray}),
-      fileName :`${currUser}.csv`,
+      fileName :`${currUser.name}.csv`,
       fileType:'text/json'
     })
   }
