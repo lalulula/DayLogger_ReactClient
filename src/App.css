@@ -130,8 +130,6 @@ button:hover {
   
 }
 
-.multipleChoice {}
-
 .submitBtn {
   padding: 10px 20px 10px 20px;
   border-radius: 8px;
@@ -365,6 +363,12 @@ input#file-input {
   font-size: small;
   margin: 20px 0px 10px 0px;
   padding: 10px 15px 10px 15px;
+}
+
+#csvDownload{
+  text-align: right;
+  max-width: 600px;
+  width: 100%;
 }
 
 
