@@ -45,8 +45,8 @@ function LogDayQuestions({
     setResponses({ ...responses, [date]: e.target.value });
   };
 
-  const handleMultipleChange = (e, idx) => {
-    setResponses({ ...responses, [date]: e.target.checked ? idx : -1 });
+  const handleMultipleChange = (e) => {
+    setResponses({ ...responses, [date]: e.target.value });
   };
 
   if (type === "number") {
@@ -76,15 +76,14 @@ function LogDayQuestions({
         {text}
         <br />
         <input
-          // value={answers[date] || true}
+          checked={answers[date] === "true"}
+          // value={answers[date] || ""}
           value="true"
           // value={answers[date]? "true":""}
           onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
           id="bResponse1"
-
-
           style={{ marginTop: "10px" }}
           disabled={disabled}
         />
@@ -92,8 +91,13 @@ function LogDayQuestions({
           True
         </label>
         <input
-          // value={answers[date]?  "false": ""}
+          checked={answers[date] === "false"}
+          // value={answers[date] || ""}
           value="false"
+          // value={answers[date]?  "false": ""}
+          // value={answers[date] || ""}
+          // checked={false}
+          // value="false"
           onChange={handleBooleanChange}
           type="radio"
           name="boolResponse"
@@ -147,11 +151,12 @@ function LogDayQuestions({
           }}
         >
           <input
-            onChange={(e) => handleMultipleChange(e, 0)}
+            onChange={(e) => handleMultipleChange(e)}
             type="radio"
             name="choiceResponse"
             id="choice1"
-            value={answers[date] === 0 ? choice[0] : ""}
+            checked={answers[date] === choice[0] }
+            value={choice[0]}
             disabled={disabled}
           />
           <label htmlFor="op1">{choice[0]}</label>
@@ -166,8 +171,8 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice2"
-            value={answers[date] === 1 ? choice[1] : ""}
-            // value={answers[date] || ""}
+            checked={answers[date] ===choice[1] }
+            value={choice[1]}
             disabled={disabled}
           />
           <label htmlFor="op2">{choice[1]}</label>
@@ -183,7 +188,8 @@ function LogDayQuestions({
             type="radio"
             name="choiceResponse"
             id="choice3"
-            value={answers[date] === 2 ? choice[2] : ""}
+            checked={answers[date] ===choice[2] }
+            value={choice[2]}
             disabled={disabled}
           />
           <label htmlFor="op3">{choice[2]}</label>
