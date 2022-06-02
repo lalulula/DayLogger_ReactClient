@@ -43,13 +43,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
     <div onSubmit={handleSubmit} className="editQContainer">
       <form className="editQContent">
         <div className="editQHeader">
-          <h2
-            style={{
-              marginLeft: "10px",
-            }}
-          >
-            Edit Questions
-          </h2>
+          <h2>Edit Questions</h2>
           <span
             className="material-symbols-outlined addQuestionBtn"
             onClick={handleAddQuestion}

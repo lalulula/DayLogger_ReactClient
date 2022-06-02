@@ -119,7 +119,7 @@ function ProfilePage({
   return (
     <div className="profileContainer">
       <div>
-        <h3>EditProfile</h3>
+        <h2>EditProfile</h2>
       </div>
 
       <div className="profileDiv1">

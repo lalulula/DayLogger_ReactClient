@@ -5,7 +5,7 @@ import { deleteQuestionAPI } from "../api/questionAPI";
 const AdminPage = ({ getAllUsers, allUsers }) => {
   useEffect(() => {
     getAllUsers();
-    console.log(allUsers)
+    console.log(allUsers);
   }, []);
 
   const deleteUser = (user) => {
@@ -29,7 +29,7 @@ const AdminPage = ({ getAllUsers, allUsers }) => {
               justifyContent: "space-between",
             }}
           >
-            <h3>Admin Page</h3>
+            <h2>Admin Page</h2>
             <div
               style={{
                 fontWeight: "500",

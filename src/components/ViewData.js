@@ -135,9 +135,9 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
 
     {
       Object.keys(question.responses).map((date) => {
-        console.log(question.responses);
+        // console.log(question.responses);
         var qr = question.responses[date];
-        console.log(qr);
+        // console.log(qr);
         if (qr === option1Choice) {
           option1Num++;
         } else if (qr === option2Choice) {
@@ -190,7 +190,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "-webkit-center" }}>
       <div className="view-data-container">
         <h2>View Data</h2>
         <div>

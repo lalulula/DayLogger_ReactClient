@@ -69,7 +69,15 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
   return (
     <div className="logDayContainer">
       <form onSubmit={handleSubmit} className="logDayContent" id="lDContent">
-        <div className="logDayDate">
+        <div
+          className="logDayDate"
+          style={{
+            maxWidth: "600px",
+            width: "100%",
+            justifyContent: "space-between",
+            display: "flex",
+          }}
+        >
           <button
             className="material-symbols-outlined dateBtn"
             onClick={handleDateBack}
@@ -102,9 +110,11 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
           />
         ))}
         {!disabled && (
-          <button className="submitBtn" onClick={saveResponseOnServer}>
-            Submit
-          </button>
+          <div style={{ maxWidth: "600px", textAlign: "-webkit-left" }}>
+            <button className="submitBtn" onClick={saveResponseOnServer}>
+              Submit
+            </button>
+          </div>
         )}
       </form>
     </div>
