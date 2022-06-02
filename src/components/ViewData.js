@@ -1,7 +1,9 @@
 import React from "react";
 import LogDay from "./LogDay";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import ReactApexChart from "react-apexcharts";
+import { getUserAPI } from "../api/userAPI";
 
 function ViewData({ handleSubmit, questions, setQuestions, user }) {
   //   console.log(questions);
@@ -15,6 +17,20 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
 
  // ANCHOR csv file download code ////////////////////////////////////////////////
   let responseArray = [];
+
+  const [currUser, setCurrUser] = useState('');
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userData = await getUserAPI();
+        setCurrUser(userData);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchUserData();
+  }, []);
+
   for(let i = 0; i<questions.length; i++){
     responseArray[i] = questions[i].responses;
   }
@@ -33,10 +49,11 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
 
   }
   const exportToJson = (e) =>{
-    e.preventDeafult();
+    e.preventDefault();
+    console.log(user);
     downloadFile({
       data :JSON.stringify({user, questions, responseArray}),
-      fileName :`${user.name}.json`,
+      fileName :`${currUser}.csv`,
       fileType:'text/json'
     })
   }
