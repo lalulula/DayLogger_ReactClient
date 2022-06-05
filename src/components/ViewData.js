@@ -53,7 +53,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     console.log(user);
     downloadFile({
       data: JSON.stringify({ user, questions, responseArray }),
-      fileName: `${currUser.name}.csv`,
+      fileName: `${currUser.name}.json`,
       fileType: "text/json",
     });
   };
