@@ -240,6 +240,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
       <div id="csvDownload">
         <span onClick={exportToJson}>Save Data</span>
       </div>
+      <div id="csvDownload"><button onClick={exportToJson}>Save Data</button></div>
       <div>
         {viewMode === "by-question" ? (
           questions.map((question, idx) => {
