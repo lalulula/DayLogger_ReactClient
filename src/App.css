@@ -735,3 +735,7 @@ input#file-input {
 .apexcharts-legend-series{
   margin: 0px !important;
 }
+
+.nodata{
+  margin: 10px;
+}

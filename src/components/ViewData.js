@@ -63,16 +63,21 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     return (
       <div className="chart-box">
         <div className="question-text">{question?.questionText}</div>
-        {Object.keys(question.responses).map((date) => {
-          return (
-            <div key={`response-${date}`} className="text-container">
-              <div className="text-container-key">{date}</div>
-              <div className="text-container-value">
-                {question.responses[date]}
+        {Object.values(question.responses) != "" &&
+        Object.values(question.responses).length != 0 ? (
+          Object.keys(question.responses).map((date) => {
+            return (
+              <div key={`response-${date}`} className="text-container">
+                <div className="text-container-key">{date}</div>
+                <div className="text-container-value">
+                  {question.responses[date]}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <div className="nodata">You need data to view data!</div>
+        )}
       </div>
     );
   };
@@ -80,6 +85,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     var numTrue = 0;
     var numFalse = 0;
     {
+      // console.log(question.responses);
       sortByDate(Object.values(question.responses)).map((response) => {
         if (response === "true") {
           numTrue++;
@@ -93,36 +99,43 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     return (
       <div id="chart" className="chart-box">
         <div className="question-text">{question?.questionText}</div>
-
-        <ReactApexChart
-          options={{
-            chart: {
-              width: 380,
-              type: "pie",
-            },
-            labels: ["True", "False"],
-            responsive: [
-              {
-                breakpoint: 480,
-                options: {
-                  chart: {
-                    width: 200,
-                  },
-                  legend: {
-                    position: "bottom",
+        {Object.values(question.responses) != "" &&
+        Object.values(question.responses).length != 0 ? (
+          <ReactApexChart
+            options={{
+              chart: {
+                width: 380,
+                type: "pie",
+              },
+              labels: ["True", "False"],
+              responsive: [
+                {
+                  breakpoint: 480,
+                  options: {
+                    chart: {
+                      width: 200,
+                    },
+                    legend: {
+                      position: "bottom",
+                    },
                   },
                 },
-              },
-            ],
-          }}
-          series={[numTrue, numFalse]}
-          type="pie"
-          width={380}
-        />
+              ],
+            }}
+            series={[numTrue, numFalse]}
+            type="pie"
+            width={380}
+          />
+        ) : (
+          <div className="nodata">You need data to view chart!</div>
+        )}
       </div>
     );
   };
   const numberType = (question) => {
+    // console.log(question.responses == "");
+    // console.log(Object.values(question.responses) == "");
+    // console.log(Object.values(question.responses).length);
     const numberData = sortByDate(Object.keys(question.responses)).map(
       (date) => {
         var responseNum = question.responses[date];
@@ -134,27 +147,32 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
       <div id="chart" className="chart-box">
         <div className="question-text">{question?.questionText}</div>
 
-        <ReactApexChart
-          options={{
-            chart: {
-              height: 350,
-              type: "line",
-              zoom: {
-                enabled: false,
+        {Object.values(question.responses) != "" &&
+        Object.values(question.responses).length != 0 ? (
+          <ReactApexChart
+            options={{
+              chart: {
+                height: 350,
+                type: "line",
+                zoom: {
+                  enabled: false,
+                },
               },
-            },
-          }}
-          series={[
-            {
-              name: "VALUE",
-              data: numberData.map((data) => {
-                return { x: data.date, y: data.responseNum };
-              }),
-            },
-          ]}
-          type="line"
-          height={350}
-        />
+            }}
+            series={[
+              {
+                name: "VALUE",
+                data: numberData.map((data) => {
+                  return { x: data.date, y: data.responseNum };
+                }),
+              },
+            ]}
+            type="line"
+            height={350}
+          />
+        ) : (
+          <div className="nodata">You need data to view chart!</div>
+        )}
       </div>
     );
   };
@@ -186,38 +204,44 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     return (
       <div id="chart" className="chart-box">
         <div className="question-text">{question?.questionText}</div>
-        <ReactApexChart
-          options={{
-            chart: {
-              type: "bar",
-              height: 350,
-            },
-            plotOptions: {
-              bar: {
-                borderRadius: 4,
-                horizontal: true,
+
+        {Object.values(question.responses) != "" &&
+        Object.values(question.responses).length != 0 ? (
+          <ReactApexChart
+            options={{
+              chart: {
+                type: "bar",
+                height: 350,
               },
-            },
-            dataLabels: {
-              enabled: false,
-            },
-            xaxis: {
-              categories: [
-                question.multipleChoice[0],
-                question.multipleChoice[1],
-                question.multipleChoice[2],
-              ],
-            },
-          }}
-          series={[
-            {
-              name: "VALUE",
-              data: [option1Num, option2Num, option3Num],
-            },
-          ]}
-          type="bar"
-          height={350}
-        />
+              plotOptions: {
+                bar: {
+                  borderRadius: 4,
+                  horizontal: true,
+                },
+              },
+              dataLabels: {
+                enabled: false,
+              },
+              xaxis: {
+                categories: [
+                  question.multipleChoice[0],
+                  question.multipleChoice[1],
+                  question.multipleChoice[2],
+                ],
+              },
+            }}
+            series={[
+              {
+                name: "VALUE",
+                data: [option1Num, option2Num, option3Num],
+              },
+            ]}
+            type="bar"
+            height={350}
+          />
+        ) : (
+          <div className="nodata">You need data to view chart!</div>
+        )}
       </div>
     );
   };
