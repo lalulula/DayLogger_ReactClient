@@ -81,14 +81,14 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
             className="material-symbols-outlined dateBtn"
             onClick={handleDateBack}
           >
-            arrow_back_ios
+            &lt
           </button>
           <h2> {formatDate(date)}</h2>
           <button
             className="material-symbols-outlined dateBtn"
             onClick={handleDateForward}
           >
-            arrow_forward_ios
+            &gt
           </button>
         </div>
         {questions.map((question) => (
