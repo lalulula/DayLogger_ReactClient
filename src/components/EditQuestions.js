@@ -9,7 +9,7 @@ function EditQuestions({ handleSubmit, questions, setQuestions, user }) {
 
   const handleAddQuestion = () => {
     const newQuestion = {
-      questionText: "Enter question",
+      questionText: "",
       questionType: "number",
       multipleChoice: ["", "", ""],
       user: user,

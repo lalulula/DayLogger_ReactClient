@@ -188,6 +188,7 @@ function Question({
               name="op1"
               value={multipleChoice[0]}
               onChange={handleEditMultipleChoice}
+              placeholder="option 1"
             />
           </div>
           <br />
@@ -200,6 +201,7 @@ function Question({
               name="op2"
               value={multipleChoice[1]}
               onChange={handleEditMultipleChoice}
+              placeholder="option 2"
             />
           </div>
           <br />
@@ -212,6 +214,7 @@ function Question({
               name="op3"
               value={multipleChoice[2]}
               onChange={handleEditMultipleChoice}
+              placeholder="option 3"
             />
           </div>
           <br />
@@ -226,6 +229,7 @@ function Question({
         type="text"
         name="qText"
         onChange={handleTextChange}
+        placeholder="Enter question..."
         value={questionText}
         style={{
           marginBottom: "5px",
