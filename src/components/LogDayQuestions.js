@@ -53,7 +53,7 @@ function LogDayQuestions({
         <input
           value={answers[date] || ""}
           onChange={handleResponseChange}
-          type="numeric"
+          type="number"
           name="numResponse"
           id="numResponse"
           placeholder="Enter..."
