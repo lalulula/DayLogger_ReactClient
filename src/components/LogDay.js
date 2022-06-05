@@ -10,6 +10,8 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
   // }, [questions]);
 
   useEffect(() => {
+    // console.log(formatDate(date))
+    // console.log(formatDate(new Date()))
     function fetchData() {
       getQuestionAPI()
         .then((questions) => {
@@ -65,6 +67,7 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
     );
     alert("Response successfully saved!");
   };
+
   return (
     <div className="logDayContainer">
       <form onSubmit={handleSubmit} className="logDayContent" id="lDContent">
@@ -78,18 +81,23 @@ function LogDay({ handleSubmit, questions, setQuestions, user, disabled }) {
           }}
         >
           <button
-            className="material-symbols-outlined dateBtn"
+            className="dateBtn "
+            id="dateBack"
             onClick={handleDateBack}
+            style ={{ fontSize: "30px", fontWeight: "bold"}}
           >
-            &lt
+            &lt;
           </button>
           <h2> {formatDate(date)}</h2>
           <button
-            className="material-symbols-outlined dateBtn"
+            className="dateBtn"
+            id="dateFor"
             onClick={handleDateForward}
+            style ={{ fontSize: "30px", fontWeight: "bold", display: formatDate(date) === formatDate(new Date())? "none" : "block"}}
           >
-            &gt
+            &gt;
           </button>
+          <div style ={{ fontSize: "30px", fontWeight: "bold", display: formatDate(date) === formatDate(new Date())? "block" : "none"}}>&nbsp;</div>
         </div>
         {questions.map((question) => (
           <LogDayQuestions
