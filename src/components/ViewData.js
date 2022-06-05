@@ -15,10 +15,10 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     });
   };
 
- // ANCHOR csv file download code ////////////////////////////////////////////////
+  // ANCHOR csv file download code ////////////////////////////////////////////////
   let responseArray = [];
 
-  const [currUser, setCurrUser] = useState('');
+  const [currUser, setCurrUser] = useState("");
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -31,34 +31,33 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     fetchUserData();
   }, []);
 
-  for(let i = 0; i<questions.length; i++){
+  for (let i = 0; i < questions.length; i++) {
     responseArray[i] = questions[i].responses;
   }
 
-  const downloadFile = ({data, fileName, fileType}) => {
-    const blob = new Blob([data], {type:fileType});
-    const a  = document.createElement('a');
+  const downloadFile = ({ data, fileName, fileType }) => {
+    const blob = new Blob([data], { type: fileType });
+    const a = document.createElement("a");
     a.download = fileName;
     a.href = window.URL.createObjectURL(blob);
-    const clickEvt = new MouseEvent('click', {
+    const clickEvt = new MouseEvent("click", {
       view: window,
-      bubbles:true,
-      cancelable :true,
-    })
+      bubbles: true,
+      cancelable: true,
+    });
     a.dispatchEvent(clickEvt);
     a.remove();
-
-  }
-  const exportToJson = (e) =>{
+  };
+  const exportToJson = (e) => {
     e.preventDefault();
     console.log(user);
     downloadFile({
-      data :JSON.stringify({user, questions, responseArray}),
-      fileName :`${currUser.name}.csv`,
-      fileType:'text/json'
-    })
-  }
- // ANCHOR csv file download code ////////////////////////////////////////////////
+      data: JSON.stringify({ user, questions, responseArray }),
+      fileName: `${currUser.name}.csv`,
+      fileType: "text/json",
+    });
+  };
+  // ANCHOR csv file download code ////////////////////////////////////////////////
 
   const textType = (question) => {
     return (
@@ -160,7 +159,6 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     );
   };
   const multipleChoiceType = (question) => {
-
     var option1Choice = question.multipleChoice[0];
     var option2Choice = question.multipleChoice[1];
     var option3Choice = question.multipleChoice[2];
@@ -171,7 +169,6 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
 
     {
       Object.keys(question.responses).map((date) => {
-
         var qr = question.responses[date];
 
         if (qr === option1Choice) {
@@ -240,7 +237,9 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
           </select>
         </div>
       </div>
-      <div id="csvDownload"><span onClick={exportToJson}>Save Data</span></div>
+      <div id="csvDownload">
+        <span onClick={exportToJson}>Save Data</span>
+      </div>
       <div>
         {viewMode === "by-question" ? (
           questions.map((question, idx) => {

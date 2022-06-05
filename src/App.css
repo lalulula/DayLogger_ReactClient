@@ -270,7 +270,6 @@ input#file-input {
 
 .handleImageBtn:hover {
   cursor: pointer;
-  color: gray;
 }
 
 .put-img-box {
@@ -279,9 +278,17 @@ input#file-input {
   padding: 8px;
 }
 
+.put-img-box:hover {
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .removeImage {
   text-decoration: underline;
-
+}
+.removeImage:hover {
+  color: rgb(89, 89, 89)
 }
 
 .profileDiv1,
@@ -714,4 +721,9 @@ input#file-input {
 
 .text-container-value{
   margin-left: 15px;
+}
+
+
+.apexcharts-legend-series{
+  margin: 0px !important;
 }
