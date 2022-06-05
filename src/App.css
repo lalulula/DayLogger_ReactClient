@@ -148,6 +148,14 @@ button:hover {
   color: gray;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
 /*NOTE Edit questions */
 .editQContainer {
   /* flex-wrap: nowrap;
