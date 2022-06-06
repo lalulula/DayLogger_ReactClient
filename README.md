@@ -18,4 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 Open [https://hayun316final.netlify.app/](https://hayun316final.netlify.app/) to view it in your browser.
 
 ### `npm test`
-Launches the test runner in the interactive watch mode.\
+
+Launches the test runner in the interactive watch mode.
+1)npm i jest ->install if not installed
+2)run : npm test
