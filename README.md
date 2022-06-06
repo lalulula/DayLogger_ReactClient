@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
     Open [https://hayun316final.netlify.app/](https://hayun316final.netlify.app/) to view it in your browser.
     Front - Netlify (https://app.netlify.com/teams/lalulula/overview)
     Back - Heroku (https://cse316final.herokuapp.com/)
-    DB - MongoDB
+    DB - MongoDB (mongodb+srv://cse316final:1234567890@cse316final.oxq7w.mongodb.net/test)
 
 ### `npm test`
 
