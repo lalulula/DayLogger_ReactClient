@@ -34,49 +34,52 @@ const AdminPage = ({ getAllUsers, allUsers }) => {
                 fontWeight: "500",
               }}
             >
-              Total Users: {allUsers.length}
+              Total Users: {allUsers.length - 1}
             </div>
           </div>
         </div>
 
-        {allUsers.map((user) => (
-          <div
-            key={user._id}
-            style={{
-              backgroundColor: "white",
-              borderRadius: "5px",
-              width: "100%",
-              maxWidth: "600px",
-              display: "flex",
-              justifyContent: "space-between",
-              marginBottom: "15px",
-            }}
-          >
-            <div style={{ padding: "15px", textAlign: "left" }}>
-              <div style={{ padding: "1px" }}>User name: {user?.name}</div>
-              <div style={{ padding: "1px" }}>
-                User email address: {user?.email}
+        {allUsers.map(
+          (user) =>
+            !user.isAdmin && (
+              <div
+                key={user._id}
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "5px",
+                  width: "100%",
+                  maxWidth: "600px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: "15px",
+                }}
+              >
+                <div style={{ padding: "15px", textAlign: "left" }}>
+                  <div style={{ padding: "1px" }}>User name: {user?.name}</div>
+                  <div style={{ padding: "1px" }}>
+                    User email address: {user?.email}
+                  </div>
+                  <div style={{ padding: "1px" }}>
+                    Number of questions created: {user?.questions}
+                  </div>
+                  <div style={{ textAign: "left", padding: "1px" }}>
+                    Number of responses logged total: {user?.responses}
+                  </div>
+                </div>
+                <button
+                  className="userdata-delete-btn"
+                  style={{
+                    height: "20px",
+                    marginTop: "80px",
+                    marginRight: "10px",
+                  }}
+                  onClick={() => deleteUser(user)}
+                >
+                  DELETE
+                </button>
               </div>
-              <div style={{ padding: "1px" }}>
-                Number of questions created: {user?.questions}
-              </div>
-              <div style={{ textAign: "left", padding: "1px" }}>
-                Number of responses logged total: {user?.responses}
-              </div>
-            </div>
-            <button
-              className="userdata-delete-btn"
-              style={{
-                height: "20px",
-                marginTop: "80px",
-                marginRight: "10px",
-              }}
-              onClick={() => deleteUser(user)}
-            >
-              DELETE
-            </button>
-          </div>
-        ))}
+            )
+        )}
       </div>
     </>
   );
