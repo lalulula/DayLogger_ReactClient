@@ -6,6 +6,7 @@ const AdminPage = ({ getAllUsers, allUsers }) => {
   useEffect(() => {
     getAllUsers();
     console.log(allUsers);
+    const totalUsers = allUsers.length - 1;
   }, []);
 
   const deleteUser = (user) => {
@@ -34,7 +35,7 @@ const AdminPage = ({ getAllUsers, allUsers }) => {
                 fontWeight: "500",
               }}
             >
-              Total Users: {allUsers.length - 1}
+              Total Users: {totalUsers}
             </div>
           </div>
         </div>
