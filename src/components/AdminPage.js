@@ -3,8 +3,7 @@ import { deleteUserByIdAPI } from "../api/userAPI";
 import { deleteQuestionAPI } from "../api/questionAPI";
 
 const AdminPage = ({ getAllUsers, allUsers }) => {
-  var totalUsers = allUsers.length - 1;
-  console.log(totalUsers);
+  var totalUsers = (totalUsers = allUsers.length - 1);
   useEffect(() => {
     getAllUsers();
     console.log(allUsers);
@@ -36,7 +35,7 @@ const AdminPage = ({ getAllUsers, allUsers }) => {
                 fontWeight: "500",
               }}
             >
-              Total Users: {totalUsers}
+              Total Users: {totalUsers < 0 ? 0 : totalUsers}
             </div>
           </div>
         </div>
