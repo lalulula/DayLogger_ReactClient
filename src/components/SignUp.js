@@ -52,9 +52,11 @@ const SignUp = () => {
   const password = document.querySelector('#id_password');
   const togglePassword = document.querySelector('#togglePassword');
   const handleTogglePassword = () =>{
+    if(password){
   const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-  password.setAttribute('type', type);
-  togglePassword.classList.toggle('fa-eye-slash');
+    password.setAttribute('type', type);
+    togglePassword.classList.toggle('fa-eye-slash');
+  }
  }
 
   return (
