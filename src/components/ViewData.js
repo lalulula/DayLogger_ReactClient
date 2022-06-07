@@ -53,7 +53,7 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
     console.log(user);
     downloadFile({
       data: JSON.stringify({ user, questions, responseArray }),
-      fileName: `${currUser.name}.csv`,
+      fileName: `${currUser.name}.json`,
       fileType: "text/json",
     });
   };
@@ -264,7 +264,6 @@ function ViewData({ handleSubmit, questions, setQuestions, user }) {
       <div id="csvDownload">
         <span onClick={exportToJson}>Save Data</span>
       </div>
-      <div id="csvDownload"><button onClick={exportToJson}>Save Data</button></div>
       <div>
         {viewMode === "by-question" ? (
           questions.map((question, idx) => {
