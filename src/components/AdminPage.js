@@ -3,10 +3,11 @@ import { deleteUserByIdAPI } from "../api/userAPI";
 import { deleteQuestionAPI } from "../api/questionAPI";
 
 const AdminPage = ({ getAllUsers, allUsers }) => {
+  var totalUsers = allUsers.length - 1;
+  console.log(totalUsers);
   useEffect(() => {
     getAllUsers();
     console.log(allUsers);
-    const totalUsers = allUsers.length - 1;
   }, []);
 
   const deleteUser = (user) => {
