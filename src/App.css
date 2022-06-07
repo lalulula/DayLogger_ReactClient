@@ -721,6 +721,11 @@ input#file-input {
   border: 1px solid #aaa;
   margin:10px;
   padding: 10px;
+  /* overflow:scroll; */
+}
+.chart-box{
+  overflow: scroll;
+  max-height: 500px;
 }
 
 .text-container-key{
