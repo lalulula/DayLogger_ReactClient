@@ -19,7 +19,7 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile, setIsAdmin }) => {
     document.getElementById("signup-background").style.display = "block";
   };
 
-  const password = document.querySelector('#id_password');
+  const password = document.querySelector('#id_password_login');
   const togglePassword = document.querySelector('#togglePassword');
   const handleTogglePassword = () =>{
     if(password){
@@ -94,7 +94,7 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile, setIsAdmin }) => {
               </div>
               <input
                 type="password"
-                id="id_password"
+                id="id_password_login"
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
                 required
