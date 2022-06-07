@@ -48,6 +48,15 @@ const SignUp = () => {
       setErrMsg("Email is invalid");
     }
   };
+
+  const password = document.querySelector('#id_password');
+  const togglePassword = document.querySelector('#togglePassword');
+  const handleTogglePassword = () =>{
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+  togglePassword.classList.toggle('fa-eye-slash');
+ }
+
   return (
     <div className="signup-background" id="signup-background">
       <div className="signup">
@@ -97,6 +106,7 @@ const SignUp = () => {
               <div style={{ paddingBottom: "3px" }}>Password</div>
               <input
                 className="signup-password"
+                id="id_password"
                 type="password"
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
@@ -107,6 +117,7 @@ const SignUp = () => {
                   borderRadius: "5px",
                 }}
               />
+              <i className="far fa-eye" id="togglePassword" style={{ marginTop: "7px"}} onClick={handleTogglePassword}></i>
             </div>
           </div>
           <div

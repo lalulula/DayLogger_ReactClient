@@ -12,7 +12,7 @@ const AdminPage = ({ getAllUsers, allUsers }) => {
   const deleteUser = (user) => {
     if (
       window.confirm(
-        `Are you sure you want to delete ${user?.name}'s infromation?`
+        `Are you sure you want to delete ${user?.name}'s information?`
       )
     ) {
       deleteUserByIdAPI(user?._id).then((res) => getAllUsers());

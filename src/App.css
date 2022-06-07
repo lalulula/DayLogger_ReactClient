@@ -320,6 +320,10 @@ input#file-input {
 }
 
 /* NOTE Login Page */
+.far {
+  margin-left: -30px; 
+cursor: pointer;
+}
 /* The Modal (background) */
 
 .registerModal {

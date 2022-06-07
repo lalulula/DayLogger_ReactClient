@@ -30,6 +30,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
 
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -114,8 +115,9 @@ function App() {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         ></link>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"></link>
       </div>
-
+       
       {isUserDataLoading ? (
         <>
           <div
