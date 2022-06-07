@@ -725,7 +725,7 @@ input#file-input {
 }
 .chart-box{
   overflow: scroll;
-  max-height: 500px;
+  max-height: 480px;
 }
 
 .text-container-key{
