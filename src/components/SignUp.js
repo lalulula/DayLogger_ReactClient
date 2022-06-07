@@ -117,7 +117,7 @@ const SignUp = () => {
                   borderRadius: "5px",
                 }}
               />
-              <i className="far fa-eye" id="togglePassword" style={{ marginTop: "7px"}} onClick={handleTogglePassword}></i>
+              <i className="far fa-eye" id="togglePassword"  onClick={handleTogglePassword}></i>
             </div>
           </div>
           <div
