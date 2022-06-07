@@ -19,6 +19,16 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile, setIsAdmin }) => {
     document.getElementById("signup-background").style.display = "block";
   };
 
+  const password = document.querySelector('#id_password');
+  const togglePassword = document.querySelector('#togglePassword');
+  const handleTogglePassword = () =>{
+    if(password){
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    togglePassword.classList.toggle('fa-eye-slash');
+  }
+ }
+
   const login = async () => {
     const result = await loginAPI(user, pwd);
     console.log(user);
@@ -84,6 +94,7 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile, setIsAdmin }) => {
               </div>
               <input
                 type="password"
+                id="id_password"
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
                 required
@@ -92,6 +103,7 @@ const Login = ({ user, setUser, pwd, setPwd, setProfile, setIsAdmin }) => {
                   borderRadius: "5px",
                 }}
               />
+             <i className="far fa-eye" id="togglePassword"  onClick={handleTogglePassword}></i>
             </div>
           </div>
           <div
